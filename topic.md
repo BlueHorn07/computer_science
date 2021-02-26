@@ -18,3 +18,12 @@ use_math: true
 
 
 ### Computer Vision
+
+
+
+### [Data Mining]({{"2021/02/24/data-mining.html" | relative_url}})
+
+
+
+### [Statistical Data Mining]({{"2021/02/24/statistical-data-mining.html" | relative_url}})
+
