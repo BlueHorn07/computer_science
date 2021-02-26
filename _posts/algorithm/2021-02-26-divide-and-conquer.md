@@ -110,11 +110,12 @@ $\blacksquare$
 
 </div>
 
-
 <hr/>
 
+아래는 \<분할 정복\>을 이용해 해결하는 대표적인 주제들에 대해 정리한 포스트들이다.
+
 1. [Multiplication Algorithm]({{"2021/02/26/multiplication-algorithm.html" | relative_url}})
-2. Binary Search
+2. [Binary Search]({{"2021/02/27/binary-search.html" | relative_url}})
 3. Merge Sort
 4. Matrix Mutliplication - Volker Strassen Method
 5. Find Medians and Selection
