@@ -39,6 +39,7 @@ hidden: true
 - [Multiplication Algorithm]({{"2021/02/26/multiplication-algorithm.html" | relative_url}})
 - [Binary Search]({{"2021/02/27/binary-search.html" | relative_url}})
   - Off-by-One
+  - Approximate Matches
 - Merge Sort
 - Matrix Multiplication
   - Volker Strassen
