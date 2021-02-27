@@ -15,11 +15,9 @@ tags: ["Algorithm"]
 - Binary Search - Code
 - Approximate Matches
 
-
-<br/>
 <hr/>
 
-### Binary Search
+## Binary Search
 
 \<이분 탐색 Binary Search\>. 이분 탐색은 인류 지성의 가장 직관적이고 탁월한 도구다! 정말 개인적인 의견으론, 이 알고리즘이 내가 되고, 내가 이 알고리즘이 되는 \<몰아일체 物我一體\> 수준에 이르기 위해 정진해야 할 정도로 "인생"에서 중요한 알고리즘이라고 생각한다.
 
@@ -57,7 +55,7 @@ $\blacksquare$
 
 뭔가 이대로 포스트를 끝내기엔 아쉬워서 PS에서 흔히 하는 실수 중 하나에 대해 말해보려고 한다.
 
-#### Off-by-One
+### Off-by-One
 
 > "This problem could arise when a programmer makes mistakes such as using "is less than or equal to" where "is less than" should have been used in a comparison." - [Wikipedia](https://en.wikipedia.org/wiki/Off-by-one_error)
 

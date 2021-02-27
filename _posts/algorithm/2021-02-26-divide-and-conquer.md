@@ -116,7 +116,7 @@ $\blacksquare$
 
 1. [Multiplication Algorithm]({{"2021/02/26/multiplication-algorithm.html" | relative_url}})
 2. [Binary Search]({{"2021/02/27/binary-search.html" | relative_url}})
-3. Merge Sort
+3. [Merge Sort]({{"2021/02/27/merge-sort.html" | relative_url}})
 4. Matrix Mutliplication - Volker Strassen Method
 5. Find Medians and Selection
 6. Closest pair of points
