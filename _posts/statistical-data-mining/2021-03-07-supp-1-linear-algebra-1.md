@@ -256,9 +256,9 @@ $$
 - $\mathcal{N}(A) = 0$
 - $\det (A) \ne 0$
 
-5\. $\text{rank}(AB) = \text{rank}(A)$ if $B$ is singular
+5\. $\text{rank}(AB) = \text{rank}(A)$ if $B$ is invertible
 
-6\. $\text{rank}(AB) = \text{rank}(B)$ if $A$ is singular
+6\. $\text{rank}(AB) = \text{rank}(B)$ if $A$ is invertible
 
 7\. $\text{rank}(AB) \le \min \\{ \text{rank}(A), \text{rank}(B)\\}$
 
