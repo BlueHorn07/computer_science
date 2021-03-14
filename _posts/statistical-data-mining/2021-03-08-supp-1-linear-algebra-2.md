@@ -8,6 +8,14 @@ tags: ["Statistical Data Mining"]
 ### 서론
 2021-1학기, 대학에서 '통계적 데이터마이닝' 수업을 듣고 공부한 바를 정리한 글입니다. 지적은 언제나 환영입니다 :)
 
+<br><span class="statement-title">TOC.</span><br>
+
+- Eigen value & Eigen vector
+- Trace
+- Vector Calculus
+- Matrix Calculus
+  - Quadratic Form
+
 <hr/>
 
 <br><span class="statement-title">Definition.</span> eigen value & eigen vector<br>
@@ -138,3 +146,6 @@ $$
 
 <hr/>
 
+이어지는 내용에선 \<Spectral Decomposition\>와 \<Singular Value Decomposition\> 등 선형 변환의 좀더 딥한 내용을 다룬다! 🤯
+
+👉 [Supp-1: Linear Algebra - 3]({{"2021/03/14/supp-1-linear-algebra-3.html" | relative_url}})
