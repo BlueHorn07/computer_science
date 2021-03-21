@@ -1,5 +1,5 @@
 ---
-title: "Overview of Supervised Learning"
+title: "Overview of Supervised Learning - 1"
 layout: post
 use_math: true
 tags: ["Statistical Data Mining"]
@@ -11,8 +11,12 @@ tags: ["Statistical Data Mining"]
 <br><span class="statement-title">TOC.</span><br>
 
 - Set-up
-
-
+- Introduction to Regression
+  - RSS and **Least Squared Estimator**
+  - Nearest-Neighbor Methods
+- Introduction to Classification
+  - Least Squared Estimator
+  - **K-Nearest Neighbor Method**
 <hr/>
 
 ### Set-up
@@ -54,8 +58,9 @@ tags: ["Statistical Data Mining"]
 
 이 두 접근법은 \<Supervised Learning\> 문제를 해결하는 가장 기본이 된다.
 
+## Regression
 
-<br><span class="statement-title">Definition.</span> Linear Model<br>
+<br><span class="statement-title">Definition.</span> Linear Model for regression<br>
 
 Given input $X = (X_1, \dots, X_p)^T$, we predict $Y$ as
 
@@ -111,4 +116,70 @@ $$
 &= \left( \mathbf{X}^T \mathbf{X}\right)^{-1} \mathbf{X}^T \cdot \mathbf{y}
 \end{aligned}
 $$
+
+이것은 $\text{RSS}(\beta)$에 대한 미분으로 쉽게 유도할 수 있다.
+
+<div class="math-statement" markdown="1">
+
+$$
+\begin{aligned}
+\text{RSS}(\beta) &= \sum^n_{i=1} (y_i - x^T_i \beta)^2 \\
+  &= (Y - X\beta)^T (Y - X\beta) \\
+  &= (Y^T - \beta^T X^T) (Y - X \beta) \\
+  &= Y^T Y - \beta^T X^T Y - Y^T X \beta + \beta^T X^T X \beta \\
+  &= Y^T Y - 2 Y^T X \beta + \beta^T X^T X \beta
+\end{aligned}
+$$
+
+이제 $\text{RSS}(\beta)$를 $\beta$에 대해 미분해보자.
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\beta} \text{RSS}(\beta) &= \frac{\partial}{\partial\beta} \left(Y^T Y - 2 Y^T X \beta + \beta^T X^T X \beta \right) \\
+&= 0 - 2 Y^T X + 2 X^T X \beta
+\end{aligned}
+$$
+
+$\displaystyle \frac{\partial}{\partial\beta} \text{RSS}(\beta) $가 0이 되는 지점에서 극소값이 발생한다. 따라서,
+
+$$
+\begin{aligned}
+\frac{\partial}{\partial\beta} \text{RSS}(\beta) &= - 2 Y^T X + 2 X^T X \beta = 0  \\
+&\Updownarrow \\
+2 X^TX \beta &= 2 Y^T X \\
+&\Updownarrow \\
+\hat{\beta} &= \left( X^T X \right)^{-1} Y^T X
+\end{aligned}
+$$
+
+$\blacksquare$
+
+</div>
+
+위의 방법으로 구한 $\hat{\beta}$를 바탕으로 Linear Regressor $\hat{f}(x)$를 기술하면 아래와 같다.
+
+$$
+\hat{f}(x) = x^T \hat{\beta}
+$$
+
+### Nearest-Neighbor Methods
+
+\<Nearest-Neighbor Method\>로 Regression 문제를 접근해볼 수도 있다.
+
+<span class="statement-title">Definition.</span> Nearest-Neighbor Methods for regression<br>
+
+Let $N_k(x)$ be the set of points which are the top-$k$ closest to $x$.
+
+$$
+\hat{f}(x) = \frac{1}{k} \sum_{x_i \in N_k(x)} y_i
+$$
+
+\<NN\>으로의 접근도 좋은 성능을 낸다. 그러나 Estimation의 경계 부근을 보면, \<NN\>의 경우 Boundary에서 Estimation 성능이 떨어지는 것을 볼 수 있다.
+
+<hr/>
+
+## Classification
+
+\<분류 Classification\> 문제에서도 \<Least Squared Method\>와 \<Nearest Neighbor Method\>를 적용해볼 수 있다. \<분류 Classification\>에 대한 주제는 수업의 뒷부분에서 자세히 다루기 때문에 본 포스트에서는 간단하게 모형만 제시한다.
+
 
