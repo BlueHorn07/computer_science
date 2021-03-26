@@ -160,7 +160,7 @@ $Q = [s]$ (**queue** containing start node $s$)
 
 2\. **DFS Tree** 🌲
 
-\<DFS\> 알고리즘으로 그래프를 순회하면 방문 순서를 바탕으로 \<Tree\> 구조를 만들 수 있다!! 이 \<DFS Tree\>는 나중에 \<Strongly Connected Components; SCC\>를 판단하는 문제와도 연관된다.
+\<DFS\> 알고리즘으로 그래프를 순회하면 방문 순서를 바탕으로 \<Tree\> 구조를 만들 수 있다!! 이 \<DFS Tree\>는 나중에 \<DAG; Directed Acyclic Graph\>를 판단하는 문제와도 연관된다.
 
 👉 [DFS Tree]({{"2021/03/13/dfs-tree.html" | relative_url}})
 
