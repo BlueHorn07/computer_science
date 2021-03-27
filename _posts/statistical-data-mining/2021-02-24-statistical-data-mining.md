@@ -8,7 +8,7 @@ hidden: true
 
 <br/>
 
-2021-1학기에 수강한 채민우 교수님의 "**통계적 데이터 마이닝(IMEN472)**" 수업에서 배운 것과 공부한 것을 정리한 지킬 블로그입니다. 개인적으로 본인이 처음 도전해보는 분야고 응용 수학의 수많은 테크닉들을 사용하기 때문에 수업을 따라가는게 쉽지는 않았습니다만, 본 수업을 통해서 데이터 사이언스에 대한 프론티어를 맛볼 수 있었습니다.
+2021-1학기에 수강한 채민우 교수님의 "**통계적 데이터 마이닝(IMEN472)**" 수업에서 배운 것과 공부한 것을 정리한 지킬 블로그입니다. 개인적으로 본인이 처음 도전해보는 분야고 응용 수학의 수많은 테크닉들을 사용하기 때문에 수업을 따라가는게 쉽지는 않았습니다만, 본 수업을 통해서 데이터 사이언스에 대한 프론티어를 맛볼 수 있었습니다. 🤯
 
 #### 참고 교재
 - [『The Elements of Statistical Learning』](https://web.stanford.edu/~hastie/ElemStatLearn/) Trevor Hastie · Robert Tibshirani · Jerome Friedman, 2nd ed.
@@ -42,8 +42,13 @@ hidden: true
 
 <hr/>
 
-## Overview of Supervised Learning
+### [Overview of Supervised Learning]({{"/2021/02/26/overview-of-supervised-learning.html" | relative_url}})
 
+- Introduction to Regression & Classification
+  - Least Squared Method
+  - Nearest Neighbor Method
+
+- Curse of dimentionality
 
 
 ## Linear Methods for Regression
