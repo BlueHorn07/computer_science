@@ -71,7 +71,7 @@ $$
 {\mathbf{u}_i}^T A \mathbf{u}_i = d_i ({\mathbf{u}_i}^T \mathbf{u}_i)^2 \ge 0
 $$
 
-이를 위해서는 $d_i \ge 0$이 되어야 한다. 
+위의 부등식을 만족하기 위해서는 $d_i \ge 0$이 되어야 한다. 
 
 $\blacksquare$
 
@@ -208,9 +208,110 @@ where $$\mathbf{x}_{\mathcal{L}} \in \mathcal{L}$$ and $$\mathbf{x}_{\mathcal{L^
 
 여기서 우리는 벡터 $\mathbf{x}_{\mathcal{L}}$를 $\mathbf{x}$의 $\mathcal{L}$로의 \<**orthogonal projection**\>이라고 한다.
 
+그리고 이 \<orthogonal projection\>은 Linear mapping이다. 그래서 행렬의 형태로 표현할 수 있다!!
+
+<div style="text-align:center; margin: 3px" markdown="1">
+The map $\mathbf{x} \mapsto \mathbf{x}_{\mathcal{L}}$ is a linear mapping.
+</div>
+
+<span class="statement-title">Theorem.</span><br>
+
+$$
+\| \mathbf{x} - \mathbf{x}_{\mathcal{L}}\| \le \| \mathbf{x} - \mathbf{y} \| \quad \text{for every} \quad \mathbf{y} \in \mathcal{L}
+$$
+
+위 부등식의 의미는 $\mathcal{L}$ 위의 벡터와 $\mathbf{x}$ 사이의 거리를 잴 때, orthogonal proj. $\mathbf{x}_{\mathcal{L}}$이 가장 짧은 거리를 뱉음을 말한다. 그림으로 확인하면 아래와 같다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/orthogonal-proj-1.jpg" | relative_url }}" width="230px">
+</div>
+
+<span class="statement-title">Definition.</span> idempotent or projection<br>
+
+$A \in \mathbb{R}^{n\times n}$ is called an \<idempotent\> or \<projection\> matrix if $A^2 = A$.
+
+<span class="statement-title">Theorem.</span><br>
+
+T.F.A.E.
+
+(1) $A\mathbf{x}$ is the **orthogonal projection** of $\mathbf{x}$ onto $\mathcal{C}(A)$.
+
+이 명제는 $\mathbf{x}$에 $A$를 곱하는 연산(매핑) 자체가 $\\{A\mathbf{x} : \mathbf{x} \in \mathbb{R}^n \\}$인 집합을 유도하는데, 이 집합이 바로 $\mathcal{C}(A)$이다.
+
+(2) $A$ is a **projection** and $\mathcal{N}(A) \perp \mathcal{C}(A)$.
+
+즉, for every $\mathbf{x} \in \mathcal{N}(A)$, $\mathbf{y} \in \mathcal{C}(A)$, $\mathbf{x}^T \mathbf{y} = 0$.
+
+(3) $A$ is **symmetric** and **idempotent**.
+
+그래서 만약 위의 명제 중 하나라도 성립한다면, $A$는 \<orthogonal projection matrix\> onto $\mathcal{C}(A)$가 된다.
+
+<br/>
+
+<span class="statement-title">Theorem.</span><br>
+
+Let $A \in \mathbb{R}^{n\times n}$ and symmetric. Then, T.F.A.E.
+
+(1) $A^2 = A$
+
+(2) All eigenvalues of $A$ are either 0 or 1.
+
+(3) $\text{rank}(A) + \text{rank}(I_n - A) = n$
+
+((1)$\implies$(2))는 쉽게 \<spectral decomposition\>을 활용하면, 쉽게 증명할 수 있다.
+
+<div class="math-statement" markdown="1">
+
+Because $A$ is symmetric, $A = UDU^T$ by spectral theorem.
+
+By statement (1), $A^2 = A$
+
+$$
+A^2 = (UDU^T)(UDU^T) = UD^2U^T = UDU^T
+$$
+
+따라서, $D^2 = D$. 이것을 만족하려면, $d_i^2 = d_i$가 되어야 한다. 이것은 $d_i = 0$ or $d_i = 1$일 때만 가능하다. $\blacksquare$
+
+</div>
+
+eigenvalue $d_i$가 0 or 1이라는 사실은 proj. $A$가 $d_i = 1$인 특정 $u_i$ 벡터만 살리게 하는 연산임을 알 수 있게 해준다.
+
+((2)$\implies$(3))도 증명해보자. 이건 rank과 eigenvalue 사이의 관계를 통해 쉽게 증명할 수 있다.
+
+<div class="math-statement" markdown="1">
+
+rank는 (# of non-zero eigenvalue)로 정의된다. orthognoal proj인 $A$는 eigvenvalue가 0 또는 1이므로 $d_i = 1$의 갯수를 세면 된다.
+
+$I_n - A$를 살펴보자. 이건 $A$의 $d_i$의 값을 토글시켜준다. 따라서, $I_n - A$의 rank는 $A$의 것과 complement하게 된다. $\text{rank}(I_n - A) = n - \text{rank}(A)$. $\blacksquare$
+
+</div>
+
+<br/>
+
+드디어 마지막 Theorem이다. 하지만, 아래의 명제는 이 \<통계적 데이터마이닝\>이라는 과목에서 \<Regression\>을 다룰 때 정말정말 많이 쓰게 되는 정리이므로, 정말 중요하다! 🔥
+
+<span class="statement-title">Theorem.</span><br>
+
+Let $X = (\mathbf{x}_1, \dots, \mathbf{x}_p)$ be an $n\times p$ matrix with $\text{rank}(X) = p$[^3] and
+
+$$
+H = X(X^TX)^{-1}X^T
+$$
+
+Then, $H$ is the **orthogonal projection** onto $C(X)$, that is 
+
+(1) $H^2 = H$
+
+(2) $\mathcal(H) \perp \mathcal{N}(H)$
+
+(3) $\mathcal{C}(H) = \mathcal{C}(X)$
+
+이때, $X$로부터 유도한 matrix $H$를 \<**hat matrix**\>라고 한다.
 
 <hr/>
 
 [^1]: 참고로 영벡터 $\mathbf{0}$을 빼는 이유는 영벡터를 곱하면 $\mathbf{x}^T A \mathbf{x} = 0$이 되기 때문이다.
 
 [^2]: "convex"는 볼록한, "concave"는 오목한을 의미한다.
+
+[^3]: $X$의 모든 Colomn $\mathbf{x}_i$가 서로 linearly independent 하다는 말이다.
