@@ -14,8 +14,7 @@ tags: ["Statistical Data Mining"]
 
 <hr/>
 
-
-<br><span class="statement-title">Goal.</span><br>
+<span class="statement-title">Goal.</span><br>
 
 Regression의 목표는 아래와 같은 \<regression function\>을 추정하는 것에 있다.
 
