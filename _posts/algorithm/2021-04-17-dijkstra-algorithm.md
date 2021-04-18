@@ -156,7 +156,7 @@ Q. UCS는 정말 minimum cost path를 보장하는가?
 
 <div class="statement">
 
-"Whhn a state $s$ is popped from the froniter and moved to explored, its priority is $\texttt{PastCost}(s)$, the minimum cost to $s$." <br/>
+"When a state $s$ is popped from the frontier and moved to explored, its priority is $\texttt{PastCost}(s)$, the minimum cost to $s$." <br/>
 
 → 즉, PQ에서 $\texttt{pop}$되는 녀석은 그때의 $\texttt{PastCost}(s)$ minimum cost임을 보장한다.
 
@@ -170,16 +170,16 @@ A. (귀류법) $s$가 PQ에서 $\texttt{pop}$될때, 그때의 $\texttt{PastCost
 
 하지만, <span class="half_HL">PQ는 $\texttt{PastCost}(\cdot)$이 작은 순서대로 정렬하기 때문에 이후에 $\texttt{pop}$되는 $u$의 $\texttt{PastCost}(u)$는 $\texttt{PastCost}(s)$보다 클 것이다.</span> 이것은 $\texttt{PastCost}(u) + \ell(u, s) < \texttt{PastCost}(s)$라는 $u$의 존재와 모순된다. 그래서 $u$를 거쳐 $s$로 가는 path는 절대 minimum cost path가 될 수 없다. 
 
-따라서 $s$가 $\texttt{pop}$된 때의 $\texttt{PastCost}(s)$보다 작은 minimum cost path는 존재할 수 없다. 그렇기 때문에 $s$ $\texttt{pop}$될 때의 $\texttt{PastCost}(s)$가 minimum cost일 수 밖에 없다!
+따라서 $s$가 $\texttt{pop}$된 때의 $\texttt{PastCost}(s)$보다 작은 minimum cost path는 존재할 수 없으므로 $s$가 $\texttt{pop}$될 때의 $\texttt{PastCost}(s)$가 minimum cost이다.
 
 <hr/>
 
 Q. 왜 UCS는 negative cost를 지원하지 않는가?
 
-A. 만약 negative cost가 존재한다면, PQ를 이용해 min-cost tree를 만드는 과정에서 이미 탐색을 완료한 *Explored* 노드에 대해서도 전부 다시 path를 메겨야 하고 이것으로 인해 이미 구축한 min-cost tree의 순서가 어긋나게 될 수 있다. 이것은 앞선 명제에서 언급한 <span class="half_HL">"이후에 $\texttt{pop}$되는 $u$의  $\texttt{PastCost}(u)$는 $\texttt{PastCost}(s)$보다 클 것이다."</span>라는 명제를 위반하는 것이고, 더이상 UCS의 **correctness**를 보장할 수 없다는 말이 된다.
+A. 만약 negative cost가 존재한다면, PQ를 이용해 min-cost tree를 만드는 과정에서 이미 탐색을 완료한 *Explored* 노드의 min-cost가 바뀔 수 있기 때문에 이미 구축한 min-cost tree를 무너뜨리게 된다. 이것은 앞선 명제에서 언급한 <span class="half_HL">"이후에 $\texttt{pop}$되는 $u$의  $\texttt{PastCost}(u)$는 $\texttt{PastCost}(s)$보다 클 것이다."</span>라는 명제를 위반하는 것이고, 더이상 UCS의 **correctness**를 보장할 수 없다는 말이 된다.
 
 <hr/>
 
-\<다익스트라 알고리즘\>의 단점은 Negative Edge를 처리하지 못한다는 것이다. 이어지는 포스트에서는 Negative Edge를 처리하는 방법 중 하나인 \<Bellman-Ford Algorithm\>에 대해 살펴본다.
+\<다익스트라 알고리즘\>의 단점은 Negative Edge를 처리하지 못한다는 것이다. 이어지는 포스트에서는 Negative Edge를 처리하는 알고리즘인 \<Bellman-Ford Algorithm\>에 대해 살펴본다.
 
 👉 [Bellman-Ford Algorithm]({{"/2021/04/18/Bellman-Ford.html" | relative_url}})
