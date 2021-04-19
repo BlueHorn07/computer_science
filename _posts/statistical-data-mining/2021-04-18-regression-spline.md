@@ -15,6 +15,7 @@ tags: ["Statistical Data Mining"]
 - Regression Spline
   - spline basis function
 - Natural Cubic Spline
+- Smoothing Splines
 
 <hr/>
 
@@ -290,8 +291,90 @@ A cubic spline is called a \<**natural cubic spline**\> if it is **linear** beyo
   </p>
 </div>
 
-그림에서 볼 수 있듯이 높은 차원의 $M$으로 근사할 수록 \<Regression Spline\>은 boundary에서 성능이 저하되는 걸 볼 수 있다.
+그림에서 볼 수 있듯이 높은 차원의 $M$으로 근사할 수록 \<Regression Spline\>은 boundary에서 성능이 저하되는 걸 볼 수 있다. \<Natural Cubic Spline\>은 양끝에서 linear로 근사함으로써 이 문제를 해결한다!
 
+\<Natural Cubic Spline\>에서 estimate 해야 하는 Coefficient 수는 $M=3$이므로
 
+$$
+(M + K + 1) - (2 \times 2) = (3 + K + 1) - 4 = K
+$$
 
+<hr/>
 
+### Smoothing Splines
+
+\<knot slection\>은 Spline Method의 주된 이슈이다. \<smoothing spline\>은 이 문제를 아래와 같이 해결한다!
+
+Consider $\hat{f} = \underset{f\in\mathcal{F}}{\text{argmin}} \; \text{RSS}_{\lambda}(f)$, where
+
+$$
+\text{RSS}_{\lambda} \; (f) = \left(\sum^n_{i=1} \left\{ y_i - f(x_i)\right\}^2\right) + \lambda \int \left\{ f''(t) \right\}^2 \; dt
+$$
+
+and $\lambda$ is a fixed smoothing parameter.
+
+위의 식을 잘 살펴보면, RSS 식에 패널티 텀이 있는 것을 볼 수 있다. 이때, 패널티 텀에서는 $f'\'(t)$를 적분하는데, 이것은 함수 $f(t)$에 대한 \<곡률; curverture\>를 의미한다. 따라서 $(f'\'(t))^2$는 곡률의 절댓값이며, 패널티 텀은 <span class="half_HL">함수가 얼마나 flunctuation이 심한지를 측정하는 텀</span>이라고 볼 수 있다.
+
+우리는 이 $\hat{f}$를 \<**smoothing spline estimator**\>라고 한다!
+
+1\. If $\lambda = 0$,<br/>
+then $\hat{f}$ can be any function that interpolates the data.
+
+2\. If $\lambda = \infty$, <br/>
+then $\hat{f}$ is the **least square estimator**. (왜냐하면, $f'\'(t)=0$이 되려면, $f(t)$가 linear function이어야 한다!)
+
+3\. (general case) small $\lambda$ <br/>
+model complexity $\uparrow$ / bias $\downarrow$ / variance $\uparrow$<br/>
+(= flunctuation이 심해짐!)
+
+4\. (general case) large $\lambda$ <br/>
+model complexity $\downarrow$ / bias $\uparrow$ / variance $\downarrow$
+
+<div class="statement" markdown="1">
+
+만약 $\mathcal{F}$가 특정 \<Sobolev space\>에 속하는 어떤 함수라면, smooth spline이 곧 natrual cubic spline이 된다고 한다.<br/>
+<small>ESL, Exercise 5.7</small>
+
+</div>
+
+<br/>
+
+앞에서 살펴본 Smoothing Spline에 대한 식은 **infinite-dimensional problem**이었다 이것을 **linear fit** 방식으로 해결할 수도 있는데, 그 식은 아래와 같다.
+
+$$
+f(\theta; x) = \sum^n_{j=1} \theta_j N_j (x)
+$$
+
+where $N_j$ are basis functions of natrual cubic splines.
+
+Then,
+
+$$
+\text{RSS}_{\lambda} \; (\theta) = (\mathbf{y} - \mathbf{N}\theta)^T (\mathbf{y} - \mathbf{N}\theta) + \lambda \cdot \theta^T \mathbf{\Omega} \theta
+$$
+
+where $$\mathbf{N}_{ij} = N_j(x_i)$$ and $\displaystyle\mathbf{\Omega}_{ij} = \int {N_i}'\' (t) {N_j}'\'(t) \; dt$.
+
+식이 조금 복잡해보이지만, 위에서 제시한 $f(\theta; x)$를 smoothing spline의 식에 맞게 기술한 것일 뿐이다!
+
+위의 $\text{RSS}_{\lambda}(\theta)$를 구하는 것은 그냥 $\theta$로 미분해서 최소가 되는 $\theta$를 구해주면 된다.
+
+$$
+\hat{f}(x) = \sum^n_{j=1} \hat{\theta}_j N_j(x)
+$$
+
+where
+
+$$
+\hat{\theta} = (\mathbf{N}^T \mathbf{N} + \lambda \mathbf{\Omega})^{-1}\mathbf{N}^T \mathbf{y}
+$$
+
+위의 식도 그냥 $\text{RSS}(\theta)$의 식에서 inverse 내부에 regularization 텀으로 인해 $\lambda \mathbf{\Omega}$가 생긴 것일 뿐이다.
+
+<br/>
+
+<hr/>
+
+이어지는 포스트에서는 logistic regression와 nearest-neighbor method의 non-parametric 접근을 살펴본다! 🤩
+
+👉 [Non-parameteric Logistic Regression & Nearest-Neighbhor]({{"/2021/04/19/non-parameteric-logistic-and-neighbhor.html" | relative_url}})
