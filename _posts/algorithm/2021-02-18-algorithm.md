@@ -40,8 +40,39 @@ hidden: true
 - [Binary Search]({{"2021/02/27/binary-search.html" | relative_url}})
   - Off-by-One
   - Approximate Matches
-- Merge Sort
+- [Merge Sort]({{"/2021/02/27/merge-sort.html" | relative_url}})
 - Matrix Multiplication
   - Volker Strassen
 - Find Medians and Selection
 - Closest pair of points
+
+### Graph Algorithm
+
+- [DFS and BFS]({{"/2021/03/12/dfs-and-bfs.html" | relative_url}})
+  - [DFS and BFS - code]({{"/2021/03/13/dfs-and-bfs-code.html" | relative_url}})
+- [DFS Tree]({{"/2021/03/13/dfs-tree.html" | relative_url}})
+- [Dijkstra's Algorithm]({{"/2021/04/17/dijkstra-algorithm.html" | relative_url}})
+- [Bellman-Ford Algorithm]({{"/2021/04/18/Bellman-Ford.html" | relative_url}})
+
+
+### Greedy Algorithm
+
+- Minimum Spanning Tree
+  - Kruskal's Algorithm
+  - Prim's Algorithm
+  - Disjoint Set
+    - Path Compression
+- Intervel Scheduling & Partitioning
+- Huffman Encoding
+- Clustering of Maximum Spacing
+
+### Dynamic Programming
+
+- LIS; Longest Incresaing Subsequences
+- Edit Distance
+- Knapsack
+- Chain Matrix Multiplication
+- Shortest Reliable Paths
+- All Pairs Shortest Paths
+- TSP; Traveling Salesman Problem
+- Weighted Interval Scheduling
