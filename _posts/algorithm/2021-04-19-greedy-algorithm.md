@@ -32,8 +32,8 @@ thinking ahead sv. choosing immediate advantage
 이번 챕터에서 다루는 문제들은 아래와 같다.
 
 - MST; Minimum Spanning Tree
-  - [Kruskal's Algorithm]({{"/2021/04/19/kruskal-algorithm.html" | relative_url}})
-  - Prim's Algorithm
+  - [Kruskal's Algorithm]({{"/2021/04/19/kruskal-and-prim-algorithm.html#kruskals-algorithm" | relative_url}})
+  - [Prim's Algorithm]({{"2021/04/19/kruskal-and-prim-algorithm.html#prims-algorithm" | relative_url}})
   - Disjoint Set
     - Path Compression
 - Intervel Scheduling & Partitioning
