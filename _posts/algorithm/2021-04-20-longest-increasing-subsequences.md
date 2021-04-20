@@ -51,3 +51,7 @@ DP의 마법은 이제 시작이다. 이어지는 포스트에서는 LIS 보다 
 
 #### 추천 문제
 - [문제집 - LIS 연습](https://www.acmicpc.net/workbook/view/1911)
+
+p.s. 참고로 평범한 LIS 문제는 위의 DP보다 더 빠른 알고리즘이 존재한다!! $O(N \log N)$으로 동작하는 알고리즘으로, binary search를 활용한다. 자세한 내용이 궁금하면, 아래의 포스트를 참고하도록 하자.
+
+👉 ['자손9319'님의 포스트](https://jason9319.tistory.com/113)
