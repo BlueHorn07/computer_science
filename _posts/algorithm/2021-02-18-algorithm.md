@@ -66,7 +66,7 @@ hidden: true
 - Huffman Encoding
 - Clustering of Maximum Spacing
 
-### Dynamic Programming
+### [Dynamic Programming]({{"/2021/04/20/dynamic-programming.html" | relative_url}})
 
 - LIS; Longest Incresaing Subsequences
 - Edit Distance
