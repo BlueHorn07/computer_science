@@ -168,3 +168,9 @@ $H=\texttt{makequeue}(V)$ <span style="color: grey;"><small>// priority queue, u
 이어지는 포스트에서는 \<Kruskal's Algorithm\>에서 언급되었던 \<**Disjoint Set**\>에 대해 살펴본다. 이 부분은 Greedy Algorithm과 직접적으로 연관된 부분은 아니며, \<Disjoint Set\>이라는 자료구조를 어떻게 구현할 수 있고, 그리고 그때에 사용되는 테크닉에 대해 다룬다.
 
 👉 [Disjoint Set]({{"" | relative_url}})
+
+<hr/>
+
+#### 추천 문제
+
+- [최소 스패닝 트리](https://www.acmicpc.net/problem/1197)
