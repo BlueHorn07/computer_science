@@ -202,8 +202,73 @@ tunning parameter $\alpha$는 generalization error를 최소화하는 것을 골
 <br/>
 <hr/>
 
+#### Sensitivity & Specificity
+
+Medical Classification Problem을 다루는 상황에서 $Y=1$이 disease state라고 가정하자. 이때, \<sensitivity\>와 \<specificity\>는 아래와 같이 정의된다.
+
+<span class="statement-title">Definition.</span> Sensitivity<br>
+
+"Probability of predicting **disease** given **true disease**."
+
+True Positive Rate를 의미한다. 또는 \<Recall\>이라고 한다.
+
+$$
+P(\hat{Y} = 1 \mid Y = 1)
+$$
+
+<span class="statement-title">Definition.</span> Specificity<br>
+
+"Probability of predicting **non-disease** given **true non-disease**."
+
+True Negative Rate를 의미한다.
+
+$$
+P(\hat{Y} = 0 \mid Y = 0)
+$$
+
+#### ROC curve
+
+앞에서 살펴본 DT는 다수결(majority vote)에 의해 prediction을 결정했다. 그러나 다수결 방식 외에도 어떤 threshold 값을 정해, spam/normal을 분류해볼 수도 있다.
+
+$$
+\hat{Y} = I\left( \hat{P}(Y=1 \mid X=x) > c \right)
+$$
+
+for some $c > 0.5$.
+
+이때, 우리는 classiciation rule $c$의 값을 바꿔가며, "sensitivity-specificity"를 측정할 수 있는데, 이것을 pair로 삼아 plot으로 그린 것이 바로 \<**ROC curve**; Receiver Operating Characteristic curve\>다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/ROC-curve.jpg" | relative_url }}" width="350px">
+</div>
 
 
+ps) ROC curve는 classification problem에서만 유도할 수 있다!
+
+이때, ROC curve의 \<AUC; Area Under the Curve\>를 통해 모델의 성능을 비교 평가할 수도 있다.
+
+<hr/>
+
+#### DT: 장점 & 단점
+
+<span class="statement-title">Advantages.</span><br>
+
+- Robust to input outliers
+- Non-parameteric model
+
+<span class="statement-title">Disadvantages.</span><br>
+
+- Poor prediction accuracy with continuous output compared to linear regression model.
+- When depth is too large, not only accuracy but interpretation are bad 😥
+- Heavy computation cost
+- Unstable
+- Absense of linearity
+- Absense of Main effects: all nodes are high order interactions.
+- Discontinuity
+
+<hr/>
+
+이어지는 챕터에서는 통계적 모델의 꽃🌹이라고 할 수 있는 \<Boosting\>에 대해 다룬다. 내용이 쉽진 않지만, 현대 통계의 핵심이기 때문에 잘 익혀둬야 하는 테크닉이다.
 
 
 
