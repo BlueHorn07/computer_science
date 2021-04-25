@@ -53,23 +53,23 @@ hidden: true
 - [DFS Tree]({{"/2021/03/13/dfs-tree.html" | relative_url}})
 - [Dijkstra's Algorithm]({{"/2021/04/17/dijkstra-algorithm.html" | relative_url}})
 - [Bellman-Ford Algorithm]({{"/2021/04/18/Bellman-Ford.html" | relative_url}})
+- [DAG & Topological Sort]({{"/2021/04/19/directed-acyclic-graph.html" | relative_url}})
 
+### [Greedy Algorithm]({{"/2021/04/19/greedy-algorithm.html" | relative_url}})
 
-### Greedy Algorithm
-
-- Minimum Spanning Tree
-  - Kruskal's Algorithm
-  - Prim's Algorithm
+- MST; Minimum Spanning Tree
+  - [Kruskal's Algorithm]({{"/2021/04/19/kruskal-and-prim-algorithm.html#kruskals-algorithm" | relative_url}})
+  - [Prim's Algorithm]({{"2021/04/19/kruskal-and-prim-algorithm.html#prims-algorithm" | relative_url}})
   - Disjoint Set
     - Path Compression
-- Intervel Scheduling & Partitioning
+- [Intervel Scheduling & Partitioning]({{"/2021/04/20/interval-scheduling-and-partitioning.html" | relative_url}})
 - Huffman Encoding
 - Clustering of Maximum Spacing
 
 ### [Dynamic Programming]({{"/2021/04/20/dynamic-programming.html" | relative_url}})
 
-- LIS; Longest Incresaing Subsequences
-- Edit Distance
+- [LIS; Longest Incresaing Subsequences]({{"/2021/04/20/longest-increasing-subsequences.html" | relative_url}})
+- [Edit Distance]({{"/2021/04/20/edit-distanace.html" | relative_url}})
 - Knapsack
 - Chain Matrix Multiplication
 - Shortest Reliable Paths

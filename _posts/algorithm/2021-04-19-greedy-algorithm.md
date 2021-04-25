@@ -36,7 +36,7 @@ thinking ahead sv. choosing immediate advantage
   - [Prim's Algorithm]({{"2021/04/19/kruskal-and-prim-algorithm.html#prims-algorithm" | relative_url}})
   - Disjoint Set
     - Path Compression
-- Intervel Scheduling & Partitioning
+- [Intervel Scheduling & Partitioning]({{"/2021/04/20/interval-scheduling-and-partitioning.html" | relative_url}})
 - Huffman Encoding
 - Clustering of Maximum Spacing
 
