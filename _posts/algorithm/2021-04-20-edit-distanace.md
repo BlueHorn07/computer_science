@@ -72,5 +72,11 @@ $$
 
 <hr/>
 
+\<edit distance\>는 문자열 사이의 거리를 정의하는 좋은 기준이 된다. 그렇기 때문에 문자열 문제가 자주 등장하는 코딩 테스트에서도 빈출이 되는 주제이므로 늘 숙지해둬야 하는 알고리즘이라고 생각한다 😁
+
+\<edit distance\>는 "삽입", "삭제", "교체"의 세 가지 연산을 통해 최소 편집 거리를 계산한다. 이때, 인접한 두 글자끼리 교환하는 "교환(transposition)" 연산이 추가되는 경우가 \<Damerau-Levenshtein distance\>다. 내용과 코드를 포스트로 정리했으니, 문자열 거리에 대해 더 관심이 있다면, 아래의 포스트를 추천한다! 😉
+
+👉 [Damerau-Levenshtein distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}})
+
 #### 추천 문제
 - [최소 편집](https://www.acmicpc.net/problem/15483)
