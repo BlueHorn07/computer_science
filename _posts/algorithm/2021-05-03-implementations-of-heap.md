@@ -9,7 +9,7 @@ tags: ["Algorithm"]
 
 이 포스트는 위키피디아의 [Heap(data structure)](https://en.wikipedia.org/wiki/Heap_(data_structure))에 소개된 Heap의 구현들을 다룹니다. 지적과 조언은 언제나 환영입니다 ㅎㅎ
 
-이번 포스트에서는 \<Heap\>의 구현 방식을 살펴볼 예정입니다. 구현 코드는 별도의 포스트에서 구현 방식 별로 추후에 다룰 예정입니다! 😁
+이번 포스트에서는 \<Heap\>의 구현 방식을 살펴볼 예정입니다. 구현 코드는 추후에 별도의 포스트에서 Heap의 종류별로 다룰 예정입니다! 😁
 
 <hr/>
 
@@ -184,19 +184,57 @@ ps) $d=3$인 d-ary Heap을 \<Ternary Heap\>이라고도 부른다.
 
 2\. degree 0을 포함해 각 order별로 0개 또는 1개, 즉 각 order별 최대 1개의 이항 트리가 Heap에 존재한다.
 
-2번재 조건은 전체 $n$개 노드가 존재할 때, \<Binomial Heap\>이 최대 $(1 + \log n)$개의 이항 트리로 구성됨을 말한다. 또한, Heap에 존재하는 각 Binomial Tree의 degree는 **<u>유일하게</u>** 결정된다. 전체 노드의 수 $n$을 이진수로 표현한다면, 각 digit은 Heap에 존재하는 Binomial Tree의 갯수를 의미한다. 따라서, 전체 노드 수 $n$에 대해 Binomial Heap의 구성은 유일하다! 💥
+2번재 조건은 전체 $n$개 노드가 존재할 때, \<Binomial Heap\>이 최대 $(1 + \log n)$개의 이항 트리로 구성됨을 말한다. 그 이유는 degree $k$인 Binomial Tree가 $2^k$ 만큼의 노드를 가지기 때문이다! 또한, Heap에 존재하는 각 Binomial Tree의 degree는 **<u>유일하게</u>** 결정된다. 전체 노드의 수 $n$을 이진수로 표현한다면, 각 digit은 Heap에 존재하는 Binomial Tree의 갯수를 의미한다. 따라서, 전체 노드 수 $n$에 대해 Binomial Heap의 구성은 유일하다! 💥
 
-<br><span class="statement-title">장점.</span> Fast Heap Merge<br>
+<br><span class="statement-title">Merge.</span><br>
+
+Binomial Heap은 $\texttt{Merge}$라는 연산이 추가되었다. 일반적인 Heap과 달리 빠른 Merge를 지원한다는 게 장점이다.
 
 <div class="img-wrapper">
-  <img src="https://t1.daumcdn.net/cfile/tistory/2364044258AC61FA35" width="500px">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Binomial_heap_merge2.svg/300px-Binomial_heap_merge2.svg.png" width="300px">
+  <p>
+  Image from <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Binomial_heap_merge2.svg/300px-Binomial_heap_merge2.svg.png">Wikipedia</a>
+  </p>
 </div>
 
+위와 같이 두 Binomial Heap을 병합하는 경우를 살펴보자. 이때, 두 Heap의 노드 수가 $N$, $M$이라면, 두 Heap에 존재하는 Tree의 수는 $1 + \log N$, $1 + \log M$이 된다. 
+
+이때, 두 Binomial Heap을 병합하는 것은 같은 degree를 갖는 Binomial Tree를 병합하는 것 같다. 이 Tree 병합 연산은 $O(1)$에 수행되고, 또 이 과정이 최대 Tree의 갯수 만큼 필요하므로 총 $O(\log N + \log M)$ 만큼의 Time Complexity를 갖는다.
+
+앞에서도 언급했듯 Binomial Heap은 그 구성에 따라 이진수로 인코딩 될 수 있는데, Heap Merge 과정을 아래와 같이 이진수 덧셈의 관점에서 해석할 수도 있다. $N$-자릿수 이진수와 $M$-자릿수 이진수의 덧셈은 $O(N + M)$의 Time Complexity를 갖는 걸 생각하면, 두 과정이 정말 유사함을 깨달을 수 있다 🤩
+
+<div class="img-wrapper">
+  <img src="https://t1.daumcdn.net/cfile/tistory/2364044258AC61FA35" width="400px">
+</div>
+
+<br><span class="statement-title">Insert.</span><br>
+
+Binomial Heap에 새로운 원소를 추가하는 것은 단순히 degree 0의 Binomial Tree를 추가하는 것과 같다. 그래서 앞에서 언급한 $\texttt{merge}$의 상황과 비슷하게 동작한다. 따라서, Time Complexity는 $O(\log N)$이다.
+
+<br><span class="statement-title">getMin.</span><br>
+
+Binomial Heap을 이루는 Tree의 루트 노드를 살펴보면 된다. 따라서, Time Complexity는 $O(\log N)$.
+
+<br><span class="statement-title">deleteMin.</span><br>
+
+먼저 $\texttt{getMin}$으로 루트 노드를 삭제할 Binomial Tree를 특정한다. Min 값을 갖는 Tree의 루트 노드를 제거하면, 해당 Tree의 자식 트리들이 남게 된다. 그러면, 남게된 $k$개의 Children Binomial Tree들을 바탕으로 다시 $\texttt{merge}$ 연산을 수행한다. 전체 $N$개 노드에 대해 다시 Heapify를 수행하는 것이기 때문에 Time Complexity는 $O(\log N)$이다.
+
+<br/>
+
+<div class="img-wrapper">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Binomial_heap1.jpg/500px-Binomial_heap1.jpg" width="500px">
+  <p>
+  Image from <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Binomial_heap1.jpg/500px-Binomial_heap1.jpg">Wikipedia</a>
+  </p>
+</div>
+
+일반적으로 Binomial Heap은 **<u>Linked List</u>**로 구현한다. 이때, 일반적인 형태의 Linked List Tree에서 **<u>sibiling</u>** 요소를 추가로 저장해 관리한다. \<Binomial Heap\>의 구현에 대한 자세한 내용은 추후에 별도의 포스트에서 다루도록 하겠다 😎
 
 <hr/>
 
 ### Fibonacci Heap
 
+조금 쉬었다가 추후에 마무리 하겠습니다 😉
 
 <hr/>
 
@@ -207,3 +245,4 @@ ps) $d=3$인 d-ary Heap을 \<Ternary Heap\>이라고도 부른다.
 - [geeksforgeeks: K-ary Heap](https://www.geeksforgeeks.org/k-ary-heap/)
 - [Wikipedia: d-ary heap](https://en.wikipedia.org/wiki/D-ary_heap)
 - ['Jeff Zhang'님의 유튜브 영상](https://www.youtube.com/watch?v=m8rsw3KfDKs) - Binomial Heap
+- [Wikipedia: Binomial heap](https://en.wikipedia.org/wiki/Binomial_heap)
