@@ -82,10 +82,6 @@ DP에서는 이 문제를 아래와 같이 접근한다.
   </p>
 </div>
 
-
-
-
-
 만약 best-split 순서를 기록해 실제 binary opr tree를 구성하고 싶다면, $C(i, j)$를 갱신하는 과정에서 언제 minimum을 달성하는지 기록해두면 된다.
 
 <div class="math-statement" markdown="1">
