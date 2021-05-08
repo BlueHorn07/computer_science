@@ -83,4 +83,12 @@ hidden: true
 ### Appendix
 
 - [Amortized Analysis]({{"/2021/05/08/amortized-analysis.html" | relative_url}})
+  - Accounting Method
 - [Implementations of Heap]({{"/2021/05/03/implementations-of-heap.html" | relative_url}})
+  - Heap by unordered array & ordered array
+  - Binary Heap
+  - [d-ary Heap]({{"/2021/05/03/implementations-of-heap.html#d-ary-heap" | relative_url}})
+  - [Binomial Heap]({{"/2021/05/03/implementations-of-heap.html#binomial-heap" | relative_url}})
+    - Binomial Tree
+  - Lazy Binomial Heap
+  - [Fibonacci Heap]({{"/2021/05/03/implementations-of-heap.html#fibonacci-heap" | relative_url}})
