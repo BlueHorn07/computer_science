@@ -31,8 +31,14 @@ hidden: true
 <br/>
 <hr/>
 
+정규수업에서 다루지 않은 내용은 🎈로 표시하였습니다 😉
+
 ### Computational Complexity
 
+- Asymptotic Analysis
+  - Big-O & small-o
+  - Big-Omega & small-omega
+  - Big-Theta & small-theta
 - Master Theorem
 
 
@@ -72,7 +78,7 @@ hidden: true
 
 - [LIS; Longest Incresaing Subsequences]({{"/2021/04/20/longest-increasing-subsequences.html" | relative_url}})
 - [Edit Distance]({{"/2021/04/20/edit-distanace.html" | relative_url}})
-  - [Maeraus-Levelshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}})
+  - [Dameraus-Levelshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}}) 🎈
 - [Knapsack]({{"/2021/04/30/kanpsack.html" | relative_url}})
 - [Chain Matrix Multiplication]({{"/2021/05/02/chain-matrix-multiplication.html" | relative_url}})
 - Shortest Reliable Paths
@@ -80,11 +86,31 @@ hidden: true
 - TSP; Traveling Salesman Problem
 - Weighted Interval Scheduling
 
+### Linear Programming
+
+- Simplex Method
+
+### Network Flow
+
+- Max-Flow Min-Cut Theorem
+- Bipartite Matching
+- Variations of Network Flow Problem
+- Dinic Algorithm 🎈
+
+### NP & NP-complete
+
+- Rudrata-Hamilton Cylcle Problem
+- Balanced Cut
+- 3D Matching
+- Independent Set & Vertex Cover & Clique
+- Longest Path Problem
+- Subset Sum Problem
+
 ### Appendix
 
-- [Amortized Analysis]({{"/2021/05/08/amortized-analysis.html" | relative_url}})
+- [Amortized Analysis]({{"/2021/05/08/amortized-analysis.html" | relative_url}}) 🎈
   - Accounting Method
-- [Implementations of Heap]({{"/2021/05/03/implementations-of-heap.html" | relative_url}})
+- [Implementations of Heap]({{"/2021/05/03/implementations-of-heap.html" | relative_url}}) 🎈
   - Heap by unordered array & ordered array
   - Binary Heap
   - [d-ary Heap]({{"/2021/05/03/implementations-of-heap.html#d-ary-heap" | relative_url}})
@@ -92,3 +118,7 @@ hidden: true
     - Binomial Tree
   - Lazy Binomial Heap
   - [Fibonacci Heap]({{"/2021/05/03/implementations-of-heap.html#fibonacci-heap" | relative_url}})
+- FFT; Fast Fourier Transformation 🎈
+
+<hr/>
+
