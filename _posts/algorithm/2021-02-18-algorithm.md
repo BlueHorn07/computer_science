@@ -8,6 +8,8 @@ hidden: true
 
 <br>
 
+🔥 2020-1학기 POSTECH 안희갑 교수님의 Algorithm(CSED331) 과목을 수강하면서 공부한 내용을 정리하였습니다. 😁
+
 #### 참고 교재
 - 『Algorithms』 Dasgupta, international ed.
 
@@ -70,9 +72,15 @@ hidden: true
 
 - [LIS; Longest Incresaing Subsequences]({{"/2021/04/20/longest-increasing-subsequences.html" | relative_url}})
 - [Edit Distance]({{"/2021/04/20/edit-distanace.html" | relative_url}})
-- Knapsack
-- Chain Matrix Multiplication
+  - [Maeraus-Levelshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}})
+- [Knapsack]({{"/2021/04/30/kanpsack.html" | relative_url}})
+- [Chain Matrix Multiplication]({{"/2021/05/02/chain-matrix-multiplication.html" | relative_url}})
 - Shortest Reliable Paths
 - All Pairs Shortest Paths
 - TSP; Traveling Salesman Problem
 - Weighted Interval Scheduling
+
+### Appendix
+
+- [Amortized Analysis]({{"/2021/05/08/amortized-analysis.html" | relative_url}})
+- [Implementations of Heap]({{"/2021/05/03/implementations-of-heap.html" | relative_url}})
