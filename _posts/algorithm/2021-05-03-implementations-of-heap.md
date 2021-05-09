@@ -253,7 +253,7 @@ Binomial Heap을 이루는 Tree의 루트 노드를 살펴보면 된다. 따라�
 
 👉 [Jeff Zhang - Lazy Binomial Heap Intro Part 1 of 2](https://youtu.be/v4hlvJIS0ZU)
 
-$\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized** $O(\log n)$"이라고 한다. 시간 복잡도 분석에 \<Potential Method\>를 사용한다고 하는데, 아직 이 부분은 정확히 이해하지 못 해서 추후에 별도의 포스트에서 보충하도록 하겠다 😉
+$\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized** $O(\log n)$"라고 한다. 시간 복잡도 분석에 \<Potential Method\>를 사용한다고 하는데, 아직 이 부분은 정확히 이해하지 못 해서 추후에 별도의 포스트에서 보충하도록 하겠다 😉
 
 | Operation | Binomial Heap | Lazy-Binomial Heap |
 |:---:|:---:|:---:|
