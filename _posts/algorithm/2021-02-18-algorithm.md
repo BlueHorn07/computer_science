@@ -8,7 +8,7 @@ hidden: true
 
 <br>
 
-🔥 2020-1학기 POSTECH 안희갑 교수님의 Algorithm(CSED331) 과목을 수강하면서 공부한 내용을 정리하였습니다. 😁
+🔥 2020-1학기 POSTECH 안희갑 교수님의 『Algorithm(CSED331)』을 수강하면서 공부한 내용을 정리하였습니다. 😁
 
 #### 참고 교재
 - 『Algorithms』 Dasgupta, international ed.
@@ -25,6 +25,7 @@ hidden: true
 - Network Flow
 - Linear Programming
 - NP & NP-complete
+- Appendix
 
 </div>
 
@@ -116,8 +117,8 @@ hidden: true
   - [d-ary Heap]({{"/2021/05/03/implementations-of-heap.html#d-ary-heap" | relative_url}})
   - [Binomial Heap]({{"/2021/05/03/implementations-of-heap.html#binomial-heap" | relative_url}})
     - Binomial Tree
-  - Lazy Binomial Heap
-  - [Fibonacci Heap]({{"/2021/05/03/implementations-of-heap.html#fibonacci-heap" | relative_url}})
+  - [Lazy-Binomial Heap]({{"2021/05/03/implementations-of-heap.html#lazy-binomial-heap" | relative_url}})
+  - [Fibonacci Heap]({{"/2021/05/03/implementations-of-heap.html#fibonacci-heap" | relative_url}}) 🔥
 - FFT; Fast Fourier Transformation 🎈
 
 <hr/>

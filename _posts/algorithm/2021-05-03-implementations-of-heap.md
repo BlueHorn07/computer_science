@@ -17,10 +17,10 @@ tags: ["Algorithm"]
 
 - Heap by unordered array
 - Heap by ordered array
-- [Binary Heap]({{"/2021/05/03/implementations-of-heap.html#binary-heap" | relative_url}})
-- [d-ary Heap]({{"/2021/05/03/implementations-of-heap.html#d-ary-heap" | relative_url}})
-- [Binomial Heap]({{"/2021/05/03/implementations-of-heap.html#binomial-heap" | relative_url}})
-  - Binomial Tree
+- [Binary Heap](#binary-heap)
+- [d-ary Heap](#d-ary-heap)
+- [Binomial Heap](#binomial-heap)
+  - [Binomial Tree](#binomial-tree)
 - [Lazy-Binomial Heap](#lazy-binomial-heap)
 - [Fibonacci Heap](#fibonacci-heap)
 
@@ -332,7 +332,7 @@ If a parent loses two children, we also cut the parent off from the grand-parent
 
 <br/>
 
-이 정도면 충분할 것 같은데, \<Fibonacci Heap\>은 여기서 \<**Maximally Damaged Tree**\>라는 개념을 또 소개한다! 😱 사실 이 녀석에 의해 이 Heap 구조가 "Fibonacci" Heap이라고 불리게 되었으니 조금만 더 힘을 내보자! 🤦‍♂️
+이 정도면 충분할 것 같은데, \<Fibonacci Heap\>은 여기서 \<**Maximally Damaged Tree**\>라는 개념을 또 소개한다! 😱 이 녀석에 의해 이 Heap 구조가 "Fibonacci" Heap이라고 불리게 되었으니 조금만 더 힘을 내보자! 🤦‍♂️
 
 <div class="statement" markdown="1" align="center">
 
