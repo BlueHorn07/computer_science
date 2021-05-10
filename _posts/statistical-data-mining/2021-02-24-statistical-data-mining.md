@@ -15,16 +15,34 @@ hidden: true
 - [『An Introduction to Statistical Learning』](https://www.statlearning.com/) Gareth James · Daniela Witten · Trevor Hastie · Robert Tibshirani, 1st ed.
 - [CS229: Machine Learning](http://cs229.stanford.edu/syllabus-autumn2018.html), Andrew Ng, Stanford Univ. [^1]
 
+<div class="math-statement" markdown="1" style="padding: 10px 20px">
+
+[목차]
+
+1. Supplemnetary
+2. Introduction
+3. Linear Regression
+4. Linear Classification
+5. Non-parametric Method
+6. Decision Tree
+7. Boosting 🔥
+8. Random Forest 🔥
+9. SVM; Support Vector Machine
+10. PCA; Principle Component Analysis 🔥
+11. Clustering
+
+</div>
+
 <hr/>
 
-## Supplementary
+### Supplementary
 
 앞으로 이어지는 "통데마"의 실전을 마주하기 전에 "**반드시**" 알아야 하는 내용들입니다. 모든 내용과 수학적 표현과 추상화에 충분히 익숙해져야 합니다.
 
 <details markdown="1">
 <summary>펼쳐보기</summary>
 
-### Linear Algebra
+#### Linear Algebra
 
 - [Basic Linear Algebra]({{"/2021/03/07/supp-1-linear-algebra-1.html" | relative_url}})
   - Column space & Row space & Null space
@@ -34,24 +52,34 @@ hidden: true
 - [Vector Calculus & Matrix Calculus]({{"/2021/03/08/supp-1-linear-algebra-2.html#matrix-calculus" | relative_url}})
 - [Spectral Decomposition & Singular Value Decomposition]({{"/2021/03/14/supp-1-linear-algebra-3.html" | relative_url}})
 
-### Multivariate Normal Distribution
+#### Multivariate Normal Distribution
 
-### Conditional Expectation
+#### Conditional Expectation
 
 </details>
 
 <hr/>
 
-### [Overview of Supervised Learning]({{"/2021/02/26/overview-of-supervised-learning.html" | relative_url}})
+### [Introduction]({{"/2021/02/26/overview-of-supervised-learning.html" | relative_url}})
 
 - Introduction to Regression & Classification
   - Least Squared Method
   - Nearest Neighbor Method
-
 - Curse of dimentionality
 
 
-## Linear Methods for Regression
+### Linear Methods for Regression
+
+
+<hr/>
+
+### Boosting
+
+- AdaBoost
+- Gradient Boosting
+- XGBoost
+
+### Random Forest
 
 
 
