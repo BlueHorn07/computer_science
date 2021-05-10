@@ -22,7 +22,7 @@ tags: ["Algorithm"]
 - [Binomial Heap]({{"/2021/05/03/implementations-of-heap.html#binomial-heap" | relative_url}})
   - Binomial Tree
 - [Lazy-Binomial Heap](#lazy-binomial-heap)
-- [Fibonacci Heap]({{"/2021/05/03/implementations-of-heap.html#fibonacci-heap" | relative_url}})
+- [Fibonacci Heap](#fibonacci-heap)
 
 <hr/>
 
@@ -266,7 +266,117 @@ $\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized
 
 ### Fibonacci Heap
 
-조금 쉬었다가 추후에 마무리 하겠습니다 😉
+이번 포스트의 내용은 아래 유튜브 영상의 내용을 적절히 정리한 것임을 미리 밝힌다.
+
+<div align="center" style="margin: 10px;">
+<iframe width="450" height="300" src="https://www.youtube.com/embed/E_AgyAI8lsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+마지막으로 다룰 Heap 구조는 \<**Fibonacci Heap**\>이다 😎 개인적으로 마지막에 유도되는 만큼 가장 어려운 Heap 구조라고 생각한다 😱
+
+먼저 \<Fibonacci Heap\>은 앞에서 다룬 \<Lazy-Binomial Heap\>보다 더 *Lazy* 한 녀석이다! \<Lazy-BIN Heap\>보다 $\texttt{decreaseKey}$ 연산을 Lazy 하게 처리해서 비용을 더 줄인다!
+
+사실 "Lazy decreaseKey" 연산의 아이디어 자체는 간단하다. <span class="half_HL">$\texttt{decreaseKey}$를 수행할 때, heap-order를 벗어나는 부분에 대해서는 잘라낸다</span>는 게 전부다. 
+
+이전의 \<Lazy BIN Heap\>에서는 $\texttt{decreaseKey}$ 연산을 수행하려면, $\texttt{Heapify}$ 때문에 트리의 높이 만큼, 즉 $O(\log n)$의 비용이 들었다. 그러나 \<Fibonacci Heap\>은 $\texttt{Heapify}$ 연산 없이 단순히 트리를 잘라내기 때문에 $O(1)$의 비용만 든다.
+
+<br/>
+
+여기서 잠깐 지금까지 \<BIN Heap\>에서 개선된 부분들을 짚고 넘어가자.
+
+- Merge: $O(\log n + \log m) \rightarrow O(1)$
+- Insert: $O(\log n) \rightarrow O(1)$
+- decreaseKey: $O(\log n) \rightarrow O(1)$
+
+위 연산들에 대한 비용이 줄었지만, 또 위 연산들이 Heap 구조를 엉망으로 만드는 주범이기도 하다 🤦‍♂️
+
+그러나 위와 같이 Lazy decreaseKey를 수행하더라도, $\texttt{extractMin}$의 비용은 여전히 "amortized $O(\log n)$"이다! 😲
+
+<br/>
+
+이번에는 \<Fibonacci Heap\>에서 수행되는 $\texttt{extractMin}$을 좀더 살펴보자. $\texttt{extractMin}$ 이후 수행되는 $\texttt{consolidate}$ 연산은 Heap을 이루는 트리를 degree $k$에 따라 "Bucket Sort"로 정렬하여 차례로 새로운 트리를 만든다. 
+
+하지만, Lazy decreaseKey 연산을 수행하기 되면, 더이상 Heap에 존재하는 Tree는 BIN Tree의 조건을 만족하지 않게 된다. 왜냐하면, BIN Tree가 되려면 degree $k$일 때, $2^k$ 개의 노드가 있어야 하기 때문이다. <small>(Fibo Heap에서는 $2^k$ 보다 적은 수의 노드가 트리에 남게 된다.)</small>
+
+이런 문제 때문에 트리를 degree $k$로 분류하는 것이 불가능 해 Bucket Sort를 수행할 수 없다 😱 그래서 \<Fibonacci Heap\>에서는 트리의 degree를 아래와 같이 새롭게 정의하여 사용한다.
+
+<div class="statement" markdown="1" align="center">
+
+A tree has degree $k$, if its root has $k$ children.
+
+</div>
+
+Fibo Heap에서는 위의 정의를 사용해 Bucket Sort를 수행하며, Heap의 트리들을 정리(clean-up)한다. 그러나...
+
+<br/>
+
+그러나! 위와 같이 $\texttt{decreaseKey}$와 $\texttt{consolidate}$를 수행하게 되면, 최악의 경우에는 $\texttt{decreaseKey}$에 의해 Heap이 degree 0의 트리 $n$로만 이뤄진 후에 $\texttt{consolidate}$가 이뤄질 수 있다 🤦‍♂️ 이 경우, 비용은 $O(n)$이다...
+
+\<BIN Heap\>이나 \<Lazy-BIN Heap\>에서는 트리의 사이즈가 $2^k$로 exponential 하게 증가해서 $O(\log n)$의 $\texttt{consolidate}$ 연산이 가능했다.
+
+<br/>
+
+위의 문제를 해결하기 위해, Fibo Heap에서는 $\texttt{decreaseKey}$ 연산에 새로운 규칙을 추가한다.
+
+<div class="statement" markdown="1" align="center">
+
+Paraents can lose at most one children. 
+
+If a parent loses two children, we also cut the parent off from the grand-parent.
+
+</div>
+
+위 규칙은 Heap을 엉성하게나마 "logarithmic"하도록 만든다. 이것에 대한 구현은 생각보다 간단하다. 그냥 부모 노드가 $\texttt{decreaseKey}$에 의해 자식 노드를 잃으면 그 부모 노드를 "마킹" 해둔다. 이후에 부모 노드가 또 한번 자식 노드를 잃는다면, 그때는 부모 노드를 조부모 노드로부터 분리시킨다! <small>// 영상에서 잘 설명하니 이 부분은 영상을 보자!</small>
+
+추가된 규칙에 의해 Heap의 "root list"는 <u>approximately logarithmic</u> 하게 유지되며, $\texttt{extractMin}$은 $O(\log n)$의 시간으로 수행된다! 😁
+
+<br/>
+
+이 정도면 충분할 것 같은데, \<Fibonacci Heap\>은 여기서 \<**Maximally Damaged Tree**\>라는 개념을 또 소개한다! 😱 사실 이 녀석에 의해 이 Heap 구조가 "Fibonacci" Heap이라고 불리게 되었으니 조금만 더 힘을 내보자! 🤦‍♂️
+
+<div class="statement" markdown="1" align="center">
+
+A \<**maximally damaged tree**\> is a binomial tree of degree $k$[^1] which has been <u>maximally damaged</u> by cutting off subtrees from the lazy decreaseKey operation.
+
+</div>
+
+\<Maximally damaged tree\>란 degree $k$의 BIN Tree에 $\texttt{decreaseKey}$를 수행할 때, Tree의 degree $k$를 훼손하지 않을때까지 $\texttt{decreaseKey}$를 수행한 트리를 말한다. 이 개념은 우리가 앞에서 정의한 새로운 $\texttt{decreaseKey}$의 방식에서 자연스럽게 유도되는 개념이다. <small>// 이 부분 역시 영상에서 잘 설명하니 영상을 보자!</small>
+
+<div class="statement" markdown="1">
+
+<span class="statement-title">Corollary.</span><br>
+
+A \<maximally-damaged tree of degree $k$\> is a node whose children are maximally-damaged trees of degrees $0, 0, 1, 2, 3, \dots, k-2$.
+
+</div>
+
+위의 따름 정리에 의해 \<maximally damaged tree\>에서는 아래의 정리가 성립한다! 😲
+
+<div class="statement" markdown="1">
+
+<span class="statement-title">Theorem.</span><br>
+
+The #. of nodes in a \<maximally damaged tree of degree $k$\> is $F_{k+2}$.
+
+</div>
+
+증명은 위의 따름 정리의 사실을 그대로 수식으로 기술하면 된다. 😉
+
+<br/>
+
+| Operation | Binomial Heap | Lazy-Binomial Heap | Fibonacci Heap |
+|:---:|:---:|:---:|:---:|
+| $\texttt{insert}$ | $O(\log n)$ | $O(1)$ | $O(1)$ |
+| $\texttt{getMin}$ | $O(1)$ | $O(1)$ | $O(1)$ |
+| $\texttt{extractMin}$ | $O(\log n)$ | amortized $O(\log n)$ | amortized $O(\log n)$ |
+| $\texttt{merge}$ | $O(\log n)$ | $O(1)$ | $O(1)$ |
+| $\texttt{decreaseKey}$ | $O(\log n)$ | $O(\log n)$ | $O(1)$ |
+
+<hr/>
+
+지금까지 \<Heap\> 또는 \<Priority Queue\>의 주요한 구조들을 살펴봤다. 솔직히 말해 실전에서 자주 쓰는 구조들은 아니지만, \<알고리즘\> 수업과 자료들에서 종종 등장해서 이번 기회에 쭉 정리해보았다.
+
+아직 개념만 간단하게 아는 상태고 직접 구현 해본 게 아니라서 Heap의 Advanced Version들이 완전히 익숙해진 상태가 아니다. 학기가 끝나고 시간이 여유로울 때, 천천히 "Advanced Data Structure"들을 구현 해두겠다.
 
 <hr/>
 
@@ -276,8 +386,11 @@ $\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized
   - PQ에 대한 문제와 PQ를 이용한 \<A* Algorithm\> 등 다양한 내용의 포스트가 있습니다 👍
 - [geeksforgeeks: K-ary Heap](https://www.geeksforgeeks.org/k-ary-heap/)
 - [Wikipedia: d-ary heap](https://en.wikipedia.org/wiki/D-ary_heap)
-- ['Jeff Zhang'님의 유튜브 영상](https://youtu.be/m8rsw3KfDKs) - Binomial Heap
+- ['Jeff Zhang'의 유튜브 영상](https://youtu.be/m8rsw3KfDKs) - Binomial Heap
 - [Wikipedia: Binomial heap](https://en.wikipedia.org/wiki/Binomial_heap)
-- ['Jeff Zhang'님의 유튜브 영상](https://youtu.be/-IOse-LEJtw) - Lazy-Binomial Heap
+- ['Jeff Zhang'의 유튜브 영상](https://youtu.be/-IOse-LEJtw) - Lazy-Binomial Heap
+- ['Jeff Zhang'의 유튜브 영상](https://youtu.be/E_AgyAI8lsc) - Fibonacci Heap
 
+<hr/>
 
+[^1]: 이때 degree의 의미는 \<Fibonacci Heap\>에서 새롭게 도입한, children의 갯수의 $k$다.
