@@ -39,8 +39,10 @@ hidden: true
 - [Asymptotic Analysis]({{"/2021/05/14/asymptotic-analysis.html" | relative_url}})
   - Big-O / Big-Omega / Big-Theta
   - little-o / little-omega / little-theta
-- Master Theorem
-
+- [Master Theorem: Recurrence relations]({{"/2021/02/26/divide-and-conquer.html#master-theorem-recurrence-relations" | relative_url}})
+- Fibonacci Function
+  - (DP) Fast Fibonacci Function
+- Convex Hull Algorithm
 
 ### [Divide and Conquer]({{"2021/02/26/divide-and-conquer.html" | relative_url}})
 

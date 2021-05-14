@@ -28,7 +28,7 @@ tags: ["Algorithm"]
 
 <hr/>
 
-### Recurrence Relations
+### Master Theorem: Recurrence Relations
 
 이 단락에서는 \<분할 정복\>의 시간 복잡도를 유도하는 좋은 도구인 \<Master Theorem\>에 대해 다룬다.
 
