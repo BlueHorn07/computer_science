@@ -36,10 +36,9 @@ hidden: true
 
 ### Computational Complexity
 
-- Asymptotic Analysis
-  - Big-O & small-o
-  - Big-Omega & small-omega
-  - Big-Theta & small-theta
+- [Asymptotic Analysis]({{"/2021/05/14/asymptotic-analysis.html" | relative_url}})
+  - Big-O / Big-Omega / Big-Theta
+  - little-o / little-omega / little-theta
 - Master Theorem
 
 
