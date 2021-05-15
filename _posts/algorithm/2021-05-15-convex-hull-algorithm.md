@@ -14,7 +14,6 @@ tags: ["Algorithm"]
 - Brute Force
 - Graham's Scan
 
-
 <hr/>
 
 <span class="statement-title">Definition.</span> Convex hull<br>
