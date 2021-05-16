@@ -39,7 +39,7 @@ hidden: true
 
 앞으로 이어지는 "통데마"의 실전을 마주하기 전에 "**반드시**" 알아야 하는 내용들입니다. 모든 내용과 수학적 표현과 추상화에 충분히 익숙해져야 합니다.
 
-<details markdown="1">
+<details markdown="1" class="statement">
 <summary>펼쳐보기</summary>
 
 #### Linear Algebra
@@ -66,9 +66,44 @@ hidden: true
   - Least Squared Method
   - Nearest Neighbor Method
 - Curse of dimentionality
-
+- 
+<hr/>
 
 ### Linear Methods for Regression
+
+- Feature Selection
+  - Best Subset Selection
+  - Forward Stepwise Selection
+  - Backward Stepwise Selection
+  - Mallow's $C_p$
+  - AIC & BIC
+  - Instability of Variable Selection
+
+- Shrinkage Method
+
+- Lasso Regression
+- Ridge Regression
+
+<hr/>
+
+### Non-parametric Method
+
+- Non-parametric Linear Regression
+  - Local Polynomical Regression
+  - Regression Spline 🔥
+  - Natural Cubic Spline
+  - Smoothing Splines
+
+- Non-parametric Logistic Regression
+- Multi-dimensional Splines
+- Nearest-Neighbor Method
+- Nadaraya-Watson Estimator
+  - kernel method
+
+- Additive Model
+- Backfitting Algorithm
+- Generalized Additive Models 🔥
+- MARS; Multivariate Adaptive Regression Spline 🔥
 
 
 <hr/>
