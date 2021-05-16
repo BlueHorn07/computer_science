@@ -40,7 +40,7 @@ hidden: true
   - Big-O / Big-Omega / Big-Theta
   - little-o / little-omega / little-theta
 - [Master Theorem: Recurrence relations]({{"/2021/02/26/divide-and-conquer.html#master-theorem-recurrence-relations" | relative_url}})
-- [Fibonacci Function]({{"/2021/05/15/fibonacci-number.html" | relative_url}})
+- [Fibonacci Number]({{"/2021/05/15/fibonacci-number.html" | relative_url}})
   - Brute Force
   - DP
   - Matrix-based
