@@ -11,11 +11,14 @@ tags: ["Statistical Data Mining"]
 <br><span class="statement-title">TOC.</span><br>
 
 - Basis Expansion
-- Polynomial Regression
-- Regression Spline
+- [Polynomial Regression](#polynomial-regression)
+  - [Local Polynomial Regression](#local-polynomial-regression)
+- [Regression Spline](#regression-spine)
   - spline basis function
-- Natural Cubic Spline
-- Smoothing Splines
+- [Natural Cubic Spline](#natural-cubic-spline)
+  - power basis functions
+- [Smoothing Splines](#smoothing-splines)
+  - knot selection
 
 <hr/>
 
@@ -47,13 +50,13 @@ with a **<u>linear basis expansion</u>** in $X$.
 
 <span class="statement-title">Example.</span><br>
 
-1\. feature dim $p$로 분할
+1\. 1-dimentional projection
 
 $$
 h_m(X) = X_m \quad \text{for} \quad m=1, \dots, p
 $$
 
-2\. Covariatic Transform <small>(정식 명칭은 아니고, Cov 같은 느낌이라 본인은 이렇게 부른다.)</small>
+2\. Covariatic transform <small>(정식 명칭은 아니고, Cov 같은 느낌이라 본인은 이렇게 부른다.)</small>
 
 $$
 h_m (X) = X^2_j \quad \text{or} \quad h_m(X) = X_j X_k
@@ -106,7 +109,9 @@ $$
 - As $p$ increases, the # of parameters grows exponentially.
 - In general, it is difficult to estimate $p$-dimentional regression function for large $p$.
 
-논의 편의를 위해 $p=1$라고 하자. 그리고, $X_i$를 아래와 같이 디자인 하자.
+그리고 그런 $m$-th order polynomial 방식은 \<Multi-collinearity\>에 대한 문제도 가지고 있다. 👇
+
+논의의 편의를 위해 $p=1$라고 하자. 그리고, $X_i$를 아래와 같이 디자인 하자.
 
 Let $X_1 \sim \text{Unif}(0, 1)$, and $X_m = X_1^m$ for $m \le 4$.
 
@@ -126,6 +131,10 @@ $$
 - High order polynomials are often **unstable** at the boundary.
 
 → bad!!! 😥
+
+<br/>
+
+\<Polynomial Regression\>에서의 문제를 해결하기 위해 함수를 local로 분할해 근사하는 \<Local Polynomial Regression\> 방식이 제안 되었다.
 
 <hr/>
 
@@ -159,7 +168,9 @@ where $f_i$ are polynomials and $\xi_i$ are the **<u>knots</u>**.
   <img src="{{ "/images/statistical-data-mining/non-parametric-1.jpg" | relative_url }}" width="450px">
 </div>
 
-$f_i$를 constant function, linear function으로 모델링 했을 때의 결과이다. 그림에서도 볼 수 있듯이 <span class="half_HL">knots 주변에서 continuous 하지 않다</span>.
+$f_i$를 constant function, linear function으로 모델링 했을 때의 결과이다. 그림에서도 볼 수 있듯이 <span class="half_HL">knots 주변에서 continuous 하지 않다</span>. 이걸 non-continuous 현상은 order가 커져도 여전히 발생한다. 😥
+
+\<Regression Spline\>은 \<Local Polynomial Regression\>에 "continuous & continuous derivative에 대한 제약"을 주어 non-continuous 문제를 해결한다!
 
 <hr/>
 
@@ -278,11 +289,11 @@ $$
 
 ### Natural Cubic Spline
 
-완벽할 것 같은 \<Regression Spline\> 방식도 작은 문제를 가지고 있다. 바로 양끝 boundary에서 regression이 잘 안 된다는 것이다. 이를 위해 \<Natural cubic spline\>은 <span class="half_HL">양끝에서 linear로 모델링 한다<span>.
+완벽할 것 같은 \<Regression Spline\> 방식도 작은 문제를 가지고 있다. 바로 양끝 boundary에서 regression이 잘 안 된다는 것이다. 이를 해결하기 위해 \<Natural cubic spline\>은 <span class="half_HL">양끝에서 linear로 모델링 한다<span>.
 
 <span class="statement-title">Definition.</span> Natrual Cubic Spline<br>
 
-A cubic spline is called a \<**natural cubic spline**\> if it is **linear** beyond the boundary knots $\xi_1$ and $\xi_K$.
+A cubic spline is called a \<**natural cubic spline**\>, if it is **<u>linear</u>** beyond the boundary knots $\xi_1$ and $\xi_K$.
 
 <div class="img-wrapper">
   <img src="http://www.stanford.edu/class/stats202/figs/Chapter7/7.7.png" width="500px">
@@ -303,7 +314,7 @@ $$
 
 ### Smoothing Splines
 
-\<knot slection\>은 Spline Method의 주된 이슈이다. \<smoothing spline\>은 이 문제를 아래와 같이 해결한다!
+<span class="half_HL">\<knot slection\></span>은 Spline Method의 주된 이슈이다. \<smoothing spline\>은 이 문제를 아래와 같이 해결한다!
 
 Consider $\hat{f} = \underset{f\in\mathcal{F}}{\text{argmin}} \; \text{RSS}_{\lambda}(f)$, where
 
@@ -313,9 +324,9 @@ $$
 
 and $\lambda$ is a fixed smoothing parameter.
 
-위의 식을 잘 살펴보면, RSS 식에 패널티 텀이 있는 것을 볼 수 있다. 이때, 패널티 텀에서는 $f'\'(t)$를 적분하는데, 이것은 함수 $f(t)$에 대한 \<곡률; curverture\>를 의미한다. 따라서 $(f'\'(t))^2$는 곡률의 절댓값이며, 패널티 텀은 <span class="half_HL">함수가 얼마나 flunctuation이 심한지를 측정하는 텀</span>이라고 볼 수 있다.
+위의 식을 잘 살펴보면, RSS 식에 패널티 텀이 있는 것을 볼 수 있다. 이때, 패널티 텀에서는 $f'\'(t)$를 적분하는데, 이것은 함수 $f(t)$에 대한 \<곡률; curverture\>를 의미한다. $(f'\'(t))^2$는 곡률의 절댓값이며, 따라서  패널티 텀은 <span class="half_HL">함수 $f(t)$가 얼마나 flunctuation이 심한지를 측정하는 텀</span>이라고 볼 수 있다.
 
-우리는 이 $\hat{f}$를 \<**smoothing spline estimator**\>라고 한다!
+위의 최적화 문제의 solution인 $\hat{f}$를 \<**smoothing spline estimator**\>라고 한다!
 
 1\. If $\lambda = 0$,<br/>
 then $\hat{f}$ can be any function that interpolates the data.
@@ -369,12 +380,12 @@ $$
 \hat{\theta} = (\mathbf{N}^T \mathbf{N} + \lambda \mathbf{\Omega})^{-1}\mathbf{N}^T \mathbf{y}
 $$
 
-위의 식도 그냥 $\text{RSS}(\theta)$의 식에서 inverse 내부에 regularization 텀으로 인해 $\lambda \mathbf{\Omega}$가 생긴 것일 뿐이다.
+내부에 regularization 텀으로 인해 $\lambda \mathbf{\Omega}$가 생겼다!
 
 <br/>
 
 <hr/>
 
-이어지는 포스트에서는 logistic regression와 nearest-neighbor method의 non-parametric 접근을 살펴본다! 🤩
+이어지는 포스트에서는 spline method의 남은 내용을 좀더 살펴본다. 🤩
 
-👉 [Non-parameteric Logistic Regression & Nearest-Neighbhor]({{"/2021/04/19/non-parameteric-logistic-and-neighbhor.html" | relative_url}})
+👉 [Spline Method (2)]({{"/2021/04/19/splines-method-2.html" | relative_url}})
