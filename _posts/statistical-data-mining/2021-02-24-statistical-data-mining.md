@@ -66,12 +66,12 @@ hidden: true
   - Least Squared Method
   - Nearest Neighbor Method
 - Curse of dimentionality
-- 
+
 <hr/>
 
 ### Linear Methods for Regression
 
-- Feature Selection
+- [Feature Selection]({{"/2021/05/16/feature-selection-techniques.html" | relative_url}})
   - Best Subset Selection
   - Forward Stepwise Selection
   - Backward Stepwise Selection
@@ -88,17 +88,20 @@ hidden: true
 
 ### Non-parametric Method
 
-- Non-parametric Linear Regression
-  - Local Polynomical Regression
-  - Regression Spline 🔥
+- [Non-parametric Linear Regression]({{"/2021/04/18/regression-spline.html" | relative_url}})
+  - Polynomial Regression
+    - Local Polynomical Regression
+  - [Regression Spline]({{"/2021/04/18/regression-spline.html#regression-spine" | relative_url}}) 🔥
   - Natural Cubic Spline
+    - power basis function
   - Smoothing Splines
+    - knot selection
+  - [Non-parametric Logistic Regression]({{"/2021/04/19/splines-method-2.html#non-parameteric-logistic-regression" | relative_url}})
+  - [Multi-dimensional Splines]({{"/2021/04/19/splines-method-2.html#multi-dimensional-splines" | relative_url}})
 
-- Non-parametric Logistic Regression
-- Multi-dimensional Splines
-- Nearest-Neighbor Method
+- [KNN Method]({{"/2021/05/16/KNN-and-kernel-method.html" | relative_url}})
+  - [kernel method]({{"/2021/05/16/KNN-and-kernel-method.html#kernel-method" | relative_url}})
 - Nadaraya-Watson Estimator
-  - kernel method
 
 - Additive Model
 - Backfitting Algorithm
