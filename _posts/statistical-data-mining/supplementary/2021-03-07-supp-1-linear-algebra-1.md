@@ -10,6 +10,7 @@ tags: ["Statistical Data Mining"]
 
 <br><span class="statement-title">TOC.</span><br>
 
+- (review) Matrix
 - Vector Space
 - Linearly Independent
 - basis & dimension
@@ -18,6 +19,106 @@ tags: ["Statistical Data Mining"]
   - Rank Theorem
 - Rank
 - Determinant
+
+<hr/>
+
+## (Reveiw) Matrix
+
+✨ (중요) 별다른 언급이 없다면, 모든 벡터 "**column vector**"다. ✨
+
+A $3 \times 1$ vector $\mathbf{x}$ is
+
+$$
+\mathbf{x} = \begin{pmatrix}
+  1 \\ 2 \\ 3
+\end{pmatrix}
+$$
+
+
+<span class="half_HL">\<행렬; matrix\>는 "vector"를 원소로 갖는 "(column) vector"다.</span>
+
+A $4 \times 3$ matrix $\mathbf{X}$ is
+
+$$
+\mathbf{X} = \begin{pmatrix}
+  \mathbf{x}_1^T \\ \mathbf{x}_2^T \\ \mathbf{x}_3^T \\ \mathbf{x}_4^T
+\end{pmatrix} = \begin{pmatrix}
+  1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+  10 & 11 & 12 
+\end{pmatrix}
+$$
+
+- $X_i$: $X$의 $i$번째 원소 = $\mathbf{x}_i$
+- $X_{ij}$: $X$의 $i$번째 원소 $\mathbf{x}_i$의 $j$번째 원소
+
+행렬을 열벡터로 해석하는 시야👀를 체득하는게 중요하다! 
+
+### Matrix Multiplication
+
+행렬 곱셈의 시작은 좌표 변환이다.
+
+$$ 
+\begin{pmatrix}
+c_1 & c_2 & c_3 & c_4  
+\end{pmatrix} \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} = c_1 x + c_2 y + c_3 z + c_4 t
+$$
+
+위의 예시는 간단한 거고, 조금 복잡하게 가면,
+
+$$
+X \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} = 
+\begin{pmatrix}
+  \mathbf{x}_1^T \\ \mathbf{x}_2^T \\ \mathbf{x}_3^T \\ \mathbf{x}_4^T
+\end{pmatrix} \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} = 
+\mathbf{x}_1^T \cdot \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} + 
+\mathbf{x}_2^T \cdot \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} + 
+\mathbf{x}_3^T \cdot \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix} + 
+\mathbf{x}_4^T \cdot \begin{pmatrix}
+  x \\ y \\ z \\ t
+\end{pmatrix}
+$$
+
+좌표 변환, 또는 선형 변환의 도구로의 행렬 곱셈은
+
+For $A \in \mathbb{R}^{n\times p}$, $\mathbf{x} \in \mathbb{R}^{p\times 1}$
+
+$$
+A \mathbf{x} \in \mathbb{R}^{n\times 1}
+$$
+
+즉, $p$차원 벡터를 차원 $n$으로 매핑하는 것이다. 이를 위해서는 $p$차원 벡터가 $n$개가 필요하고, 이것이 바로 행렬 $A$다...!
+
+<br><span class="statement-title">Definition.</span> Design Matrix 🔥<br>
+
+정규 수업의 첫번째 강의에서는 [\<linear regression\>]({{"https://bluehorn07.github.io/computer_science/2021/02/26/overview-of-supervised-learning-1.html#regression" | relative_url}})을 수학적으로 정의하면서 \<design matrix\> $X$를 제시한다. 이 \<design matrix\>는 $p$-dim input features vector $n$개를 모은 $n \times p$ 차원의 행렬이다.
+
+$$
+X = \begin{pmatrix}
+  x_1^T \\ x_2^T \\ \vdots \\ x_n^T
+\end{pmatrix} \in \mathbb{R}^{n\times p}
+$$
+
+\<linear regression\>에선 coefficients 벡터인 $\beta$를 곱해 $X \beta \in \mathbf{R}^{n\times 1}$을 구한다. 그러면 $n\times 1$의 열벡터가 나오는데, 만약 $n \ge 1,000$라면, $X\beta$가 너무 큰 차원의 벡터가 아닌가, 너어어무 큰 선형변환이 아닌가 생각했던 적이 있다. 그런데 그런 의문은 아래의 식을 보자 해결되었다.
+
+$$
+Y = X\beta + \epsilon
+$$
+
+즉, $X\beta$에서 $X$는 선형변환으로 사용된 것이 아니다. 오히려 \<regression\>을 그 자체를 수행하기 위해 고안된 "행렬"이라고 받아들이는 것이 좋다! 😁
 
 <hr/>
 
@@ -115,7 +216,7 @@ $$
 \mathbf{y} = c_1 \mathbf{x}_1 + \cdots + c_k \mathbf{x}_k
 $$
 
-즉, \<**basis**\>에 의한 represenation은 **<u>uniqueness</u>**를 보장한다!
+즉, \<**basis**\>에 의한 representation은 **<u>uniqueness</u>**를 보장한다!
 
 <br><span class="statement-title">Definition</span> orthogonal & orthonormal<br>
 
@@ -131,13 +232,15 @@ $$
 \mathbf{y} = \left( \mathbf{x}_1^T \mathbf{y} \right) \mathbf{x}_1 + \cdots + \left( \mathbf{x}_k^T \mathbf{y} \right) \mathbf{x}_k
 $$
 
-즉, 만약 \<**orthonormal basis**\>라면, vector $\mathbf{y}$ 를 표현하는 <u>모든 coefficient $c_i$를 uniquely하게 특정할 수 있다</u>는 말이다!
+즉, 만약 \<**orthonormal basis**\>라면, vector $\mathbf{y}$ 를 표현하는 <span class="half_HL">모든 coefficient $c_i$를 uniquely하게 특정할 수 있다</span>는 말이다!
 
 <hr/>
 
 ### Rank Theory
 
-<br><span class="statement-title">Definition.</span> Column space & Row space & Null space<br>
+<div class="definition" markdown="1">
+
+<span class="statement-title">Definition.</span> Column space & Row space & Null space<br>
 
 $$
 A \in \mathbb{R}^{n \times p}
@@ -174,24 +277,38 @@ NOTE: $\mathcal{R}(A) = \mathcal{C}(A^T)$
 
 NOTE: 만약 $A$가 invertible이라면, $A\mathbf{x} = \mathbf{0}$을 만족하는 $\mathbf{x}$는 $\mathbf{0}$ 뿐이기 때문에, $\mathcal{N}(A) = \mathbf{0}$이 된다.
 
-<br><span class="statement-title">Definition.</span> Rank<br>
+</div>
+
+<div class="definition" markdown="1">
+
+<span class="statement-title">Definition.</span> Rank<br>
 
 The \<**rank**\> of $A$ is the dimension of $\mathcal{C}(A)$.
 
+</div>
 
-<div class="statement" markdown="1">
+<div class="theorem" markdown="1">
 
 <span class="statement-title">Theorem.</span> Fundamental Theorem of Liniear Algebra<br/>
+
+<div class="light-margin"></div>
 
 **Part 1**: (Rank-Nullity Theorem; Rank Theorem)
 
 The column and row spaces of an $m \times n$ matrix $A$ both have dimension $r$, the \<**rank**\> of the matrix. 
 
-The nullspace has dimension $n-r$, and the left nullspace has dimension $m-r$.
+- the nullspace has dimension $n-r$
+- the left nullspace has dimension $m-r$
+
+<div class="light-margin"></div>
 
 **Part 2**:
 
-The nullspace and row space are \<orthogonal\>. The left nullspace and the column space are also \<orthogonal\>.
+The \<Null space\> and \<Row space\> are \<orthogonal\>. 
+
+The \<Left Mull space\> and the \<Column space\> are also \<orthogonal\>.
+
+<div class="light-margin"></div>
 
 **Part 3**:
 
@@ -209,8 +326,9 @@ where
 
 </div>
 
+<div class="theorem" markdown="1">
 
-<br><span class="statement-title">Theorem.</span> Rank Theorem<br>
+<span class="statement-title">Theorem.</span> Rank Theorem<br>
 
 For any $A \in \mathbb{R}^{n \times p}$, 
 
@@ -218,25 +336,13 @@ $$
 \dim (\mathcal{C}(A)) = \dim (\mathcal{R}(A))
 $$
 
-그래서 \<Rank Theorem\>에 의해 행렬 $A$의 rank를 $\dim (\mathcal{C}(A))$로 정의하든, $\dim (\mathcal{R}(A))$로 정의하든 상관이 없다!
+</div>
+
+그래서 \<Rank Theorem\>에 의해 행렬 $A$의 \<rank\>를 $\dim (\mathcal{C}(A))$로 정의하든, $\dim (\mathcal{R}(A))$로 정의하든 상관이 없다!
 
 증명은 이곳을 참조할 것 👉 [*proof*](https://brilliant.org/wiki/rank/)
 
-<br><span class="statement-title">Definition.</span> Determinant<br>
-
-The \<**determinant**\> of a matrix $A \in \mathbb{R}^{n \times n}$ is 
-
-$$
-\sum_{\pi} \text{sgn} (\pi) \cdot \left( a_{1\pi(1)} \cdots a_{n\pi(n)}\right)
-$$
-
-where the summation is taken over all permuations of $\\{ 1, \dots, n\\}$.
-
-\<Determinant\>에 대한 정말 Abstract 한 정의다. $3\times3$ 에 대해선 아래와 같이 쉽게 구할 수 있다.
-
-<div class="img-wrapper">
-  <img src="{{ "/images/statistical-data-mining/determinant-3x3-1.png" | relative_url }}" width="320px">
-</div>
+<br/>
 
 <br><span class="statement-title">Properties.</span> Rank<br>
 
@@ -264,7 +370,33 @@ $$
 
 8\. $\text{rank}(AA^T) = \text{rank}(A^TA) = \text{rank}(A)$
 
-<br><span class="statement-title">Properties.</span> Determinant<br>
+<br/>
+
+<hr/>
+
+<div class="definition" markdown="1">
+
+<span class="statement-title">Definition.</span> Determinant<br>
+
+The \<**determinant**\> of a matrix $A \in \mathbb{R}^{n \times n}$ is 
+
+$$
+\sum_{\pi} \text{sgn} (\pi) \cdot \left( a_{1\pi(1)} \cdots a_{n\pi(n)}\right)
+$$
+
+where the summation is taken over all permuations of $\\{ 1, \dots, n\\}$.
+
+</div>
+
+\<Determinant\>에 대한 정말 Abstract 한 정의다. $3\times3$ 에 대해선 아래와 같이 쉽게 구할 수 있다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/determinant-3x3-1.png" | relative_url }}" width="320px">
+</div>
+
+<br>
+
+<span class="statement-title">Properties.</span> Determinant<br>
 
 이어지는 성질들은 \<Determinant\>에 대한 성질을 정말 Abtract 한 용어로 기술한 것이다.
 
