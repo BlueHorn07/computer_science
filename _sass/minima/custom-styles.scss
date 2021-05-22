@@ -112,14 +112,14 @@ div.eq-box {
 }
 
 // mathematical statement
-.math-statement {
+.math-statement, .proof {
   margin: 1rem;
   padding: 0.5rem;
   background-color: rgb(230, 230, 230);
 }
 
 // statement
-.statement {
+.statement, .theorem {
   margin: 1rem;
   padding: 0.5rem;
   background-color: #ffece9;
@@ -136,6 +136,14 @@ div.eq-box {
   font-weight: bold;
   text-decoration: underline;
 }
+
+// definition
+.definition {
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: #f7e9ff;
+}
+
 
 // Markdown post header anchors
 
