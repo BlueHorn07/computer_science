@@ -16,6 +16,12 @@ tags: ["Statistical Data Mining"]
 
 <hr/>
 
+### Additive Model
+
+<div class="definition" markdown="1">
+
+<span class="statement-title">Definition.</span> Additive Model<br>
+
 The regression model 
 
 $$
@@ -24,9 +30,13 @@ $$
 
 is called an \<additive model\>.
 
+</div>
+
 <span class="half_HL">It assumes that there is no interaction effect.</span>
 
 Therefore, it can effectively avoid "the curve of dimensionality".
+
+<br/>
 
 ✨ Goal: How can we estimate $f_i(x_i)$?
 
@@ -68,7 +78,29 @@ Relationships btw the individual predictors and the dependent variable follow <u
 
 </div>
 
-즉, GAM은 \<Additive Model\>에서 $f_j$가 <u>smooth non-parametric</u>인 경우를 다루는 모델이다!
+즉, <span class="half_HL">GAM은 \<Additive Model\>에서 $f_j$가 smooth non-parametric인 모델</span>이다!
+
+<br/>
+
+'DataCamp'의 [유튜브 영상](https://youtu.be/6V_VvweZkoI)에서는 \<GAM\>이 \<Linear Model\>과 \<Bloack-BOX ML\> 모델의 중간 정도에 위치하는 모델이라고 소개한다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/GAM-1.png" | relative_url }}" width="450px">
+  <p markdown="1">Image from ['DataCamp'](https://youtu.be/6V_VvweZkoI)</p>
+</div>
+
+통계적 모델은 \<Interpretability\>와 \<Flexibility\>에 trade-off가 있는데, 왼편과 오른편이 각각을 의미한다.
+
+\<GAM\>은 딱 중간 정도에 위치한 모델로, 적당한 \<Interpretability\>와 적당한 \<Flexibility\>를 제공한다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/GAM-2.png" | relative_url }}" width="650px">
+  <p markdown="1">Image from ['DataCamp'](https://youtu.be/6V_VvweZkoI)</p>
+</div>
+
+위의 그림은 \<GAM\>에서 사용된 \<smooth basis function\>들을 표현한 것이다. 왼쪽 그림은 모든 basis func.에 동일한 coeff.를 준 그림이고, 오른쪽 그림은 학습을 통해 각 basis func.에 튜닝된 coeff.를 준 그림이다.
+
+<br/>
 
 'multithreaded'에 게시된 [포스트](https://multithreaded.stitchfix.com/blog/2015/07/30/gam/)에서는 GAM의 장점으로 
 
@@ -78,10 +110,38 @@ Relationships btw the individual predictors and the dependent variable follow <u
 
 을 꼽는다.
 
-이 중에서 먼저 "Regularization"부터 살펴보자. smooth function을 추정하는 **GAM**은 "smoothness"를 컨트롤 하는 tuning parameter $\lambda$가 존재한다. 이것을 통해 overfitting을 방지하고, 전체 predictor가 wiggle 해지는 것을 방지한다.
+이 중에서 먼저 "**Regularization**"부터 살펴보자. smooth function을 추정하는 **GAM**은 "smoothness"를 컨트롤 하는 tuning parameter $\lambda$가 존재한다. 이것을 통해 overfitting을 방지하고, 전체 predictor가 wiggle 해지는 것을 방지한다.
 
+'DataCamp'의 [유튜브 영상](https://www.youtube.com/watch?v=vckDyqI8tS8)에 따르면, \<GAM\>은 아래의 수식에 따라 모델의 Wiggliness를 조정한다고 한다.
 
+$$
+\text{Fit} = \text{Likelihood} - \lambda \times \text{Wiggliness}
+$$
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/GAM-3.png" | relative_url }}" width="650px">
+  <p markdown="1">Image from ['DataCamp'](https://youtu.be/8doPTpkAWDQ)</p>
+</div>
+
+또는 basis func.의 수로도 smoothness를 조정할 수 있다.
+
+<div class="img-wrapper">
+  <img src="{{ "/images/statistical-data-mining/GAM-4.png" | relative_url }}" width="650px">
+  <p markdown="1">Image from ['DataCamp'](https://youtu.be/8doPTpkAWDQ)</p>
+</div>
+
+<br/>
+
+\<GAM\>은 input feature 수가 여러 개일 때도 사용할 수 있다. 이때, 각 input feature가 independent 하다는 \<additive model\>의 가정을 사용한다!
+
+자세한 내용은 'DataCamp'의 영상을 통해 살펴보자.
+
+👉 [[YouTube] R Tutorial: Multivariate GAMs](https://youtu.be/8doPTpkAWDQ)
+
+<hr/>
 
 #### 참고자료
 
 - [post from 'multithreaded'](https://multithreaded.stitchfix.com/blog/2015/07/30/gam/)
+- [[YouTube] R Tutorial: Nonlinear Modeling in R with GAMs](https://youtu.be/6V_VvweZkoI)
+- [[YouTube] R Tutorial: Basis functions and smoothing](https://www.youtube.com/watch?v=vckDyqI8tS8)
