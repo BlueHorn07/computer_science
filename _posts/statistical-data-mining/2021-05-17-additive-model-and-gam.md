@@ -10,9 +10,9 @@ tags: ["Statistical Data Mining"]
 
 <br><span class="statement-title">TOC.</span><br>
 
-- Additive Model
+- [Additive Model](#additive-model)
   - Backfitting Algorithm
-- GAM; Generalized Additive Model
+- [GAM; Generalized Additive Model](#gam-generalized-additive-model)
 
 <hr/>
 

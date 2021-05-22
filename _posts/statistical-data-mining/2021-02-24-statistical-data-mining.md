@@ -19,14 +19,14 @@ hidden: true
 
 [목차]
 
-1. Supplemnetary
-2. Introduction
-3. Linear Regression
+1. [Supplemnetary](#supplementary)
+2. [Introduction](#introduction)
+3. [Linear Regression](#linear-methods-for-regression)
 4. Linear Classification
-5. Non-parametric Method
+5. [Non-parametric Method](#non-parametric-method)
 6. Decision Tree
-7. Boosting 🔥
-8. Random Forest 🔥
+7. [Boosting](#boosting) 🔥
+8. [Random Forest](#random-forest) 🔥
 9. SVM; Support Vector Machine
 10. PCA; Principle Component Analysis 🔥
 11. Clustering
@@ -94,30 +94,39 @@ hidden: true
   - [Regression Spline]({{"/2021/04/18/regression-spline.html#regression-spine" | relative_url}}) 🔥
   - Natural Cubic Spline
     - power basis function
-  - Smoothing Splines
+  - [Smoothing Splines]({{"/2021/04/18/regression-spline.html#smoothing-splines" | relative_url}})
     - knot selection
   - [Non-parametric Logistic Regression]({{"/2021/04/19/splines-method-2.html#non-parameteric-logistic-regression" | relative_url}})
   - [Multi-dimensional Splines]({{"/2021/04/19/splines-method-2.html#multi-dimensional-splines" | relative_url}})
 
 - [KNN Method]({{"/2021/05/16/KNN-and-kernel-method.html" | relative_url}})
   - [kernel method]({{"/2021/05/16/KNN-and-kernel-method.html#kernel-method" | relative_url}})
-- Nadaraya-Watson Estimator
+- [Nadaraya-Watson Estimator]({{"/2021/05/16/KNN-and-kernel-method.html#nadaraya-watson-estimator" | relative_url}})
 
-- Additive Model
-- Backfitting Algorithm
-- Generalized Additive Models 🔥
-- MARS; Multivariate Adaptive Regression Spline 🔥
+- [Additive Model]({{"/2021/05/17/additive-model-and-gam.html#additive-model" | relative_url}})
+  - Backfitting Algorithm
+- [GAM; Generalized Additive Models]({{"/2021/05/17/additive-model-and-gam.html#gam-generalized-additive-model" | relative_url}}) 🔥
+- [MARS; Multivariate Adaptive Regression Spline]({{"/2021/05/22/MARS.html" | relative_url}}) 🔥
 
 
 <hr/>
 
 ### Boosting
 
-- AdaBoost
+- [Introduction to Boosting]({{"/2021/05/09/introduction-to-boosting.html" | relative_url}})
+- [AdaBoost]({{"/2021/05/10/AdaBoost.html" | relative_url}})
 - Gradient Boosting
 - XGBoost
 
+<hr/>
+
 ### Random Forest
+
+<hr/>
+
+### Appendix
+
+- [내가 보려고 만든 '통계 분석' Cheat Sheet]({{"/2021/05/17/statistical-analysis-cheat-sheet-for-me.html" | relative_url}})
 
 
 
