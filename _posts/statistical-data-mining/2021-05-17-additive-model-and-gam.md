@@ -145,3 +145,4 @@ $$
 - [post from 'multithreaded'](https://multithreaded.stitchfix.com/blog/2015/07/30/gam/)
 - [[YouTube] R Tutorial: Nonlinear Modeling in R with GAMs](https://youtu.be/6V_VvweZkoI)
 - [[YouTube] R Tutorial: Basis functions and smoothing](https://www.youtube.com/watch?v=vckDyqI8tS8)
+- [[YouTube] R Tutorial: Multivariate GAMs](https://youtu.be/8doPTpkAWDQ)
