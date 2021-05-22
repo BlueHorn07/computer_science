@@ -1,5 +1,5 @@
 ---
-title: "Boosting"
+title: "Introduction to Boosting"
 layout: post
 use_math: true
 tags: ["Statistical Data Mining"]
