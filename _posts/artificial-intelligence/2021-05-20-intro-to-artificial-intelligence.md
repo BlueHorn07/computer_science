@@ -37,6 +37,8 @@ Machine Learning에는 크게 4가지 모델이 있다.
 - Neural Network
   - Single-layer Perceptron
   - Multi-layer Perceptron
+- Nearest-Neighborhood Model
+  - KNN
 
 <hr/>
 
