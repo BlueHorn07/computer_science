@@ -10,7 +10,7 @@ tags: ["Statistical Data Mining"]
 
 <br><span class="statement-title">TOC.</span><br>
 
-- Spectral Decomposition
+- Spectral Decomposition; Eigen Decomposition
 - Singular Value Decomposition
   - Low Rank Approximation
 
@@ -34,7 +34,7 @@ An \<**orthogonal matrix**\> $U$ is a matrix such that $UU^T = U^TU = I_n$.
 
 ### Spectral Decomposition
 
-<br><span class="statement-title">Theorem.</span> Spectral Decomposition<br>
+<br><span class="statement-title">Theorem.</span> Spectral Decomposition; Eigen Decomposition<br>
 
 For a real **symmetric** matrix $A \in \mathbb{R}^{n\times n}$, there exists a diagonal matrix $D = \text{diag}(d_1, \dots, d_n)$ and an orthogonal matrix $U$ s.t. $A = UDU^T$.
 

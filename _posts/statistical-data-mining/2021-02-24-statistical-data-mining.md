@@ -47,10 +47,11 @@ hidden: true
 - [Basic Linear Algebra]({{"/2021/03/07/supp-1-linear-algebra-1.html" | relative_url}})
   - Column space & Row space & Null space
   - Fundamental Theorem of Linear Algebra
-  - Eigen value & Eigen vector 
-
+- [Eigen value & Eigen vector]({{"/2021/03/08/supp-1-linear-algebra-2.html#eigen-value--eigen-vector" | relative_url}})
 - [Vector Calculus & Matrix Calculus]({{"/2021/03/08/supp-1-linear-algebra-2.html#matrix-calculus" | relative_url}})
 - [Spectral Decomposition & Singular Value Decomposition]({{"/2021/03/14/supp-1-linear-algebra-3.html" | relative_url}})
+- [Nonnegative Definite & Positive Definite Matrix]({{"/2021/03/27/supp-1-linear-algebra-4.html" | relative_url}})
+- [Orthogonal Projection]({{"/2021/03/27/supp-1-linear-algebra-4.html#orthogonal-projection" | relative_url}})
 
 #### Multivariate Normal Distribution
 
