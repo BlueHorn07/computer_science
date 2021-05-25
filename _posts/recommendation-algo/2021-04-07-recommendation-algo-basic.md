@@ -12,6 +12,7 @@ tags: ["Recommendation Algorithm"]
 
 - Introduction to Filtering
 - Explicit & Implicit Dataset
+- Neighbhorhood Model & Latent MF
 
 <hr/>
 
