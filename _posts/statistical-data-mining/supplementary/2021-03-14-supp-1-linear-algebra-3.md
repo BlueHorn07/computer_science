@@ -10,8 +10,8 @@ tags: ["Statistical Data Mining"]
 
 <br><span class="statement-title">TOC.</span><br>
 
-- Spectral Decomposition; Eigen Decomposition
-- Singular Value Decomposition
+- [Spectral Decomposition; Eigen Decomposition](#spectral-decomposition)
+- [Singular Value Decomposition](#singular-value-decomposition)
   - Low Rank Approximation
 
 <hr/>
@@ -120,41 +120,43 @@ $$
 
 <br><span class="statement-title">Theorem.</span> Singular Value Decomposition<br>
 
-For any $n \times p$ matrix $A$, there exist matrices $V \in \mathbb{R}^{n\times p}$, $D \in \mathbb{R}^{p\times p}$, and $U \in \mathbb{R}^{p\times p}$ s.t.
+For any $n \times p$ matrix $A$, there exist matrices $U \in \mathbb{R}^{n\times n}$, $D \in \mathbb{R}^{n\times p}$, and $V \in \mathbb{R}^{p\times p}$ s.t.
 
 $$
-A = VDU^T
+A = UDV^T
 $$
 
 where
 
 - $D = \text{diag}(d_1, \dots, d_p)$ with $d_i \ge 0$
   - $d_j$s are called \<**singular value**\> of $A$.
-- $V^T V = V^T V = I_p$; orthogonal matrix
+- $U$ is an orthogonal matrix from $AA^T = U(\Sigma\Sigma^T)U^T$
+- $V$ is an orthogonal matrix from $A^T A = V(\Sigma^T \Sigma)V^T$
 
 #### Low Rank Approximation
 
 SVD를 잘 이용하면, 행렬 $A$에 대한 \<Low Rank Aprroximation\> $A_k$를 유도할 수 있다.
 
-Let $A = VDU^T$, then
+Let $A = UDV^T$ and assume that $n \gg p$, then
 
 $$
 A = \begin{bmatrix}
   \vert & & \vert \\
-  \mathbf{v}_1 & \cdots & \mathbf{v}_p \\
+  \mathbf{u}_1 & \cdots & \mathbf{u}_n \\
   \vert & & \vert \\
 \end{bmatrix}
 \begin{bmatrix}
   d_1 & & \\
-      & \ddots & \\
-      &  & d_p
+      & \ddots \\
+      & & d_p \\
+      & O &
 \end{bmatrix}
 \begin{bmatrix}
- - & \mathbf{u}_1^T & - \\
+ - & \mathbf{v}_1^T & - \\
  & \vdots & \\
- - & \mathbf{u}_p^T & - \\
+ - & \mathbf{v}_p^T & - \\
 \end{bmatrix}
-= d_1 \mathbf{v}_1 \mathbf{u}_1^T + \cdots + d_p \mathbf{v}_p \mathbf{u}_p^T
+= d_1 \mathbf{u}_1 \mathbf{v}_1^T + \cdots + d_p \mathbf{u}_p \mathbf{v}_p^T
 $$
 
 이때, 표기의 편의를 위해 singular value $d_i$에 대해 descending order로 표기를 한다.
@@ -163,32 +165,33 @@ $$
 \text{where} \quad d_1 \ge d_2 \cdots \ge d_p
 $$
 
-주목할 점은 식의 우변의 $\mathbf{v}_i \mathbf{u}_i^T$은 rank-1 matrix라는 점이다. 즉, SVD를 하게 되면 행렬 $A$를 rank-1의 matrix로 분해한 것이 된다.
+주목할 점은 식의 우변의 $\mathbf{u}_i \mathbf{v}_i^T$은 rank-1 matrix라는 점이다. 즉, SVD를 하게 되면 행렬 $A$를 rank-1의 matrix로 분해한 것이 된다.
 
 이제 위의 결과를 가지고 Approximation $A_k$를 유도할 수 있다.
 
 $$
 A_k = \begin{bmatrix}
   \vert & & \vert \\
-  \mathbf{v}_1 & \cdots & \mathbf{v}_k \\
+  \mathbf{u}_1 & \cdots & \mathbf{u}_k \\
   \vert & & \vert \\
 \end{bmatrix}
 \begin{bmatrix}
   d_1 & & \\
       & \ddots & \\
-      &  & d_k
+      &  & d_k \\
+      & O &
 \end{bmatrix}
 \begin{bmatrix}
- - & \mathbf{u}_1^T & - \\
+ - & \mathbf{v}_1^T & - \\
  & \vdots & \\
- - & \mathbf{u}_k^T & - \\
+ - & \mathbf{v}_k^T & - \\
 \end{bmatrix}
-= d_1 \mathbf{v}_1 \mathbf{u}_1^T + \cdots + d_k \mathbf{v}_k \mathbf{u}_k^T
+= d_1 \mathbf{u}_1 \mathbf{v}_1^T + \cdots + d_k \mathbf{u}_k \mathbf{v}_k^T
 $$
 
 즉, $A_k$는 $A$를 SVD로 분해해 표현한 것에서 앞의 $k$개의 rank-1 matrix를 모은 것이다! 우리가 $d_i$를 내림차순으로 정렬해 표현했기 때문에, 뒤로 갈수록 작은 $d_j$를 얻게 되어 있다. 그래서 $A_k$는 앞의 $k$개 $d_i$만을 선택해 $A$를 근사한 것이다!
 
-이때, Low Rank Approximation의 error를 아래의 같이 \<Frobenius norm\>으로 정의한다.
+이때, \<Low Rank Approximation\>의 error는 아래와 같이 \<Frobenius norm\>으로 정의한다.
 
 $$
 \begin{aligned}
@@ -197,7 +200,7 @@ $$
 \end{aligned}
 $$
 
-그래서 만약 뒷부분의 $d_{k+1}, \cdots d_p$의 크기가 충분히 작다면, Low Rank Approx는 충분히 정확한 근사를 수행함을 보장할 수 있다!!
+그래서, 만약 뒷부분의 $d_{k+1}, \cdots d_p$의 크기가 작다면, Low Rank Approx는 충분히 정확한 근사를 수행함을 보장할 수 있다!!
 
 ps. 이런 Low Rank Approx는 생각보다 자주 사용되는 기법이라고 한다.
 
@@ -205,6 +208,6 @@ ps. Netflix의 추천 알고리즘 Contest에서 이 SVD를 활용해 Low Rank A
 
 <hr/>
 
-지금까지 행렬을 분해하는 두 가지 방법인 \<Spectral Decomposition\>과 \<Singular Value Decomposition\>를 살펴봤다. 이 두 개념은 이어지는 내용인 행렬의 \<Nonnegative Definite\>, \<Positive Definite\>를 정의할 때, 바탕이 된다.
+지금까지 행렬을 분해하는 두 가지 방법인 \<Spectral Decomposition\>과 \<Singular Value Decomposition\>를 살펴봤다. 이 두 개념은 이어지는 내용인 행렬의 \<Nonnegative Definite\>, \<Positive Definite\>를 정의할 때 바탕이 된다.
 
 👉 [Supp-1: Linear Algebra - 4]({{"/2021/03/27/supp-1-linear-algebra-4.html" | relative_url}})
