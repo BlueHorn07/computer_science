@@ -1,5 +1,5 @@
 ---
-title: "Bbck-propagation"
+title: "Back-propagation"
 layout: post
 use_math: true
 tags: ["Artificial Intelligence"]
@@ -20,7 +20,7 @@ $$
 
 \<Back-propagation\> 알고리즘은 \<Neural Network\>를 일종의 "**Computational Graph**"로 모델링 하여, Gradient를 구한다. Gradient는 \<**Chain Rule**\>에 의해 안쪽의 연산까지 차례대로 전파된다.
 
-\<Back-propagation\>은 복잡한 형태의 Loss 함수일지라도 그것을 작은 요소부터 차례로 \<Chain Rule\>에 따라 Gradient을 구하기 때문에 복잡한 함수의 미분식을 모르더라도 쉽게 Gradient를 구할 수 있다! 😁
+\<Back-propagation\>은 복잡한 형태의 Loss 함수일지라도 그것을 작은 요소부터 차례로 \<Chain Rule\>에 따라 Gradient을 구하기 때문에 복잡한 함수의 미분식을 직접 구하지 않고도 쉽게 Gradient를 구할 수 있다! 😁
 
 <hr/>
 
@@ -96,7 +96,7 @@ $$
 
   합성 함수의 경우도 \<back-propagation\>으로 쉽게 해결할 수 있다!
 
-  첫 block부터 살펴보자면, $\text{mid}$를 함수가 아니라 변수로 취급하면, 우리는 손쉽게 gradient를 구할 수 있다. 
+  첫 block부터 살펴보자면, $\text{mid}$를 함수가 아니라 변수로 취급하면, 손쉽게 gradient를 구할 수 있다. 
   
   $$
   \frac{\partial \text{out}}{\partial \text{mid}}
@@ -108,7 +108,7 @@ $$
   \frac{\partial \text{mid}}{\partial \text{in}}
   $$
 
-  두 gradient 값을 다 구했다면, 구한 gradient를 모두 곱해서 우리가 원하는 Gradient를 구한다! 😁
+  두 gradient 값을 다 구했다면, 구한 gradient를 모두 곱해서 우리가 원하는 gradient를 구한다! 😁
   
   $$
   \frac{\text{out}}{\text{in}} = \frac{\partial \text{out}}{\partial \text{mid}} \cdot \frac{\partial \text{mid}}{\partial \text{in}}
