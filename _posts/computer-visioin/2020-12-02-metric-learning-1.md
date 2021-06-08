@@ -2,7 +2,7 @@
 title: "Metric Learning 1"
 layout: post
 use_math: true
-tags: [AIGS539]
+tags: ["Computer Vision"]
 ---
 
 ## 서론

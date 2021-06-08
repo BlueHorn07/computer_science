@@ -2,7 +2,7 @@
 title: "Object Detection Datasets"
 layout: post
 use_math: true
-tags: [AIGS539]
+tags: ["Computer Vision"]
 ---
 
 ## 서론

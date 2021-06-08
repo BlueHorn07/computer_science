@@ -17,7 +17,7 @@ use_math: true
 ### [Artificial Intelligence]({{"/2021/05/20/artificial-intelligence.html" | relative_url}})
 
 
-### Computer Vision
+### [Computer Vision](({{"/2020/12/01/Computer-Vision.html" | relative_url}}))
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: "[AIGS539] Computer Vision"
+title: "Computer Vision"
 layout: post
 use_math: true
-tags: [AIGS539]
+tags: ["Computer Vision"]
 hidden: true
 ---
 
