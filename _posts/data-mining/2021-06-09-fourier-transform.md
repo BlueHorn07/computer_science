@@ -132,7 +132,7 @@ $$
 x(t) = \int_{-\infty}^{\infty} X(f) \cdot e^{i2\pi f t} \; df
 $$
 
-사실 식의 형태가 아주 비슷하고, 약간의 대칭적인 모습을 보인다 😲 $e^{-i2\pi f t}$와 $e^{i2\pi f t}$가 서로 **"켤레복소수(complex conjugate)"**인 점도 주목 할만 하다.
+\<푸리에 변환\>과 \<푸리에 역변환\>에 대한 두 식이 아주 비슷하고 약간의 대칭적인 모습을 보인다 😲 $e^{-i2\pi f t}$와 $e^{i2\pi f t}$가 서로 **"켤레복소수(complex conjugate)"**인 점도 주목 할만 하다.
 
 <br/>
 
@@ -145,12 +145,12 @@ $$
 \<푸리에 변환\>에 대한 식을 잘 보면, 사실 \<푸리에 변환\>은 주파수가 $f$인 sinusoidal function과 함수 $x(t)$의 내적임을 알 수 있다.
 
 $$
-X(f) = \left< x(t), \; e^{-i2\pi f t}\right>
+X(f) = \left< x(t), \; e^{i2\pi f t}\right> = \int_{-\infty}^{\infty} x(t) \cdot (e^{i2\pi f t})^{*} \; dt = \int_{-\infty}^{\infty} x(t) \cdot e^{-i2\pi f t} \; dt
 $$
 
-글의 맨 처음에 우리가 \<푸리에 변환\>이 시그널을 "주파수 공간(frequency space)"로 변환하는 테크닉이라고 소개했는데, 이 변환하는 과정에서 사실 함수 $x(t)$를 frequency basis function $e^{-i2\pi ft}$와 내적하는 과정을 통해 이루어지는 것이었다!!
+글의 맨 처음에 우리가 \<푸리에 변환\>이 시그널을 "주파수 공간(frequency space)"로 변환하는 테크닉이라고 소개했는데, 이 변환하는 과정에서 사실 함수 $x(t)$를 frequency basis function $e^{i2\pi ft}$와 내적하는 과정을 통해 이루어지는 것이었다!!
 
-이렇게 이해해보니 \<푸리에 변환\>이 더 직관적이고 쉬워 보이지 않는가?? ㅎㅎ 😆 \<푸리에 역변환\> 역시 $X(f)$에서 주파수를 고정하고 시간에 대한 time basis function $e^{i2\pi ft}$와 내적하는 것에 불과하다.
+이렇게 이해해보니 \<푸리에 변환\>이 더 직관적이고 쉬워 보이지 않는가?? ㅎㅎ 😆 \<푸리에 역변환\> 역시 $X(f)$에서 주파수를 고정하고 시간에 대한 time basis function $e^{-i2\pi ft}$와 내적하는 것에 불과하다.
 
 <hr/>
 
