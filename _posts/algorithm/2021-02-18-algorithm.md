@@ -87,8 +87,8 @@ hidden: true
   - [Dameraus-Levelshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}}) 🎈
 - [Knapsack]({{"/2021/04/30/kanpsack.html" | relative_url}})
 - [Chain Matrix Multiplication]({{"/2021/05/02/chain-matrix-multiplication.html" | relative_url}})
-- Shortest Reliable Paths
-- All Pairs Shortest Paths
+- [Shortest Reliable Paths]({{"/2021/06/13/shortest-reliable-paths.html" | relative_url}})
+- [All Pairs Shortest Paths; Floyd-Warshall]({{"/2021/06/13/all-pairs-shortest-paths.html" | relative_url}})
 - TSP; Traveling Salesman Problem
 - Weighted Interval Scheduling
 
