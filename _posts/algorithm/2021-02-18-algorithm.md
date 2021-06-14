@@ -12,6 +12,7 @@ hidden: true
 
 #### 참고 교재
 - 『Algorithms』 Dasgupta, international ed.
+- [『알고리즘 문제해결전략』](https://book.algospot.com/) 구종만
 
 <div class="math-statement" markdown="1">
 
@@ -89,7 +90,9 @@ hidden: true
 - [Chain Matrix Multiplication]({{"/2021/05/02/chain-matrix-multiplication.html" | relative_url}})
 - [Shortest Reliable Paths]({{"/2021/06/13/shortest-reliable-paths.html" | relative_url}})
 - [All Pairs Shortest Paths; Floyd-Warshall]({{"/2021/06/13/all-pairs-shortest-paths.html" | relative_url}})
-- TSP; Traveling Salesman Problem
+- [TSP; Traveling Salesman Problem]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
+  - 완전탐색
+  - DP
 - Weighted Interval Scheduling
 
 ### Linear Programming
