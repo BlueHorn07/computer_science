@@ -157,7 +157,7 @@ $$
 
 ### Gaussian Process
 
-추후 작성 예정
+👉 [Gaussian Process & Gaussian Process Regression]({{"2021/07/01/Guassian-process-and-GPR.html" | relative_url}})
 
 <hr/>
 
