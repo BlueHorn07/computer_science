@@ -11,13 +11,13 @@ tags: ["Machine Learning"]
 
 <hr/>
 
-이번 포스트는 "확률론(Probability Theory)"과 "Machine LEarning"을 공부할 때 등장하는 *"Process"* 가 붙은 모든 개념을 넓은 시야로 살펴보기 위해 작성한 포스트입니다. 다루는 주제는 아래와 같습니다.
+이번 포스트는 "확률론(Probability Theory)"과 "Machine Learning"에서 등장하는 *"Process"* 가 붙은 모든 개념을 넓은 시야로 살펴보기 위해 작성한 포스트입니다. 다루는 주제는 아래와 같습니다.
 
-- Random Process; Stochastic Process
-- Bernoulli Process
-- Poisson Process
-- Gaussian Process
-- Markov Process
+- [Random Process; Stochastic Process](#introduction-to-random-process)
+- [Bernoulli Process](#bernoulli-process-2)
+- [Poisson Process](#poisson-process)
+- [Gaussian Process](#gaussian-process)
+- [Markov Process](#markov-process)
 
 <hr/>
 
@@ -163,7 +163,7 @@ $$
 
 ### Markov Process
 
-추후 작성 예정
+👉 [Markov Process]({{"/2021/07/03/Markov-process.html" | relative_url}})
 
 <hr/>
 
