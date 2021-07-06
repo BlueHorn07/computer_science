@@ -21,7 +21,7 @@ tags: ["Deep Learning", "NLP"]
 
 이번 포스트에서 다루는 모델은 "순서"라는 성질을 가진 데이터를 처리하는 모델들이다. 예를 들면, 단어(word)나 문장(sentence), 1년간의 주식 가격 등이 순서가 중요하게 여겨지는 데이터들이다. 이런 데이터를 \<sequence data\>라고 한다.
 
-기존 \<Feed Forward Network\>는 값이 전방(前方)으로만 흐르기 때문에 history를 처리하기에는 적합하지 않았다. 그러나 <RNN\>, \<LSTM\>은 값이 그 시퀀셜(sequential)한 구조로 인해 입력 데이터의 history를 '기억'할 수 있으며, \<sequence data\>를 처리하는 것에 특화되어 있다.
+기존 \<Feed Forward Network\>는 값이 전방(前方)으로만 흐르기 때문에 과거의 정보도 중요한 \<sequential data\>를 처리하기에는 적합하지 않았다. 그러나 <RNN\>, \<LSTM\>은 값이 그 시퀀셜(sequential)한 구조로 인해 과거 데이터의 history를 '기억'할 수 있으며, \<sequence data\>를 처리하는 것에 특화되어 있다.
 
 <hr/>
 
@@ -32,9 +32,9 @@ tags: ["Deep Learning", "NLP"]
   <p><a href="https://wikidocs.net/60690">PyTorch로 시작하는 딥러닝 입문</a></p>
 </div>
 
-\<RNN; Recurence Neural Network\>에서는 은닉층에서 계산한 값이 출력층 방향으로도 전파되지만, 다시 은닉층으로 돌아와 은닉층의 **hidden state**에 저장된다. 이 값은 다음 입력을 처리할 때 활용된다!
+\<RNN; Recurrent Neural Network\>에서는 은닉층에서 계산한 값이 출력층 방향으로도 전파되지만, 다시 은닉층으로 돌아와 은닉층의 **hidden state**에 저장된다. 이 값은 다음 입력을 처리할 때 활용된다!
 
-\<RNN\>을 위와 같이 표현할 수도 있다. 아래와 같이 iteration을 풀어서 표현할 수도 있다. 우리는 이것을 \<Cell\>이라고 한다.
+\<RNN\>을 위와 같이 표현할 수도 있지만, 아래와 같이 iteration을 풀어서 표현할 수도 있다. 이것을 \<**Cell**\>이라고 한다.
 
 <div class="img-wrapper">
   <img src="https://wikidocs.net/images/page/22886/rnn_image2_ver3.PNG" width="400px">
@@ -92,7 +92,7 @@ $$
 
 ### LSTM; Long Short Term Memory model
 
-\<RNN\>의 경우 hidden state를 통해 이전 입력에 대한 정보를 가지고 있지만, 입력 시퀀스가 길어질 수록 성능이 떨어진다는 단점이 존재한다. 이를 \<The problem of learning long-term dependencies; 장기 의존성 문제\>라고 한다. 이에 대해선 동일한 값의 $W_h$의 값을 여러번 사용하게 되면서 발생하는 Gradient Exploding 또는 Gradient Vanishing 때문이라고 하나, 여기서는 자세히 설명하진 않겠다.
+\<RNN\>의 경우 hidden state를 통해 이전 입력에 대한 정보를 가지고 있지만, 입력 시퀀스가 길어질수록 성능이 떨어진다는 단점이 존재한다. 이를 \<The problem of learning long-term dependencies; 장기 의존성 문제\>라고 한다. 이에 대해선 동일한 값의 $W_h$의 값을 여러번 사용하게 되면서 발생하는 Gradient Exploding 또는 Gradient Vanishing 때문이라고 하나, 여기서는 자세히 설명하진 않겠다.
 
 <div class="img-wrapper">
   <img src="{{ "/images/natural-language-process/RNN-4.png" | relative_url }}" width="750px">
@@ -109,7 +109,7 @@ $$
 
 <br/>
 
-\<LSTM\>에서 cell state $c_t$는 장기 기억을 담당하며, hidden state $h_t$는 단기 기억을 담당한다.
+\<LSTM\>에서 <span class="half_HL">cell state $c_t$는 장기 기억을 담당</span>하며, <span class="half_HL">hidden state $h_t$는 단기 기억을 담당</span>한다.
 
 $$
 c_t = f_t \circ c_{t-1} + i_t \circ g_t
@@ -145,7 +145,7 @@ $$
 
 망각 게이트의 값을 통해 cell state $c_{t-1}$에서 잊을 정보의 양을 정한다.
 
-다시 cell state $c_t$의 수식을 살펴보자. 앞에서 구한 3가지 게이트의 값을 통해 기존의 cell state $c_{t-1}$ 값을 갱신하고, 입력 값에서 기억할 정보를 결정한다. 🤩
+다시 cell state $c_t$의 수식을 살펴보자. 망각 게이트 $f_t$를 통해 이전 cell state $c_{t-1}$에서 기억할 정보를 결정하고, 입력 게이트 $i_t$와 게이트 게이트 $g_t$를 통해 현재 입력앞에서 기억할 정보를 결정한다. 🤩
 
 $$
 c_t = f_t \circ c_{t-1} + i_t \circ g_t
@@ -166,17 +166,17 @@ $$
 
 <br/>
 
-\<LSTM\>의 경우 \<RNN\>에 비해 구조가 정말 복잡하지만, 이전과 달리 Gradient Exploding이나 Graidne Vanishing 현상이 두드러지지 않는다! 😁 자세한 이유를 알고 싶다면, [이 아티클](https://curt-park.github.io/2017-04-03/why-is-lstm-strong-on-gradient-vanishing/)을 참고하라.
+\<LSTM\>의 경우 \<RNN\>에 비해 구조가 정말 복잡하지만, 이전과 달리 Gradient Exploding이나 Gradient Vanishing 현상이 두드러지지 않는다! 😁 자세한 이유를 알고 싶다면, [이 아티클](https://curt-park.github.io/2017-04-03/why-is-lstm-strong-on-gradient-vanishing/)을 참고하라.
 
 <hr/>
 
-2014년에는 \<LSTM\>을 개선한 \<GRU; Gated Recurrent Unit\>라는 sequential model이 제시되었다. \<LSTM\>처럼 게이트(gate)가 달려있지만, $h_t$ 하나의 상태만을 기억하기 떄문에 \<LSTM\>보다 더 빠르게 학습한다고 한다. \<GRU\>에 대한 자세한 내용은 [이 아티클](https://yjjo.tistory.com/18)을 참고하라.
+2014년에는 \<LSTM\>을 개선한 [\<GRU; Gated Recurrent Unit\>](https://en.wikipedia.org/wiki/Gated_recurrent_unit)라는 sequential model이 제시되었다. \<LSTM\>처럼 게이트(gate)가 달려있지만, $h_t$ 하나의 상태만을 기억하기 떄문에 \<LSTM\>보다 더 빠르게 학습한다고 한다. \<GRU\>에 대한 자세한 내용은 [이 아티클](https://yjjo.tistory.com/18)을 참고하라.
 
 \<RNN\>, \<LSTM\>은 자연어(Natural Language)와 시계열 데이터를 처리하는 가장 기본이 되는 모델이다. 그러니 이번 내용에 익숙해지는 것을 추천한다.
 
 **■ related post**
 
-- (개인적인 용도로 정리한) 두 모델을 포함해 자연어 처리에 대한 PyTorch Cheet Sheet
+- NLP with PyTorch Cheat Sheet
 
 <hr/>
 
