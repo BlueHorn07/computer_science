@@ -46,10 +46,47 @@ tags: ["Algorithm"]
 
 사실 실제로 구현을 해보면, 3차원 배열이 아니라 $k$를 없앤 2차원 배열로도 충분히 잘 동작한다 😉
 
+시간 복잡도는 기존 DFS 기반의 $O(V^2 E)$에서 $O(V^3)$로 줄어들었다!! (일반적으로 sparse graph가 아니라면 $V < E$이다.)
+
+<hr/>
+
+### 구현
+
+- adjacency matrix로 연결성을 표현하는 걸 추천
+- adjacency matrix 초기화 잊지 말것; `fill()`;
+  - 초기화 할 때, `INT_MAX`와 같이 매우 큰수로 하게 되면 overflow 때문에 잘못된 결과를 뱉음;;
+- 구현 자체는 정말 간단함! LIS, edit distance 급으로 쉬운 구현!
+
+``` cpp
+// initialization 1
+fill(&dist[0][0], &dist[N+1][N+1], MAX2);
+
+// initialization 2
+for (int i = 0; i < M; i++) {
+  int a, b;
+  scanf("%d %d", &a, &b);
+
+  dist[a][b] = 1;
+  dist[b][a] = 1;
+}
+
+// Floyd-Warshall
+for (int k = 1; k <= N; ++k) {
+  for (int i = 1; i <= N; ++i) {
+    for (int j = 1; j <= N; ++j) {
+      if(dist[i][k] == MAX2 || dist[k][j] == MAX2) continue;
+
+      dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+    }
+  }
+}
+```
+
 <hr/>
 
 #### 추천 문제
 
+- [백준 1389번: 케빈 베이컨의 6단계 법칙](https://www.acmicpc.net/problem/1389)
 - [백준 11404번: 플로이드](https://www.acmicpc.net/problem/11404)
 - [백준 11562번: 백양로 브레이크](https://www.acmicpc.net/problem/11562)
 - [백준 1507번: 궁금한 민호](https://www.acmicpc.net/problem/1507) // 플로이드-와샬을 어떻게 써야할지 고민을 좀 해야 했다
