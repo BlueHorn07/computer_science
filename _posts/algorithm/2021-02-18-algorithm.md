@@ -93,6 +93,7 @@ hidden: true
 - [TSP; Traveling Salesman Problem]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
   - 완전탐색
   - DP
+- [Independent Sets in Tree]({{"/2021/07/10/independent-sets-in-tress.html" | relative_url}})
 - Weighted Interval Scheduling
 
 ### Linear Programming
