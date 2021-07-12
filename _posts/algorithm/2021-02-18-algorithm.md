@@ -95,6 +95,7 @@ hidden: true
   - DP
 - [Independent Sets in Tree]({{"/2021/07/10/independent-sets-in-tress.html" | relative_url}})
 - [Weighted Interval Scheduling]({{"/2021/07/12/weighted-interval-scheduling.html" | relative_url}})
+- [Segmented Least Squares]({{"/2021/07/12/segmented-least-squares.html" | relative_url}})
 
 ### Linear Programming
 
