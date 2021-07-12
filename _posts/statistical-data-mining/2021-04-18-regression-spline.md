@@ -158,7 +158,7 @@ $$
 
 where $f_i$ are polynomials and $\xi_i$ are the **<u>knots</u>**.
 
-앞에서 살펴본 \<Polynomial Regression\>과 비교했을 때, <span class="half_HL">범위 전체를 도메인으로 갖는 polynomial을 취하는 것이 아니라 domain inteveral을 divide하여 polynomial을 취한다</span>는 점이 다르다.
+앞에서 살펴본 \<Polynomial Regression\>과 비교했을 때, <span class="half_HL">범위 전체를 도메인으로 갖는 polynomial을 취하는 것이 아니라 domain interval을 분할해 polynomial fitting을 한다</span>는 점이 다르다.
 
 <br/>
 
