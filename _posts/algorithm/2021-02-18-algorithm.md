@@ -85,7 +85,7 @@ hidden: true
 
 - [LIS; Longest Incresaing Subsequences]({{"/2021/04/20/longest-increasing-subsequences.html" | relative_url}})
 - [Edit Distance]({{"/2021/04/20/edit-distanace.html" | relative_url}})
-  - [Dameraus-Levelshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}}) 🎈
+  - [Dameraus-Levenshtein Distance]({{"/2021/04/24/Damerau-Levenshtein-distance.html" | relative_url}}) 🎈
 - [Knapsack]({{"/2021/04/30/kanpsack.html" | relative_url}})
 - [Chain Matrix Multiplication]({{"/2021/05/02/chain-matrix-multiplication.html" | relative_url}})
 - [Shortest Reliable Paths]({{"/2021/06/13/shortest-reliable-paths.html" | relative_url}})
@@ -94,7 +94,7 @@ hidden: true
   - 완전탐색
   - DP
 - [Independent Sets in Tree]({{"/2021/07/10/independent-sets-in-tress.html" | relative_url}})
-- Weighted Interval Scheduling
+- [Weighted Interval Scheduling]({{"/2021/07/12/weighted-interval-scheduling.html" | relative_url}})
 
 ### Linear Programming
 
