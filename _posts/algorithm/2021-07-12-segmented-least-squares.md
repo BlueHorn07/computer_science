@@ -24,14 +24,14 @@ tags: ["Algorithm"]
 
 그.러.나. 때로는 주어진 데이터에 대한 regression 식을 하나의 선형 모델로 표현하기 어려운 경우가 많다. 이 경우는 차수(degree)를 높여 곡선으로 모델을 fitting 하거나 구간을 나누어 각 구간 별로 regression fitting을 하는 방법이 있다.
 
-이번에 다룰 주제인 \<Segmented Least Squares\> 방법은 후자의 방식으로 도메인을 분할한 segment에 대해 regression fitting 하는 방식이다.
+이번에 다룰 주제인 \<Segmented Least Squares\> 방법은 후자의 방식으로 도메인을 분할해 얻은 segment에 대해 regression fitting을 하는 방식이다.
 
 <div class="img-wrapper">
   <img src="https://kartikkukreja.files.wordpress.com/2013/10/segmented.png?w=300&h=231" width="360px">
   <p>Image from <a href="https://kartikkukreja.wordpress.com/2013/10/21/segmented-least-squares-problem/)">kartikkukreja' article</a></p>
 </div>
 
-위의 그림에서는 도메인을 2개의 segment로 분할해 regression fitting 한 결과이다. 일반적으로 도메인을 분할해 fitting 하는 경우, 도메인을 얼마나 나눌지 그리고 어디에서 나눌지 미리 정하고 fitting을 진행한다. 즉, segment selection을 진행해야 한다는 말이다. 그러나 \<Segmented Least Squares\> 기법을 사용하면, 알아서 얼마나 나눌지 어디에서 나눌지를 결정해 fitting 한 결과를 보여준다!! 😲
+위의 그림은 도메인을 3개의 segment로 분할해 regression fitting 한 결과이다. 일반적으로 도메인을 분할해 fitting 하는 경우, 도메인을 얼마나 나눌지 그리고 어디에서 나눌지 미리 정하고 fitting을 진행한다. 즉, segment selection을 진행해야 한다는 말이다. 그러나 \<Segmented Least Squares\> 기법을 사용하면 얼마나 나눌지 어디에서 나눌지를 알아서 결정해 fitting 한 결과를 보여준다!! 😲
 
 <hr/>
 
@@ -59,7 +59,7 @@ where $L$ is the number of segments, and $c$ is a postivie constant.
 
 </div>
 
-오차합 $E$를 최소화 하려면 segment를 전체 데이터의 수인 $n$ 만큼 나누어 fitting을 진행하면 된다. 그러나 이런 모델은 generalization 측면에서 결코 좋은 모델이 아니다. 반대로 데이터를 $n$개로 나누지 않고 $n$개 점 중에 combination을 구하려고 한다면, 그것 역시 조합폭발(combinatorial explosion)에 직면하고 만다.
+오차합 $E$를 최소화 하려면 segment를 전체 데이터의 수인 $n$ 만큼 나누어 fitting을 진행하면 된다. 그러나 이런 모델은 generalization 측면에서 결코 좋은 모델이 아니다. 반대로 데이터를 $n$개로 나누지 않고 $n$개 점 중에 combination을 구하려고 한다면 그것 역시 조합폭발(combinatorial explosion)에 직면하고 만다.
 
 결국 \<Segmented Least Squares\> 문제는 tradeoff function $f(x)$를 통해 accuracy(goodness of fit)과 parsimony(number of lines) 중 적절한 균형을 찾는 최적화 문제라고 할 수 있다.
 
@@ -94,7 +94,7 @@ $$
 
 \<Segmented Least Squares\> 알고리즘을 공부하면서 ["통계적 데이터마이닝(IMEN472)"](https://bluehorn07.github.io/computer_science/2021/02/24/statistical-data-mining.html)에서 들었던 [\<Regression Spline\>](https://bluehorn07.github.io/computer_science/2021/04/18/regression-spline.html)이 대해 떠올랐다. 이 알고리즘 역시 도메인을 분할해 regression fitting 하는 알고리즘이다.
 
-다만 \<Regression Spline\>의 경우 곡률(curverture)까지 고려해 fitting을 진행하며, 구간을 얼마나 나눌지 선택하는 knot selection을 validation 과정을 통해 진행한다는 점이 \<Segmented Least Squares\> 알고리즘과 다르다! 🤩
+다만 \<Regression Spline\>의 경우 곡률(curverture)까지 고려해 fitting을 진행하며, 구간을 얼마나 나눌지 선택하는 knot selection을 cross validation 과정을 통해 진행한다는 점이 \<Segmented Least Squares\> 알고리즘과 다르다! 🤩
 
 
 <hr/>

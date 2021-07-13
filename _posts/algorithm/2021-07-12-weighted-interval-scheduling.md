@@ -13,11 +13,11 @@ tags: ["Algorithm"]
 
 이전의 ["Interval Scheduling and Partitioning"]({{ "2021/04/20/interval-scheduling-and-partitioning.html" | relative_url}}) 포스트에서 Interval을 스케쥴 하는 방법에 대해 살펴보았다. 이때는 Greedy 한 방식으로 접근해 문제를 해결했다.
 
-Greedy는 Interval이 모두 동일한 weight를 갖는다면, 잘 동작한다. 그러나 이번에는 각 Interval에 weight $W_i$가 있어 weight sum을 최대화 하도록 문제를 풀어야 한다. 이 경우에는 Greedy가 아니라 DP로 문제를 해결해야 한다!
+Greedy는 Interval이 모두 동일한 weight를 갖는다면 잘 동작한다. 그러나 이번에는 각 Interval에 weight $W_i$가 있어 가중합을 최대화 하도록 문제를 풀어야 한다. 이 경우에는 Greedy가 아니라 DP로 문제를 해결해야 한다!
 
 <hr/>
 
-먼저 문제를 formulation 해보자. 
+먼저 문제를 기술해보자.
 
 <div class="statement" markdown="1">
 
@@ -25,7 +25,7 @@ A set of $n$ jobs, job $j$ starts at $s_j$, finishes at $f_j$ and has weight $w_
 
 </div>
 
-먼저 Greedy 방식과 동일한게 interval은 finish time $f_j$를 기준으로 정렬한다. 그리고 함수 $p(j)$를 정의해 job $j$와 compatible 가장 빠른 job $i$를 구해보자.
+먼저 Greedy 방식과 동일한게 interval은 finish time $f_j$를 기준으로 정렬한다. 그리고 함수 $p(j)$를 정의해 job $j$와 compatible 하면서 가장 빠른 job $i$를 구해보자.
 
 - $p(j)$: last index $i < j$ s.t. job $i$ is compatible with $j$.
 

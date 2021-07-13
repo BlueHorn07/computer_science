@@ -84,7 +84,7 @@ $$
 int dp[VMAX][2]; // Maximum Weight Sum of Ind. Set
 ```
 
-이때, `dp[i][0]`는 $i$번째 노드를 포함하지 않았을 때, `dp[i][1]`는 $i$번째 노드를 포함했을 때의 Maximum Weight Sum of Ind. Set이다.
+이때, `dp[i][0]`는 $i$번째 노드를 포함하지 않았을 때, `dp[i][1]`는 $i$번째 노드를 포함했을 때의 Maximum Weight Sum이다.
 
 문제를 해결하기 위한 재귀함수는 아래와 같다.
 

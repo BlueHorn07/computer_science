@@ -21,13 +21,17 @@ tags: ["Algorithm"]
 
 과연 위와 같은 Maximum compatible subset을 찾으려면 어떻게 해야할까?? Greedy Algorithm은 <span class="half_HL">모든 Job을 finish time으로 정렬한 후에 종료시간이 빠르면서 compatible 한 순서대로 고르는 방식</span>을 제안한다.
 
+<div class="theorem" markdown="1">
+
 <span class="statement-title">Theorem.</span><br>
 
 \<Interval Scheduling\> 문제에서 위와 같은 Greedy Approach는 optimal solution을 보장한다.
 
-<span class="statement-title">*Proof*.</span><br>
+</div>
 
-<div class="math-statement" markdown="1">
+<div class="proof" markdown="1">
+
+<span class="statement-title">*Proof*.</span><br>
 
 <div class="img-wrapper">
   <img src="{{ "/images/algorithm/interval-scheduling-1.png" | relative_url }}" width="500px">
@@ -61,8 +65,6 @@ So in the optimal solution, we can replace job $j_{r+1}$ with job $i_{r+1}$. The
 $n$개의 수업이 주어졌고, 각 수업 $j$는 $[s_j, f_j]$의 start/finish time을 갖는다고 하자. 이때, 어떤 두 수업도 겹치지 않도록 스케쥴링 하면서, 강의실의 갯수는 최소가 되는 방법을 생각해보자!
 
 위의 문제 역시 Greedy Algorithm으로 간단히 해결할 수 있다!!
-
-<hr/>
 
 <div class="math-statement" markdown="1">
 
