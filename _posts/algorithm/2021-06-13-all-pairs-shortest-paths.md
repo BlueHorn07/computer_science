@@ -84,6 +84,8 @@ for (int k = 1; k <= N; ++k) {
 
 <hr/>
 
+참고로 \<Flyod-Warshall\>은 노드의 수가 <span style="color: red;">10,000</span>가 되면 너무 많은 메모리를 쓰기 때문에 쓸 수 없다! [백준 1325번: 효율적인 해킹](https://www.acmicpc.net/problem/1325)이 메모리 때문에 \<Flyod-Warshall\>을 쓸 수 없는 예이다!
+
 #### 추천 문제
 
 - [백준 1389번: 케빈 베이컨의 6단계 법칙](https://www.acmicpc.net/problem/1389)
