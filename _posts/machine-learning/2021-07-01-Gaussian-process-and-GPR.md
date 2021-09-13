@@ -46,7 +46,7 @@ $$
 
 <span class="statement-title">Definition.</span> Gaussian Process<br>
 
-A sequence of Gaussian distributions! \<**Gaussian Process**\> is a generlization of the Guassian Distribution. It is a distribution over functions!
+A sequence of Gaussian distributions! \<**Gaussian Process**\> is a generlization of multi-variate Gaussian distribution. It is a distribution over functions!
 
 $$
 \mathcal{GP} (m(x), k(x, x'))
@@ -59,7 +59,7 @@ $$
 
 </div>
 
-이전의 \<Bernoulli Process\>의 경우, 각 trial에서 모두 동일한 \<Bernoulli Distribution\>을 가정했는데, \<Gaussian Process\>의 경우 각 trial의 평균과 분산이 다를 수 있다는 점이 주목할만 하다!
+이전의 \<Bernoulli Process\>의 경우, 각 trial에서 모두 동일한 \<Bernoulli Distribution\>을 가정했는데, \<Gaussian Process\>의 경우 각 trial의 평균과 분산이 다를 수 있다는 점에 주목하자!
 
 <hr/>
 
@@ -71,13 +71,38 @@ $$
 
 앞에서 살펴본 \<Gaussian Process\>를 활용하면, non-parameteric regression을 수행할 수 있다! 😎 "통계적 데이터마이닝(IMEN472)"에서 [non-parameteric model](https://bluehorn07.github.io/computer_science/2021/02/24/statistical-data-mining.html#non-parametric-method)에 대해 다루긴 했는데, \<GP Regression; Gaussian Process Regression\>에 대해서는 다루지 않았다.
 
-\<GP Regression\>은 regression function $f(x)=y$로 GP로 가정해 모델을 만들기 떄문에 mean function $\mu(x)$와 variance function $\sigma(x)^2$를 얻는다. 위의 그림은 regression function $\mathcal{GP}(\mu(x), \sigma(x)^2)$을 바탕으로 regression의 **신뢰구간(confidence level)**을 유도한 것이다. regression의 신뢰구간을 얻을 수 있다는 것은 \<GP Regression\>의 장점 중 하나다! 👍
+\<GP Regression\>은 예측할 regression function $f(x)$를 GP로 가정해 모델을 만들기 떄문에 mean function $\mu(x)$와 variance function $\sigma(x)^2$를 얻는다. 위의 그림은 regression function $\mathcal{GP}(\mu(x), \sigma(x)^2)$을 바탕으로 regression의 **신뢰구간(confidence level)**을 유도한 것이다. regression의 신뢰구간을 얻을 수 있다는 것은 \<GP Regression\>의 장점 중 하나다! 👍
 
 <br/>
 
-이전의 Parameteric Regression에서는 샘플 데이터 $X$에 대한 최적화 과정을 통해 parameter $\Theta$에 대한 최적해 $\theta$를 유도했다. 이 최적화 과정은 곧 $p(\theta \mid X)$가 최대인 $\theta$를 구하는 것과 같다.
+데이터셋 $\mathcal{D} = \\{ (x_i, y_i)^n_{i=1}\\} = (X, y)$에 대해 GP regression은 아래와 같이 모델링한다.
 
-반면에 \<GP Regression\>은 parameter $\Theta$를 <span class="half_HL">probabilistically distributed value</span>로 취급한다. Parameteric Regression에서 $\Theta$를 deterministic value로 취급한 것과는 대조된다. $\Theta$가 RV가 되었기 때문에 이에 대응하는 확률분포 $p(\theta)$도 존재한다.
+$$
+\begin{aligned}
+y_i &= f(x_i) + \epsilon_i \\
+f &\sim \mathcal{GP}(\cdot \mid 0, K) \\
+\epsilon_i &\sim N(\cdot \mid 0, \sigma^2)
+\end{aligned}
+$$
+
+이때, 두 번째 줄의 $f \sim \mathcal{GP}(\cdot \mid 0, K)$가 눈에 띈다. 함수 $f$가 GP의 분포를 따른다... 이게 무슨 말일까? 이걸 이해하려면 \<distribution over functions\>에 대해 먼저 이해해야 한다.
+
+<div class="definition" markdown="1">
+
+<span class="statement-title">Definition.</span> Distribution over functions<br>
+
+\<Distribution over functions\>에 대한 개념은 우리가 기존에 알던 distribution의 개념보다 좀더 추상적인 영역에 있다. 먼저 함수(function)을 모은 어떤 set 또는 space가 있다고 생각하자. 이 space of function은 $\mathbb{R}^2$나 $\mathbb{R}^n$와 같이 표현되는 그런 공간은 아니다. 단순히 big collection of functions라고 생각하는 것이 더 적절하다. 
+
+우리는 이 space of function 위에서 확률을 정의할 것이다. space of function은 연속적인 공간이기 때문에[^1] 여기서의 distribution은 subset of functions를 그릴 확률을 말한다. $(x, y)$의 쌍으로 된 데이터셋 $D$를 생각해보자. 우리는 (random) function의 집합이 이 $\\{ (x, y) \\}$의 데이터셋을 지나는 확률을 구하고자 한다.
+
+</div>
+
+<br/>
+
+
+전통적인 Parameteric Regression에서는 샘플 데이터 $X$에 LS method와 같은 최적화를 통해 parameter $\Theta$에 대한 최적해 $\theta$를 유도했다. 이 최적화 과정은 $p(\theta \mid X)$, 즉 주어진 데이터 $X$에 대한 posterior probability가 최대인 $\theta$를 구하는 것과 같다.
+
+반면에 \<GP Regression\>은 parameter $\Theta$를 <span class="half_HL">probabilistically distributed value</span>인 RV로 취급한다. Parameteric Regression에서 $\Theta$를 deterministic value로 취급한 것과는 대조된다. $\Theta$가 RV가 되었기 때문에 이에 대응하는 확률분포 $p(\theta)$도 존재한다.
 
 $$
 Y = f(X) + \epsilon
@@ -138,3 +163,7 @@ $\sigma_f$와 $L$는 \<GP Regression\>의 hyper-parameter로 이 값을 조정�
 ### references
 
 - ['손쓰'님의 포스트](https://sonsnotation.blogspot.com/2020/11/11-2-gaussian-progress-regression.html)
+
+<hr/>
+
+[^1]: space of function이 continuous domain이라고 명시적으로 말하지는 않았지만 암튼 그렇다.
