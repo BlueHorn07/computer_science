@@ -150,7 +150,7 @@ $$
 p(x^{*} \mid X) = \int p(x^{*}, \theta \mid X) d\theta = \int p(x^{*} \mid \theta, X) p(\theta \mid X) d\theta
 $$
 
-보통 $x^{\*}$와 $X$를 독립이라고 가정하기 때문에 또는 iid를 가정하기 때문에 이것을 적용하면,
+보통 $x^{\*}$와 $X$를 독립이라고 가정하기 때문에 또는 iid를 가정하므로,
 
 $$
 p(x^{*} \mid X) = \int p(x^{*} \mid \theta, X) p(\theta \mid X) d\theta = \int p(x^{*} \mid \theta) p(\theta \mid X) d\theta
