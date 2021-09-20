@@ -3,6 +3,8 @@ title: "Predictive Distribution"
 layout: post
 use_math: true
 tags: ["Machine Learning"]
+modified_date: 2021.09.20
+readtime: 30 Minutes
 ---
 
 ### 서론
@@ -15,7 +17,7 @@ tags: ["Machine Learning"]
 
 1. [MLE vs. MAP]({{"/2021/09/05/MLE-vs-MAP.html" | relative_url}})
 2. [Predictive Distribution]({{"/2021/09/05/predictive-distribution.html" | relative_url}}) 👀
-3. Bayesian Regression
+3. [Bayesian Regression]({{"/2021/09/06/bayesian-regression.html" | relative_url}})
 
 </div>
 
@@ -29,6 +31,10 @@ tags: ["Machine Learning"]
 
 <span class="half_HL">Bayesian Approach에서는 관측 데이터가 추가됨에 따라 parameter의 distribution을 계속 갱신한다.</span> 이는 parameter의 prior distribution을 새롭게 관측된 데이터로 갱신해 posterior distribution을 얻는 셈이다. [이 아티클](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/)에서는 이것을 데이터가 확률 분포를 잡아당기는 자석과 같다고 표현하는데, 그 표현이 그럴싸 하다 😲 자세한 내용은 해당 아티클의 [요 부분](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/#:~:text=%EC%A0%80%EB%8A%94%20%EC%9D%B4%EA%B2%83%EC%9D%84%20%EB%8B%A4%EC%9D%8C%EA%B3%BC%20%EA%B0%99%EC%9D%B4%20%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B8%20%EC%A2%8B%EC%95%84%ED%95%A9%EB%8B%88%EB%8B%A4.)을 잠깐 읽어보고 오는 걸 추천한다. 글을 통해 데이터가 posterior distribution을 어떻게 갱신하는지 그리고 prior distribution을 잘 잡는게 중요한 이유를 깨달을 수 있다 👍
 
+<div class="img-wrapper">
+  <img src="{{ "/images/machine-learning/bayesian-approach-1.png" | relative_url }}" width="100%">
+</div>
+
 기존의 고전적인 방법은 Point Estiamtor나 confidence interval를 유도했다. 그러나 Bayesian Approach에서는 그런 것들이 전혀 없으며👋 단지 paramter에 대한 **posterior distribution**을 이용해 새로운 데이터 $x^{*}$에 대해 예측할 뿐이다. 그리고 이 과정에서 등장하는 것이 바로 \<**Predictive Distribution**; 예측 분포\>이다!
 
 <hr/>
@@ -41,65 +47,116 @@ $$
 \theta \sim N(0, \tau^2 I)
 $$
 
-이제 관측된 데이터 $S = (X, y)$가 존재해 이것으로 \<parameter prior\>를 갱신해보자. 그러면 Bayes Rule을 이용해 아래와 같이 \<parameter posterior\>를 유도할 수 있다.
+이제 관측된 데이터 $X = \\{ x^{(1)}, \dots, x^{(m)} \\}$를 이용해 \<parameter prior\> $p(\theta)$를 갱신해보자. \<parameter posterior\> $p(\theta \mid X)$는 Bayes Rule에 따라 아래와 같이 유도할 수 있다.
 
 $$
 \begin{aligned}
-p(\theta \mid S)
-&= \frac{p(S \mid \theta) p(\theta)}{p(S)} = \frac{p(S \mid \theta) p(\theta)}{\int_{\theta'} p(S \mid \theta') p(\theta') d\theta'} \\
-&= \frac{p(\theta) \prod^m_{i=1} p(y^{(i)} \mid x^{(i)}, \theta)}{\int_{\theta'} p(\theta') \prod^m_{i=1} p(y^{(i)} \mid x^{(i)}, \theta') d\theta'}
+p(\theta \mid X)
+&= \frac{p(X \mid \theta) p(\theta)}{p(X)} = \frac{p(X \mid \theta) p(\theta)}{\int_{\theta'} p(X \mid \theta') p(\theta') d\theta'} \\
+&= \frac{p(\theta) \prod^m_{i=1} p(x^{(i)} \mid \theta)}{\int_{\theta'} p(\theta') \prod^m_{i=1} p(x^{(i)} \mid \theta') d\theta'}
 \end{aligned}
 $$
 
+이때, likelihood의 $p(x^{(i)} \mid \theta)$는 $\theta$로 parametized된 확률 변수 $X$에 대한 확률 분포로 이항 분포, 정규 분포, 포아송 분포 등등이 가능하다. likelihood는 데이터가 parameter $\theta$에 의해 어떻게 parameterized 되어 있을 것이라고 가정하는 것이기 때문에 데이터가 추가되어도 갱신하는 대상이 아니다! 🙌 
 
+**<u>이항분포</u>**
+
+$$
+p(x^{(i)} \mid \theta) = \frac{n!}{x!(n-x)!} \theta^x (1 - \theta)^{(n-x)}
+$$
+
+**<u>1D-정규분포</u>**
+
+$$
+p(x^{(i)} \mid \theta) = \frac{1}{\sqrt{2\pi} \sigma} \exp \left( - \frac{(x^{(i)} - \theta)^2}{2\sigma^2}\right)
+$$
+
+**<u>2D-정규분포</u>** ($x^{(i)} \in \mathbb{R}^2$, also $\theta \in \mathbb{R}^2$)
+
+$$
+p(x^{(i)} \mid \theta) = \frac{1}{\sqrt{2\pi} \sigma} \exp \left( - \frac{(x^{(i)} - \theta)^2}{2\sigma^2}\right)
+$$
+
+등등등!!
+
+<div class="example" markdown="1">
+
+<span class="statement-title">Example.</span> Parameter Posterior<br>
+
+동전을 던졌을 때, 앞면이 나올 확률이 균일 분포를 따른다. 동전을 던졌더니 앞면이 나왔을 때, parameter poster를 구하라.
+
+<div class="proof" markdown="1">
+
+<details markdown="1">
+<summary>Solution</summary>
+
+"앞면이 나올 **확률**이 균일 분포를 따른다." <br/>
+→ $p(\theta) = I_{(0 \le \theta \le 1)}$ (posterior prior)
+
+"동전을 던진다."<br/>
+→ $p(x \mid \theta) = \theta^x (1 - \theta)^{(1-x)}$ (likelihood)
+
+"동전을 던졌더니 앞면이 나왔을 때"<br/>
+→ $x_1 = 1$
+
+$$
+\begin{aligned}
+p(\theta \mid x_1 = 1) 
+&= \frac{p(x_1 = 1 \mid \theta) p(\theta)}{p(x_1 = 1)}  \\
+&= \frac{\theta \cdot p(\theta)}{1/2} \\
+&= 2 \theta \cdot p(\theta) = 2\theta
+\end{aligned}
+$$
+
+갱신된 parameter posterior에서는 앞면이 많이 나올 거라는 확률(=믿음)이 반영되었다.
+
+$\blacksquare$
+
+</details>
+
+</div>
+
+</div>
 
 <hr/>
 
 ## Predictive Distribution
 
-휴! \<Predictive Distribution; 예측 분포\>를 소개하기까지 오랜 시간이 걸렸다. 우리는 고전적인 방법에 너무 익숙해져 있기 때문에 이 녀석을 잘 이해하려면 <span class="half_HL">**Bayesian Approach**가 고전적인 방법과 어떻게 다른지를 이해</span>하고 <span class="half_HL">고전적인 방법의 estimator와 confidence interval 등의 개념들을 폐기~~는 아니고 Bayesian에서는 쓰지 않는다 정도로 이해하면 된다~~</span>해야 함을 인지해야 한다고 생각한다.
-
-\<Predictive Distribution\>은 observed data $S = (X, y)$(train-set)와 unobserved data $S^{\*} = (X^{\*}, y^{\*})$(test-set)가 있을 때, unobserved data $x^{\*} \in X^{\*}$에 대한 prediction을 수행하는 과정에서 유도하는 분포이다. 그래서 이름에 "predictive"라는 이름이 붙었다고 할 수 있다. ~~뇌피셜입니다~~ \<Predictive Distribution\>은 prior distribution으로 유도하는지, posterior distribution으로 유도하는지에 따라 두 가지로 나뉜다.
+\<**Predictive Distribution**; 예측 분포\>는 unobserved data $x^{\*} \in X^{\*}$에 대한 prediction을 수행하는 과정에서 유도하는 분포이다. 그래서 이름에 "predictive"라는 이름이 붙었다고 할 수 있다. ~~뇌피셜입니다~~ \<Predictive Distribution\>은 parameter prior로 유도하는지, observed data $X$가 반영된 parameter posterior로 유도하는지에 따라 두 가지로 나뉜다.
 
 <div class="definition" markdown="1">
 
 <span class="statement-title">Definition.</span> Prior Predictive Distribution<br>
 
-Let $S = \\{ (X, y) \\}$ be a set of observed data, $X^{\*}$ be a set of unobsersed data, and $x^{\*} \in X^{\*}$.
+Let $X = \\{ x^{(1)}, \dots, x^{(m)} \\}$ be a set of observed data, $X^{\*}$ be a set of unobsersed data, and $x^{\*} \in X^{\*}$.
 
 Then, the \<prior predictive distribution\> is
 
 $$
-p(y \mid x) = \int p(y, \theta \mid x) d\theta = \int p(y \mid x, \theta) p(\theta) d\theta
+p(x^{*}) = \int p(x^{*}, \theta) d\theta = \int p(x^{*} \mid \theta) p(\theta) d\theta
 $$
 
-즉, paramter의 prior distribution $p(\theta)$와 $y$에 대한 likelihood $p(y \mid x, \theta)$의 곱을 적분한 것이 prior predictive distribution이다. likelihood에 대해 좀더 구체적으로 말하면 $\theta$를 paramter로 한 분포들: 이항 분포, 정규 분포 등등이라고 생각하면 된다. 그리고 likelihood는 데이터가 어떤 분포로 추출될 것이라고 <span style="color: red">가정</span>하는 것에서 비롯된다는 점도 구분하자.
-
-ex)
-
-$$
-p(y^{(i)} \mid x^{(i)}, \theta) = \frac{1}{\sqrt{2\pi} \sigma} \exp \left( - \frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2}\right)
-$$
+즉, likelihood $p(x \mid \theta)$를 parameter prior $p(\theta)$의 확률 분포를 고려해 적분한 것이 \<**prior predictive distribution**\>이다.
 
 </div>
 
-그러나 위의 식을 보면 observed data $S$에 대한 정보는 전혀 없다. 그래서 데이터를 제대로 활용하려면 observed data $S$로 갱신한 posterior distribution인 $p(\theta \mid S)$로 유도한 \<posterior predictive distribution\>을 사용해야 한다!
+그러나 \<prior predictive distribution\>은 observed data $X$를 전혀 쓰고 있지 않다. observed data를 제대로 활용하려면 parameter posterior $p(\theta \mid X)$로 유도한 \<**posterior predictive distribution**\>을 사용해야 한다!
 
 <div class="definition" markdown="1">
 
 <span class="statement-title">Definition.</span> Posterior Predictive Distribution<br>
 
 $$
-p(y \mid x, S) = \int p(y, \theta \mid x, S) d\theta = \int p(y \mid x, S, \theta) p(\theta \mid S) d\theta
+p(x^{*} \mid X) = \int p(x^{*}, \theta \mid X) d\theta = \int p(x^{*} \mid \theta, X) p(\theta \mid X) d\theta
 $$
 
-보통 $x^{\*}$와 $S$를 독립이라고 가정하기 때문에 또는 iid를 가정하기 때문에 이것을 적용하면,
+보통 $x^{\*}$와 $X$를 독립이라고 가정하기 때문에 또는 iid를 가정하기 때문에 이것을 적용하면,
 
 $$
-p(y \mid x, S) = \int p(y \mid x, S, \theta) p(\theta \mid S) d\theta = \int p(y \mid x, \theta) p(\theta \mid S) d\theta
+p(x^{*} \mid X) = \int p(x^{*} \mid \theta, X) p(\theta \mid X) d\theta = \int p(x^{*} \mid \theta) p(\theta \mid X) d\theta
 $$
 
-후! 식이 훨씬 간단해졌다! prior predictive distribution과 비교했을 때 달라진 점은 적분 내부의 함수가 prior distribution에서 posterior distribution으로 바뀌었다는 점이다! 이것은 posterior predictive distribution은 관측된 데이터로 갱신된 posterior distribution을 사용했기 때문에 실제 모수(parameter)와 근접할 것으로 기대되는 정보를 바탕으로 예측(prediction)했다고 기대하게 된다!
+후! 식이 훨씬 간단해졌다!🙌 \<prior predictive distribution\>과 비교했을 때 달라진 점은 적분 내부의 함수가 parameter prior $p(\theta)$에서 parameter posterior $p(\theta \mid X)$로 바뀌었다는 점이다! \<posterior predictive distribution\>은 관측된 데이터로 갱신된 \<parameter posterior\>를 사용했기 때문에 실제 모수(parameter)와 근접할 것으로 기대되는 분포를 바탕으로 예측(prediction)했다고 기대하게 된다.
 
 </div>
 
@@ -107,7 +164,9 @@ $$
 
 <hr/>
 
-그럼 \<Predictive Distribution\>은 어떻게 쓰는 것인가? 다음 포스트에서 다루는 Bayesian Regression에서 그 의문을 해소할 수 있다! 스포를 하자면 \<Posterior Predictive Distribution\>를 구하는 것이 Bayesian Regression의 목표다!
+다음 포스트에서는 \<Predictive Distribution\>을 이용해 Regression Problem을 다룬다. 이것을 \<Bayesian Linear Regression\>이라고 하며 이번 포스트를 잘 이해했다면 다음 포스트를 쉽게 이해할 수 있을 것이다 😁
+
+👉 [Bayesian Regression]({{"/2021/09/06/bayesian-regression.html" | relative_url}})
 
 <hr/>
 
@@ -116,4 +175,4 @@ $$
 - [[번역] 선형 회귀 모델 Bayesians vs Frequentists](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr)
 - [Prior & Posterior Predictive Distributions](https://donghwa-kim.github.io/Pred_-baye.html)
 - [사전예측분포와 사후예측분포(Prior and posterior predictive distribution)](https://rooney-song.tistory.com/9?category=935544)
-- [](https://medium.com/jun-devpblog/bayesian-dl-1-properties-of-gaussian-distribution-and-prior-posterior-predictive-distribution-b02529b894a8)
+- [[Bayesian DL] 1. Properties of Gaussian Distribution and Prior(Posterior) Predictive Distribution](https://medium.com/jun-devpblog/bayesian-dl-1-properties-of-gaussian-distribution-and-prior-posterior-predictive-distribution-b02529b894a8)
