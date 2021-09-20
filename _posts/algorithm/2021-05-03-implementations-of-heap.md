@@ -218,7 +218,7 @@ Binomial Heap을 이루는 Tree의 루트 노드를 살펴보면 된다. 따라�
 
 <br><span class="statement-title">deleteMin.</span><br>
 
-먼저 $\texttt{getMin}$으로 루트 노드를 삭제할 Binomial Tree를 특정한다. Min 값을 갖는 Tree의 루트 노드를 제거하면, 해당 Tree의 자식 트리들이 남게 된다. 그러면, 남게된 $k$개의 Children Binomial Tree들을 바탕으로 다시 $\texttt{merge}$ 연산을 수행한다. 전체 $N$개 노드에 대해 다시 Heapify를 수행하는 것이기 때문에 Time Complexity는 $O(\log N)$이다.
+먼저 $\texttt{getMin}$으로 루트 노드를 삭제할 Binomial Tree를 특정한다. Tree의 루트 노드를 제거하면, 해당 Tree의 자식 트리들이 남게 된다. 만약 $k$번째 binomial tree의 루트 노드를 제거했다면, $k$개의 children binomial tree를 얻게 된다. 새로 생긴 $k$개의 Children Binomial Tree들을 바탕으로 다시 $\texttt{merge}$ 연산을 수행한다. 이때, BIN Heap에 존재하는 $1 + \log N$개의 트리 중 마지막 번째 트리의 루트노드가 제거되었다면, $log N$ 만큼의 binomial tree 또는 $\log N$ 만큼의 binomial tree를 갖는 BIN heap이 새로 생긴다. 기존의 BIN heap과 새로 생긴 BIN heap을 merge 하면, Time Complexity는 $O(\log N + \log N) = O(\log N)$이다.
 
 <br/>
 
