@@ -11,6 +11,8 @@ tags: ["Algorithm"]
 
 이번 포스트에서는 \<Heap\>의 구현 방식을 살펴볼 예정입니다. 구현 코드는 추후에 별도의 포스트에서 Heap의 종류별로 다룰 예정입니다! 😁
 
+\<Binomial Heap\>에서부터 시간복잡도를 유도하기 위해 amortized analysis를 사용합니다. "[Amortized Analysis]({{"/2021/05/08/amortized-analysis.html" | relative_url}})" 포스트를 먼저 읽고 오길 권합니다 😉
+
 <hr/>
 
 \<Priority Queue\>의 구현인 \<Heap\>은 많은 알고리즘에서 핵심적인 역할을 한다. 보통 Binary Tree로 구현하는 \<Binary Heap\>을 많이 알테지만, 정규 수업이나 위키피디아의 문서를 살펴보면 \<Binary Heap\> 외에도 여러 형태의 \<Heap\>에 대한 구현이 존재한다!! 이번 포스트에선 이 \<Heap\>의 구현에 대해 자세히 알아볼 예정이다. 😎
@@ -183,9 +185,9 @@ ps) $d=3$인 d-ary Heap을 \<Ternary Heap\>이라고도 부른다.
 
 1\. Heap을 구성하는 각 Binomial Tree는 Heap Order를 따른다.
 
-2\. degree 0을 포함해 각 order별로 0개 또는 1개, 즉 각 order별 최대 1개의 이항 트리가 Heap에 존재한다.
+2\. degree 0을 포함해 각 order별로 0개 또는 1개, 즉 <span class="half_HL">각 order별 최대 1개의 이항 트리가 Heap에 존재</span>한다.
 
-2번재 조건은 전체 $n$개 노드가 존재할 때, \<Binomial Heap\>이 최대 $(1 + \log n)$개의 이항 트리로 구성됨을 말한다. 그 이유는 degree $k$인 Binomial Tree가 $2^k$ 만큼의 노드를 가지기 때문이다! 또한, Heap에 존재하는 각 Binomial Tree의 degree는 **<u>유일하게</u>** 결정된다. 전체 노드의 수 $n$을 이진수로 표현한다면, 각 digit은 Heap에 존재하는 Binomial Tree의 갯수를 의미한다. 따라서, 전체 노드 수 $n$에 대해 Binomial Heap의 구성은 유일하다! 💥
+2번재 조건은 전체 $n$개 노드가 존재할 때, \<Binomial Heap\>이 최대 $(1 + \log n)$개의 이항 트리로 구성됨을 말한다. 그 이유는 degree $k$인 Binomial Tree가 $2^k$ 만큼의 노드를 가지기 때문이다! 또한, Heap에 존재하는 각 Binomial Tree의 degree는 **<u>유일하게</u>** 결정된다. 전체 노드의 수 $n$을 **이진수**로 표현한다면, 각 digit은 Heap에 존재하는 Binomial Tree의 갯수를 의미한다. 따라서, 전체 노드 수 $n$에 대해 Binomial Heap의 구성은 유일하다! 💥
 
 <br><span class="statement-title">Merge.</span><br>
 
@@ -241,19 +243,23 @@ Binomial Heap을 이루는 Tree의 루트 노드를 살펴보면 된다. 따라�
 <iframe width="450" height="300" src="https://www.youtube.com/embed/-IOse-LEJtw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-\<Lazy-Binomial Heap\>은 앞에서 살펴본 \<Binomial Heap\>과 마찬가지로 Heap의 $\texttt{merge}$ 연산에 특화된 자료 구조다! 전체적인 개념은 \<Binomial Heap\>과 유사하면, $\texttt{marge}$와 $\texttt{extractMin}$ 연산에서 차이가 있다.
+\<Lazy-Binomial Heap\>은 앞에서 살펴본 \<Binomial Heap\>과 마찬가지로 Heap의 $\texttt{merge}$ 연산에 특화된 자료 구조다! 전체적인 개념은 \<Binomial Heap\>과 유사하고, $\texttt{marge}$와 $\texttt{extractMin}$ 연산에서 차이가 있다.
 
-일단 \<Lazy-Binomial Heap\>의 아이디어는 <span class="half_HL">"merge lazily!"</span>이다. \<Lazy-Binomial Heap\>에서는 $\texttt{merge}$ 연산이 그냥 두 Heap을 concatenate로 붙이는 것에 불과하다. 그래서 $O(\log n + \log m)$의 비용이 드는 \<BIN Heap\>과 달리 $O(1)$의 비용이 든다! 😲 이런 이유로 원소를 하나 추가하는 $\texttt{insert}$ 연산 역시 $O(1)$의 비용이 든다.
+일단 \<Lazy-Binomial Heap\>의 아이디어는 <span class="half_HL">"merge lazily!"</span>이다. \<Lazy-Binomial Heap\>의 $\texttt{merge}$ 연산은 그냥 두 BIN Heap을 concatenate로 붙이는 것에 불과하다. 그래서 $O(\log n + \log m)$의 비용이 드는 \<BIN Heap\>과 달리, \<Lazy-BIN Heap\>에서는 $O(1)$의 비용이 든다! 😲 마찬가지로 원소를 하나 추가하는 $\texttt{insert}$ 연산 역시 $O(1)$의 비용이 든다.
 
-하지만, 위와 같이 $\texttt{merge}$를 수행할 경우, 앞에서 살펴본 \<BIN Heap\>의 아름답고 좋은 성질들이 깨지게 된다 😥 Heap을 이루는 BIN Tree의 degree는 규칙성 없이 자유롭게 분포되어 있을 것이다.
+하지만, 위와 같이 $\texttt{merge}$를 수행할 경우, 앞에서 살펴본 \<BIN Heap\>의 아름답고 좋은 성질이 깨지게 된다 😥 \<Lazy-BIN Heap\>에서는 BIN Tree의 degree는 규칙성 없이 자유롭게 분포되어 있을 것이다.
 
-이번에는 \<Lazy-BIN Heap\>의 $\texttt{extractMin}$ 연산을 살펴보자. 이 연산은 Heap에서 가장 작은 원소를 제거한다. \<Lazy-BIN Heap\>은 이 $\texttt{extracMin}$ 연산이 수행될 때, $\texttt{consolidation}$을 수행하여 \<Lazy-BIN Heap\>에서 BIN Heap의 구조를 다시 구축한다.
+이번에는 \<Lazy-BIN Heap\>의 $\texttt{extractMin}$ 연산을 살펴보자. 이 연산은 Heap에서 가장 작은 원소를 제거한다. \<Lazy-BIN Heap\>은 이 $\texttt{extracMin}$ 연산이 수행될 때, $\texttt{consolidation}$(= 합병, 병합)을 수행하여 \<Lazy-BIN Heap\>에서 BIN Heap의 구조를 다시 구축한다.
 
-이 $\texttt{consolidation}$이 수행되는 과정의 시간 복잡도를 분석해보자. degree가 자유롭게 분포되어 있는 상황에서 $\texttt{consolidation}$을 수행하는 방법을 각 BIN Tree를 degree 별로 정렬하여 앞에서부터 차례로 Tree를 합치는 것이다. 원래는 정렬을 수행할 때, $O(t \log t)$ ($t$는 Heap에 존재하는 BIN Tree의 수) 만큼의 시간이 소요된다. 그런데 정렬 과정에서 \<Bucket Sort\>를 사용한다면, 선형으로 트리 탐색에 $O(t)$, Bucket의 수 $O(\log n)$ 만큼 BIN Tree 생성의 비용이 들어 $O(t + \log n)$의 비용으로 $\texttt{consolidation}$을 수행할 수 있다. 자세한 내용은 아래의 영상을 참고하자!
+이 $\texttt{consolidation}$이 수행되는 과정의 시간 복잡도를 분석해보자. degree가 자유롭게 분포되어 있는 상황에서 $\texttt{consolidation}$을 수행하는 방법을 각 BIN Tree를 degree 별로 정렬하여 앞에서부터 차례로 Tree를 합치는 것이다. 원래는 정렬을 수행할 때, $O(t \log t)$ ($t$는 Heap에 존재하는 BIN Tree의 수) 만큼의 시간이 소요된다. 그런데 정렬 과정에서 \<Bucket Sort\>를 사용한다면, BIN Tree 탐색에 $O(t)$, Bucket의 수 $O(\log n)$ 만큼 BIN tree merge 비용이 들어 $O(t + \log n)$의 비용으로 $\texttt{consolidation}$을 수행할 수 있다. 자세한 내용은 아래의 영상을 참고하자!
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/lazy-binomial-heap-1.png" | relative_url }}" width="600px">
+</div>
 
 👉 [Jeff Zhang - Lazy Binomial Heap Intro Part 1 of 2](https://youtu.be/v4hlvJIS0ZU)
 
-$\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized** $O(\log n)$"라고 한다. 시간 복잡도 분석에 \<Potential Method\>를 사용한다고 하는데, 아직 이 부분은 정확히 이해하지 못 해서 추후에 별도의 포스트에서 보충하도록 하겠다 😉
+$\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized** $O(\log n)$"라고 한다. 시간 복잡도 분석에 \<Potential Method\>를 사용하는데, Potential Method에 소개하는 lecture note [Lecture 20: Amortized Analysis](http://www.cs.cornell.edu/courses/cs3110/2011sp/Lectures/lec20-amortized/amortized.htm)와 Lazy-BIN Heap을 Potential Method로 분석한 이 lecture note [Lecture 3: Fibonacci Heaps](http://www.cs.cmu.edu/afs/cs/academic/class/15750-s19/OldScribeNotes/lecture3.pdf)를 잘 읽어보면 그럭저럭 이해할 수 있다 🤞
 
 | Operation | Binomial Heap | Lazy-Binomial Heap |
 |:---:|:---:|:---:|
