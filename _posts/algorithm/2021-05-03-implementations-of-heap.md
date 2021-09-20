@@ -254,7 +254,7 @@ Binomial Heap을 이루는 Tree의 루트 노드를 살펴보면 된다. 따라�
 이 $\texttt{consolidation}$이 수행되는 과정의 시간 복잡도를 분석해보자. degree가 자유롭게 분포되어 있는 상황에서 $\texttt{consolidation}$을 수행하는 방법을 각 BIN Tree를 degree 별로 정렬하여 앞에서부터 차례로 Tree를 합치는 것이다. 원래는 정렬을 수행할 때, $O(t \log t)$ ($t$는 Heap에 존재하는 BIN Tree의 수) 만큼의 시간이 소요된다. 그런데 정렬 과정에서 \<Bucket Sort\>를 사용한다면, BIN Tree 탐색에 $O(t)$, Bucket의 수 $O(\log n)$ 만큼 BIN tree merge 비용이 들어 $O(t + \log n)$의 비용으로 $\texttt{consolidation}$을 수행할 수 있다. 자세한 내용은 아래의 영상을 참고하자!
 
 <div class="img-wrapper">
-  <img src="{{ "/images/algorithm/lazy-binomial-heap-1.png" | relative_url }}" width="600px">
+  <img src="{{ "/images/algorithm/lazy-binomial-heap-1.png" | relative_url }}" width="500px">
 </div>
 
 👉 [Jeff Zhang - Lazy Binomial Heap Intro Part 1 of 2](https://youtu.be/v4hlvJIS0ZU)
@@ -284,27 +284,42 @@ $\texttt{extracMin}$ 연산에 대해서는 그 시간 복잡도가 "**amortized
 
 사실 "Lazy decreaseKey" 연산의 아이디어 자체는 간단하다. <span class="half_HL">$\texttt{decreaseKey}$를 수행할 때, heap-order를 벗어나는 부분에 대해서는 잘라낸다</span>는 게 전부다. 
 
-이전의 \<Lazy BIN Heap\>에서는 $\texttt{decreaseKey}$ 연산을 수행하려면, $\texttt{Heapify}$ 때문에 트리의 높이 만큼, 즉 $O(\log n)$의 비용이 들었다. 그러나 \<Fibonacci Heap\>은 $\texttt{Heapify}$ 연산 없이 단순히 트리를 잘라내기 때문에 $O(1)$의 비용만 든다.
+\<BIN Heap\>에서 $\texttt{decreaseKey}$ 연산을 수행하면 $\texttt{Heapify}$ 때문에 트리의 높이 만큼, 즉 $O(\log n)$의 비용이 들었다. 그러나 \<Fibonacci Heap\>은 대상이 되는 BIN tree를 잘라내기 때문에 $\texttt{Heapify}$ 연산 없이 $O(1)$의 비용만 든다.
 
 <br/>
 
 여기서 잠깐 지금까지 \<BIN Heap\>에서 개선된 부분들을 짚고 넘어가자.
 
-- Merge: $O(\log n + \log m) \rightarrow O(1)$
-- Insert: $O(\log n) \rightarrow O(1)$
-- decreaseKey: $O(\log n) \rightarrow O(1)$
+- Merge: $O(\log n + \log m) \rightarrow O(1)$ (by Lazy-BIN Heap)
+- Insert: $O(\log n) \rightarrow O(1)$ (by Lazy-BIN Heap)
+- extractMin: $O(\log n) \rightarrow \text{amoritzed} \; O(\log n)$ (by Lazy-BIN Heap)
+- deleteKey: $O(\log n) \rightarrow O(1)$ (by Fibonacci Heap!) 🔥
 
-위 연산들에 대한 비용이 줄었지만, 또 위 연산들이 Heap 구조를 엉망으로 만드는 주범이기도 하다 🤦‍♂️
+위 연산들에 대한 비용이 줄었지만, 또 위 연산들이 Heap 구조를 엉망으로 만드는 주범이기도 하다 🤦‍♂️ 그리고 Fibo Heap의 변화된 $\texttt{deleteKey}$ 연산은 $\texttt{extractMin}$ 연산의 성능에 영향을 끼친다 😱
 
-그러나 위와 같이 Lazy decreaseKey를 수행하더라도, $\texttt{extractMin}$의 비용은 여전히 "amortized $O(\log n)$"이다! 😲
+그.러.나. 안심하라!  Lazy decreaseKey를 도입하더라도 $\texttt{extractMin}$의 비용은 여전히 "amortized $O(\log n)$"이다! 😲
 
 <br/>
 
-이번에는 \<Fibonacci Heap\>에서 수행되는 $\texttt{extractMin}$을 좀더 살펴보자. $\texttt{extractMin}$ 이후 수행되는 $\texttt{consolidate}$ 연산은 Heap을 이루는 트리를 degree $k$에 따라 "Bucket Sort"로 정렬하여 차례로 새로운 트리를 만든다. 
+\<Fibonacci Heap\>에서 수행되는 $\texttt{extractMin}$을 좀더 살펴보자. $\texttt{extractMin}$ 이후 수행되는 $\texttt{consolidate}$ 연산은 Heap을 이루는 트리를 degree $k$에 따라 "Bucket Sort"로 정렬하여 차례로 새로운 트리를 만든다. 
 
-하지만, Lazy decreaseKey 연산을 수행하기 되면, 더이상 Heap에 존재하는 Tree는 BIN Tree의 조건을 만족하지 않게 된다. 왜냐하면, BIN Tree가 되려면 degree $k$일 때, $2^k$ 개의 노드가 있어야 하기 때문이다. <small>(Fibo Heap에서는 $2^k$ 보다 적은 수의 노드가 트리에 남게 된다.)</small>
+하지만, <span class="half_HL">Lazy decreaseKey 연산을 수행하면 더이상 Heap에 존재하는 Tree는 BIN Tree의 조건을 만족하지 않게 된다.</span> 왜냐하면, BIN Tree가 되려면 degree $k$일 때, $2^k$ 개의 노드가 있어야 하기 때문이다. <small>(Fibo Heap에서는 $2^k$ 보다 적은 수의 노드가 트리에 남게 된다.)</small>
 
-이런 문제 때문에 트리를 degree $k$로 분류하는 것이 불가능 해 Bucket Sort를 수행할 수 없다 😱 그래서 \<Fibonacci Heap\>에서는 트리의 degree를 아래와 같이 새롭게 정의하여 사용한다.
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-1.png" | relative_url }}" width="500px">
+</div>
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-2.png" | relative_url }}" width="500px">
+</div>
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-3.png" | relative_url }}" width="500px">
+</div>
+
+예를 들어 왼쪽의 BIN tree에서 '10'의 키를 가진 말단 노드의 키를 '3'으로 바꾼다면, 그 노드를 BIN tree에서 분리(cut)하는 방식으로 $\texttt{decreaseKey}$ 연산을 수행한다. 이것은 $\texttt{decreaseKey}$ 연산의 대상이 되는 BIN tree가 더이상 BIN tree의 성질을 만족하지 못 하도록 만든다.
+
+이런 문제 때문에 트리를 degree $k$로 분류하는 것이 불가능 해 $\texttt{consolidate}$ 단계에서 Bucket Sort를 수행할 수 없다 😱 그래서 \<Fibonacci Heap\>에서는 트리의 degree를 아래와 같이 새롭게 정의하여 사용한다.
 
 <div class="statement" markdown="1" align="center">
 
@@ -312,13 +327,13 @@ A tree has degree $k$, if its root has $k$ children.
 
 </div>
 
-Fibo Heap에서는 위의 정의를 사용해 Bucket Sort를 수행하며, Heap의 트리들을 정리(clean-up)한다. 그러나...
+Fibo Heap에서는 위의 정의를 사용해 Bucket Sort를 수행하며, 엉망이 된 BIN Heap을 정리(clean-up)한다. 그러나...
 
 <br/>
 
-그러나! 위와 같이 $\texttt{decreaseKey}$와 $\texttt{consolidate}$를 수행하게 되면, 최악의 경우에는 $\texttt{decreaseKey}$에 의해 Heap이 degree 0의 트리 $n$로만 이뤄진 후에 $\texttt{consolidate}$가 이뤄질 수 있다 🤦‍♂️ 이 경우, 비용은 $O(n)$이다...
+그러나! 위와 같이 $\texttt{decreaseKey}$와 $\texttt{consolidate}$를 수행하게 되면, 최악의 경우에는 $\texttt{decreaseKey}$에 의해 Heap이 degree 0의 트리 $n$개로 이뤄진 후에 $\texttt{consolidate}$가 이뤄질 수 있다 🤦‍♂️ 이 경우, 비용은 $O(n)$이다...
 
-\<BIN Heap\>이나 \<Lazy-BIN Heap\>에서는 트리의 사이즈가 $2^k$로 exponential 하게 증가해서 $O(\log n)$의 $\texttt{consolidate}$ 연산이 가능했다.
+BIN tree를 기반으로 하는 \<BIN Heap\>과 \<Lazy-BIN Heap\>은 트리의 사이즈가 $2^k$로 exponential 하게 증가해서 $\text{amortized} \;  O(\log n)$로 $\texttt{consolidate}$ 연산이 가능했다.
 
 <br/>
 
@@ -334,11 +349,28 @@ If a parent loses two children, we also cut the parent off from the grand-parent
 
 위 규칙은 Heap을 엉성하게나마 "logarithmic"하도록 만든다. 이것에 대한 구현은 생각보다 간단하다. 그냥 부모 노드가 $\texttt{decreaseKey}$에 의해 자식 노드를 잃으면 그 부모 노드를 "마킹" 해둔다. 이후에 부모 노드가 또 한번 자식 노드를 잃는다면, 그때는 부모 노드를 조부모 노드로부터 분리시킨다! <small>// 영상에서 잘 설명하니 이 부분은 영상을 보자!</small>
 
-추가된 규칙에 의해 Heap의 "root list"는 <u>approximately logarithmic</u> 하게 유지되며, $\texttt{extractMin}$은 $O(\log n)$의 시간으로 수행된다! 😁
+글로는 감이 안 잡히니, 그림으로 살펴보자! 
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-4.png" | relative_url }}" width="500px">
+  <p>BIN tree가 child를 하나 잃어 <span style="color: red">붉은색</span>으로 마킹 되었다.</p>
+</div>
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-5.png" | relative_url }}" width="500px">
+  <p><span style="color: red">붉은색</span>으로 마킹된 노드가 또 하나의 자식 노드를 잃었다!</p>
+</div>
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-6.png" | relative_url }}" width="500px">
+  <p>그러면 해당 노드를 부모 노드로부터 분리시킨다!</p>
+</div>
+
+추가된 규칙은 BIN Heap의 "root list"의 크기를 <u>approximately logarithmic</u> 하게 유지해준다고 한다. 그래서 \<Fibonacci Heap\>의 $\texttt{extractMin}$도 $\text{amortized} \; O(\log n)$의 시간으로 수행된다! 😁 자세한 내용은 [Lecture 3: Fibonacci Heaps](http://www.cs.cmu.edu/afs/cs/academic/class/15750-s19/OldScribeNotes/lecture3.pdf)의 "5. Analysis"를 통해 확인할 수 있다.
 
 <br/>
 
-이 정도면 충분할 것 같은데, \<Fibonacci Heap\>은 여기서 \<**Maximally Damaged Tree**\>라는 개념을 또 소개한다! 😱 이 녀석에 의해 이 Heap 구조가 "Fibonacci" Heap이라고 불리게 되었으니 조금만 더 힘을 내보자! 🤦‍♂️
+이 정도면 충분할 것 같은데, \<Fibonacci Heap\>은 여기서 \<**Maximally Damaged Tree**\>라는 개념을 또 소개한다! 😱 이 녀석에 의해 이 Heap 구조가 "Fibonacci" Heap이라고 불리게 되었으니 조금만 더 힘을 내보자! 🤦‍♂️ <small>(시간복잡도와 관련된 개념은 아니니 가벼운 마음으로 읽자 😄)</small>
 
 <div class="statement" markdown="1" align="center">
 
@@ -348,12 +380,21 @@ A \<**maximally damaged tree**\> is a binomial tree of degree $k$[^1] which has 
 
 \<Maximally damaged tree\>란 degree $k$의 BIN Tree에 $\texttt{decreaseKey}$를 수행할 때, Tree의 degree $k$를 훼손하지 않을때까지 $\texttt{decreaseKey}$를 수행한 트리를 말한다. 이 개념은 우리가 앞에서 정의한 새로운 $\texttt{decreaseKey}$의 방식에서 자연스럽게 유도되는 개념이다. <small>// 이 부분 역시 영상에서 잘 설명하니 영상을 보자!</small>
 
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-7.png" | relative_url }}" width="500px">
+  <p>BIN tree의 degree가 줄지 않을 때까지 $\texttt{decreaseKey}$를 수행한 모습</p>
+</div>
+
 <div class="statement" markdown="1">
 
 <span class="statement-title">Corollary.</span><br>
 
-A \<maximally-damaged tree of degree $k$\> is a node whose children are maximally-damaged trees of degrees $0, 0, 1, 2, 3, \dots, k-2$.
+A \<maximally-damaged tree of degree $k$\> is a tree whose children are maximally-damaged trees of degrees $0, 0, 1, 2, 3, \dots, k-2$.
 
+</div>
+
+<div class="img-wrapper">
+  <img src="{{ "/images/algorithm/fibonacci-heap-8.png" | relative_url }}" width="500px">
 </div>
 
 위의 따름 정리에 의해 \<maximally damaged tree\>에서는 아래의 정리가 성립한다! 😲
@@ -370,6 +411,8 @@ The #. of nodes in a \<maximally damaged tree of degree $k$\> is $F_{k+2}$.
 
 <br/>
 
+지금까지 살펴본 \<BIN Heap\>과 그 변형들에 대한 연산의 시간복잡도를 정리하면 아래와 같다 🙌
+
 | Operation | Binomial Heap | Lazy-Binomial Heap | Fibonacci Heap |
 |:---:|:---:|:---:|:---:|
 | $\texttt{insert}$ | $O(\log n)$ | $O(1)$ | $O(1)$ |
@@ -382,7 +425,7 @@ The #. of nodes in a \<maximally damaged tree of degree $k$\> is $F_{k+2}$.
 
 지금까지 \<Heap\> 또는 \<Priority Queue\>의 주요한 구조들을 살펴봤다. 솔직히 말해 실전에서 자주 쓰는 구조들은 아니지만, \<알고리즘\> 수업과 자료들에서 종종 등장해서 이번 기회에 쭉 정리해보았다.
 
-아직 개념만 간단하게 아는 상태고 직접 구현 해본 게 아니라서 Heap의 Advanced Version들이 완전히 익숙해진 상태가 아니다. 학기가 끝나고 시간이 여유로울 때, 천천히 "Advanced Data Structure"들을 구현 해두겠다.
+\<Heap\>의 변형들이 뭐가 중요한가 싶지만 \<Fibo Heap\>이 소개된 아티클에 따르면 \<Fibo Heap\>을 도입함으로써 Dijkstra's single-source shortest path algorithm의 성능이 $O(E \log E)$에서 $O(E + V \log V)$로 획기적으로 줄었다고 한다! 😲
 
 <hr/>
 
@@ -392,10 +435,13 @@ The #. of nodes in a \<maximally damaged tree of degree $k$\> is $F_{k+2}$.
   - PQ에 대한 문제와 PQ를 이용한 \<A* Algorithm\> 등 다양한 내용의 포스트가 있습니다 👍
 - [geeksforgeeks: K-ary Heap](https://www.geeksforgeeks.org/k-ary-heap/)
 - [Wikipedia: d-ary heap](https://en.wikipedia.org/wiki/D-ary_heap)
-- ['Jeff Zhang'의 유튜브 영상](https://youtu.be/m8rsw3KfDKs) - Binomial Heap
 - [Wikipedia: Binomial heap](https://en.wikipedia.org/wiki/Binomial_heap)
+- ['Jeff Zhang'의 유튜브 영상](https://youtu.be/m8rsw3KfDKs) - Binomial Heap
 - ['Jeff Zhang'의 유튜브 영상](https://youtu.be/-IOse-LEJtw) - Lazy-Binomial Heap
 - ['Jeff Zhang'의 유튜브 영상](https://youtu.be/E_AgyAI8lsc) - Fibonacci Heap
+- [Lecture 20: Amortized Analysis](http://www.cs.cornell.edu/courses/cs3110/2011sp/Lectures/lec20-amortized/amortized.htm)
+- [Lecture 03: Fibonacci Heaps](http://www.cs.cmu.edu/afs/cs/academic/class/15750-s19/OldScribeNotes/lecture3.pdf)
+
 
 <hr/>
 
