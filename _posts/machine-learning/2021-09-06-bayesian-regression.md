@@ -112,7 +112,7 @@ where $A = \frac{1}{\sigma^2}X^TX + \frac{1}{\tau^2}I$.
 
 이번 포스트를 마지막으로 Bayesian Approach 시리즈가 끝이 났다. 용어에 'Bayesian'이라는 말이 들어가면 어렵게만 느껴졌는데, 이번 시리즈를 통해 조금은 Bayesian Theory를 극복한 것 같다 🙌
 
-다음 기획 시리즈로 [Gaussian Process Regression]({{"/2021/09/06/bayesian-regression.html" | relative_url}})을 준비하고 있다. 이번에 살펴본 \<Bayesian Regression\>이 bayesian-supervised learning라면, \<Gaussian Process Regression\>은 bayesian-unsupervised learning의 대표 주자다 😁
+다음 기획 시리즈로 [Gaussian Process Regression]({{"/2021/09/21/Gaussian-Process-Regression.html" | relative_url}})을 준비하고 있다. 이번에 살펴본 \<Bayesian Regression\>이 bayesian-supervised learning라면, \<Gaussian Process Regression\>은 bayesian-unsupervised learning의 대표 주자다 😁
 
 <hr/>
 
