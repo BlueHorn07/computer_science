@@ -13,7 +13,7 @@ readtime: 30 Minutes
 
 <div class="proof" markdown="1">
 
-**Bayesian Approach**
+**기획 시리즈: Bayesian Regression**
 
 1. [MLE vs. MAP]({{"/2021/09/05/MLE-vs-MAP.html" | relative_url}})
 2. [Predictive Distribution]({{"/2021/09/05/predictive-distribution.html" | relative_url}}) 👀
