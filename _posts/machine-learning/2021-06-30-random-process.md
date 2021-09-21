@@ -3,6 +3,8 @@ title: "Random Process"
 layout: post
 use_math: true
 tags: ["Machine Learning"]
+modified_date: 2021.09.21
+readtime: 20 minutes
 ---
 
 ### 서론
@@ -72,8 +74,6 @@ $$
 
 </div>
 
-\<Bernoullid Process\>의 경우, Sample Space $\Omega$에서 어떤 subset을 취하는지에 따라 몇가지 Discrete Distribution들을 유도해볼 수 있다! 😁 해당 내용은 아래에서 \<Bernoulli Process\>를 다룰 때, 좀더 소개하겠다.
-
 <hr/>
 
 ### Some Properties of Random Process
@@ -99,7 +99,9 @@ $$
 
 ### Bernoulli Process (2)
 
-이 포스트는 \<[Bernoulli Process](https://bluehorn07.github.io/mathematics/2021/03/25/poisson-distribution.html#bernoulli-process)\>에 대한 내용에서 추가적인 주제들을 다룬다. 아직 \<Bernoulli Processs\>가 뭔지 모른다면, 위의 포스트를 먼저 읽어보자!
+이번 문단에서는 \<[Bernoulli Process](https://bluehorn07.github.io/mathematics/2021/03/25/poisson-distribution.html#bernoulli-process)\>에 대한 내용에서 추가적인 주제들을 다룬다. 아직 \<Bernoulli Processs\>가 뭔지 모른다면, 위의 포스트를 먼저 읽어보자!
+
+\<Bernoulii Process\>에서 어떤 random variable $Y$를 조건과 함께 정의하면 새로운 확률 분포를 유도할 수 있다! 우리는 \<Binomial distribution\>, \<Geometric distribution\>, \<Negative BIN distribution\>을 \<Bernoulli Process\>로부터 유도해보겠다 😁
 
 <div class="theorem" markdown="1">
 
@@ -107,7 +109,7 @@ $$
 
 Let's derive a random variable $S_n = X_1 + \cdots + X_n$ from the Bernoulli Process.
 
-Then, $S_n$ follows the \<Binomial Distribution\>!
+Then, $S_n$ follows the \<**Binomial Distribution**\>!
 
 $$
 P(S_n = x) = \binom{n}{x} p^x (1-p)^{n-x} \quad \text{for} \; x=0, 1, \dots, n
@@ -121,7 +123,7 @@ $$
 
 Let's derive a randome variable $T_1 = \min \\{ i \in \mathbb{N} : X_i = 1\\}$ from the Bernoulli Process.
 
-Then, $T_1$ follows the \<Geometric Distribution\>!
+Then, $T_1$ follows the \<**Geometric Distribution**\>!
 
 $$
 P(T_1 = x) = P(\underbrace{0, 0, \dots, 0}_{x-1}, 1) = (1-p)^{x-1} p \quad \text{for} \; x=1, 2, \dots
@@ -137,7 +139,7 @@ $$
 
 Let's derive a randome variable $T_k = \min \\{ i \in \mathbb{N} : \| \\{ X_i : X_i = 1 \\} \| = k\\}$ from the Bernoulli Process.
 
-Then, $T_n$ follows the \<Negative Binomial Distribution\>!
+Then, $T_n$ follows the \<**Negative Binomial Distribution**\>!
 
 $$
 P(T_k = x) = P(\underbrace{0, 1, \dots, 1, \dots, 0}_{k-1 \text{ success}}, 1) = \binom{x-1}{k-1} (1-p)^{x-k} p^k \quad \text{for} \; x=k, k+1, \dots
@@ -149,7 +151,9 @@ $$
 
 ### Poisson Process
 
-아래 포스트의 내용으로 대체
+\<Poisson Process\>는 \<Bernoulli Process\>에서 극한을 취해 time interval의 간격을 아주아주 줄여서 continuous domain 위에서 정의한 Random Process이다. <span class="half_HL">BP가 $\mathbb{N}$ 위에서 정의되었다면, PP는 $\mathbb{R^{+}}$ 위에서 정의되는 Random Process</span>인 셈!
+
+PP에 대한 내용은 아래 포스트의 내용으로 대체한다 🙏
 
 👉 [Poisson Process](https://bluehorn07.github.io/mathematics/2021/03/25/poisson-distribution.html#poisson-process)
 
@@ -157,7 +161,9 @@ $$
 
 ### Gaussian Process
 
-👉 [Gaussian Process & Gaussian Process Regression]({{"2021/07/01/Guassian-process-and-GPR.html" | relative_url}})
+A sequence of Gaussian distribution으로, multi-variate Gaussian distribution의 일반화된 버전이다. "distribution over function"으로 취급한다! 💪
+
+👉 [Gaussian Process & Gaussian Process Regression]({{"2021/07/01/Gaussian-process-and-GPR.html" | relative_url}})
 
 <hr/>
 
