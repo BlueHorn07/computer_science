@@ -13,7 +13,7 @@ tags: ["Machine Learning"]
 
 <div class="proof" markdown="1">
 
-**기획 시리즈: Gaussian Process**
+**기획 시리즈: Gaussian Process Regression**
 
 1. [기획 시리즈: Bayesian Regression]({{"/2021/09/06/bayesian-regression.html" | relative_url}})
 2. [Distribution over functions & Gaussian Process]({{"/2021/07/01/Gaussian-process.html" | relative_url}})
