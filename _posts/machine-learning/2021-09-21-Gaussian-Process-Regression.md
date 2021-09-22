@@ -44,7 +44,7 @@ $$
 이때 $\epsilon_i$는 i.i.d noise로 $\epsilon_i \sim N(0, \sigma^2)$이다. 
 
 이제 $h(\cdot)$에 대해 **prior distribution over function**에 대한 가정을 도입한다.[^1] 'prior'가 붙은 것을 눈치챘다면 이것을 
-posterior'로 갱신하리라는 것도 알아챌 것이다 🙌 먼저 $h(\cdot)$가 zero-mean GP라고 가정한다.
+'posterior'로 갱신하리라는 것도 알아챌 것이다 🙌 먼저 $h(\cdot)$가 zero-mean GP라고 가정한다.
 
 $$
 h(\cdot) \sim \mathcal{GP}(0, \; k(\cdot, \cdot))
@@ -54,7 +54,7 @@ $$
 
 <br/>
 
-이번에는 $S$와 동일한 unknown distribution에서 추출한 i.i.d. sample의 모임인 test set $$T = \left\{ x^{*}_i, y^{*}_i\right\}^{m_{*}}_{i=1} = (X^{*}, y^{*})$$를 살펴보자. 이전의 \<Bayesian Regression\>에서는 Bayes' rule을 이용해 \<parameter posterior\> $p(\theta \mid S)$를 유도하고, 이것을 통해 \<posterior predictive distribution\> $p(y^{\*} \mid x^{\*}, S)$를 유도했다. 그런데 GP Regression에서는 그것보 다 훨씬 쉬운 방법으로 posterior predictive distribution을 유도할 수 있다!! 😲
+이번에는 $S$와 동일한 unknown distribution에서 추출한 i.i.d. sample의 모임인 test set $$T = \left\{ x^{*}_i, y^{*}_i\right\}^{m_{*}}_{i=1} = (X^{*}, y^{*})$$를 살펴보자. 이전의 \<Bayesian Regression\>에서는 Bayes' rule을 이용해 \<parameter posterior\> $p(\theta \mid S)$를 유도하고, 이것을 통해 \<posterior predictive distribution\> $p(y^{\*} \mid x^{\*}, S)$를 유도했다. 그런데 GP Regression에서는 훨씬 쉬운 방법으로 posterior predictive distribution을 유도할 수 있다!! 😲
 
 <hr/>
 
