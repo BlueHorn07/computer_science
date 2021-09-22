@@ -54,7 +54,7 @@ $$
 
 <br/>
 
-이번에는 $S$와 동일한 unknown distribution에서 추출한 i.i.d. sample의 모임인 test set $$T = \left\{ x^{*}_i, y^{*}_i\right\}^{m_{*}}_{i=1} = (X^{*}, y^{*})$$를 살펴보자. 이전의 \<Bayesian Regression\>에서는 Bayes' rule을 이용해 \<parameter posterior\> $p(\theta \mid S)$를 유도하고, 이것을 통해 \<posterior predictive distribution\> $p(y^{\*} \mid x^{\*}, S)$를 유도했다. 그런데 GP Regression에서는 그것보 다 훨씬 쉬운 방법으로 Regression Solution을 유도할 수 있다!! 😲
+이번에는 $S$와 동일한 unknown distribution에서 추출한 i.i.d. sample의 모임인 test set $$T = \left\{ x^{*}_i, y^{*}_i\right\}^{m_{*}}_{i=1} = (X^{*}, y^{*})$$를 살펴보자. 이전의 \<Bayesian Regression\>에서는 Bayes' rule을 이용해 \<parameter posterior\> $p(\theta \mid S)$를 유도하고, 이것을 통해 \<posterior predictive distribution\> $p(y^{\*} \mid x^{\*}, S)$를 유도했다. 그런데 GP Regression에서는 그것보 다 훨씬 쉬운 방법으로 posterior predictive distribution을 유도할 수 있다!! 😲
 
 <hr/>
 
@@ -210,7 +210,7 @@ hyper-parameter인 $\tau$는 smoothness를 조정하는 파라미터로 $\tau$ �
 
 ### 맺음말
 
-지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameter model</b></span>이면서 <span style="color: red"><b>kernel-based model</b></span>인 녀석이었다. 개인적으로 GP Regression의 결과가 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
+지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameter model</b></span>이면서 <span style="color: red"><b>kernel-based model</b></span>인 녀석이었다. 게다가 \<Bayesian Linear Regression\>이 supervised learning이라면, \<GP Regression\>은 <span style="color: red"><b>unsupervised learning</b></span>으로 anomaly detection 등의 작업에도 활용할 수 있다 😁 개인적으로 GP Regression은 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
 
 👉 [Kriging(GP Regression)](https://en.wikipedia.org/wiki/Kriging)
 
