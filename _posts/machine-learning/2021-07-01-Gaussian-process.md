@@ -206,7 +206,7 @@ $$
 h(\cdot) \sim \mathcal{GP}(0, \; k(\cdot, \cdot))
 $$
 
-이때, function $h$는 $h: \mathbb{R} \rightarrow \mathbb{R}$의 함수이다. 그리고 kernel function $k(\cdot, \cdot)$은 \<**sqaured exponential kernel function**\>[^3]을 사용한다.
+이때, function $h$는 $h: \mathbb{R} \rightarrow \mathbb{R}$의 함수이다. 그리고 kernel function $k(\cdot, \cdot)$은 \<**squared exponential kernel function**\>[^3]을 사용한다.
 
 $$
 k_{SE}(x, x') = \exp \left( - \frac{1}{2\tau^2} (x - x')^2 \right) \quad (\tau > 0)
@@ -235,7 +235,6 @@ $$
 
 ### references
 
-- ['손쓰'님의 포스트](https://sonsnotation.blogspot.com/2020/11/11-2-gaussian-progress-regression.html)
 - [Gaussian processes - Chuong B. Do](http://cs229.stanford.edu/section/cs229-gaussian_processes.pdf)
 
 <hr/>

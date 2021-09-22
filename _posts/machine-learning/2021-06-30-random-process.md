@@ -161,9 +161,9 @@ PP에 대한 내용은 아래 포스트의 내용으로 대체한다 🙏
 
 ### Gaussian Process
 
-A sequence of Gaussian distribution으로, multi-variate Gaussian distribution의 일반화된 버전이다. "distribution over function"으로 취급한다! 💪
+A sequence of Gaussian distribution으로, multi-variate Gaussian distribution의 일반화된 버전이다. "distribution over functions"으로 취급한다! 💪
 
-👉 [Gaussian Process & Gaussian Process Regression]({{"2021/07/01/Gaussian-process-and-GPR.html" | relative_url}})
+👉 [Distribution over functions & Gaussian Process]({{"2021/07/01/Gaussian-process.html" | relative_url}})
 
 <hr/>
 
