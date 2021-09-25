@@ -18,7 +18,7 @@ tags: ["Algorithm"]
 
 ## Merge Sort
 
-\<정렬\>은 CSE의 가장 근원이 되는 작업이다. \<병합 정렬 Merge Sort\>는 \<퀵 정렬 Quick Sort\>와 함께 인류 역사에서 최고의 알고리즘이라고 생각한다! 👍
+\<정렬\>은 알고리즘의 가장 근원이 되는 작업이다. \<병합 정렬; Merge Sort\>은 \<퀵 정렬; Quick Sort\>과 함께 인류 역사에서 최고의 알고리즘이라고 생각한다! 👍
 
 Merge Sort는 \<분할 정복\>을 정말 충실히 수행하는 알고리즘이다.
 
@@ -65,7 +65,7 @@ function: **merge**($x[1...k]$, $y[1...l]$)
 
 </div>
 
-이번에는 Computing Complexity를 계산해보자. 점화식을 작성하면 아래와 같다.
+이번에는 Complexity를 계산해보자. 점화식을 작성하면 아래와 같다.
 
 $$
 T(n) = 2 \cdot T(n/2) + O(n)
@@ -97,11 +97,9 @@ Merge Sort는 간단하지만, 강력하다! 보통 Merge Sort를 직접 구현�
   <img src="{{ "/images/algorithm/merge-sort-2.jpg" | relative_url }}" width="420px">
 </div>
 
-위와 같이 주어진 배열에 대해 원소를 비교하는 모든 경우를 고려하게 되면, 우리는 배열의 $n$개 원소에 대한 가능한 모든 \<순열 Permutation\>을 확인하는 것과 동일하다. 즉, $n!$ 가짓수의 가능한 순서를 생각한다는 말이다.
+위와 같이 주어진 배열에 대해 원소를 비교하는 모든 경우를 고려하게 되면, 우리는 배열의 $n$개 원소에 대한 가능한 모든 \<순열 Permutation\>을 확인하는 것과 동일하다. 즉, $n!$ 가짓수의 가능한 순서를 생각한다는 말이다. 이때, "정렬"이라는 작업은 \<비교 트리; Comparision Tree\>에서 가능한 하나의 \<경로 Path\>를 취하는 것이라고 할 수 있다.
 
-하지만, "정렬"이라는 과정은 이런 \<비교 트리 Comparision Tree\>에서 가능한 하나의 \<경로 Path\>를 취하는 것에 지나지 않는다. 
-
-이때, 비교 트리에서 가장 긴 경로(longest path)의 길이를 생각해보자. 비교 트리는 총 $n!$개 만큼의 leat node를 가지므로 트리의 \<깊이 depth\>는 $\log {(n!)}$이 된다. 이 트리의 "깊이"는 곧 **Worst-case**에서의 비교 횟수와 동일하다!!
+비교 트리에서 가장 긴 경로(longest path)의 길이를 생각해보자. 비교 트리는 총 $n!$개 만큼의 leaf node를 가지므로 트리의 깊이(depth)는 $\log {(n!)}$이 된다. 이 트리의 "깊이"는 곧 **Worst-case**에서의 비교 횟수이다!!
 
 약간의 정리들을 활용하면, $\log {(n!)}$에 대해 아래가 성립함을 보일 수 있다.
 
@@ -109,11 +107,9 @@ $$
 \log {(n!)} \ge c \cdot n \log n \quad \textrm{for some} \; c > 0
 $$
 
-위의 식은 곧 함수 $\log {(n!)}$가 $\Omega \left( n \log {n} \right)$이 됨을 의미한다!
+이것은 함수 $\log {(n!)}$에 대해 $\Omega \left( n \log {n} \right)$임을 의미한다. 그리고 어떤 정렬 알고리즘도 $n$개 원소를 정렬하는 데에 $\Omega (n \log {n})$ 만큼의 비교는 반드시 수행해야 함을 의미한다. 즉, 정렬 알고리즘이 가질 수 있는 Complexity의 하한선이 $n \log {n}$이라는 의미이다.
 
-이것이 시사하는 바는 어떤 정렬 알고리즘도 $n$개 원소를 정렬하는 데에 $\Omega (n \log {n})$ 만큼의 비교는 반드시 수행해야 함을 의미한다. 즉, 정렬 알고리즘이 가질 수 있는 Complexity의 하한선이 $n \log {n}$이라는 의미이다.
-
-하지만, Merge Sort는 $O(n \log {n})$ 만큼의 Complexity를 가짐을 확인했다. 즉, Merge Sort의 Complexity가 $n \log {n}$ 보다 절대 높아지지 않는다는 거다! 이 말은 곧 $O(n \log {n})$의 효율을 갖는 Merge Sort가 **optimal** 정렬 방식이라는 것을 말한다!! $\blacksquare$
+그런데 우리는 윗 문단에서 \<Master Theorem\>으로 Merge Sort가 $O(n \log {n})$의 Complexity를 가진다는 걸 유도했다. 즉, Merge Sort의 Complexity가 $n \log {n}$ 보다 절대 높아지지 않는다는 거다! 이 말은 <span class="half_HL">곧 $O(n \log {n})$의 효율을 갖는 Merge Sort가 **optimal** 정렬 방식</span>이라는 것을 말한다!! $\blacksquare$
 
 p.s. 본인도 처음에는 이해가 잘 되질 않았다. 아마 $\Omega (n \log {n})$의 의미가 잘 와닿지 않았던 것 같은데, 본인은 $\Omega (n \log {n})$를 Complextiy의 하한선이라고 해석했다. 즉, 정렬 알고리즘이 $\Omega (n \log {n})$의 Complexity를 갖는다는 건 모든 정렬 알고리즘은 $n \log {n}$ 보다 크거나 같은 Complexity를 가질 수 밖에 없다고 해석했다는 말이다. 그런데 Merge Sort는 $O(n \log {n})$의 Complextiy를 가지니, 절대 $n \log {n}$ 이상으로는 Complexity가 커지지 않는다. 그러니 $O(n \log {n)}$은 $\Omega(n \log {n)}$ 아래에서 optimal 일 수 밖에 없다!
 
