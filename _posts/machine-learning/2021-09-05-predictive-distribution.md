@@ -91,7 +91,7 @@ $$
 <summary>Solution</summary>
 
 "앞면이 나올 **확률**이 균일 분포를 따른다." <br/>
-→ $p(\theta) = I_{(0 \le \theta \le 1)}$ (posterior prior)
+→ $p(\theta) = I_{(0 \le \theta \le 1)}$ (parameter prior)
 
 "동전을 던진다."<br/>
 → $p(x \mid \theta) = \theta^x (1 - \theta)^{(1-x)}$ (likelihood)
