@@ -99,7 +99,7 @@ Once a random function $h(\cdot)$ is selected from $\mathcal{H}$ probabilistical
 
 Let $\mathcal{X} = \\{x_1, \dots, x_m\\}$ be any finite set of elements. Now consider the set $\mathcal{H}$ of all possible functions mapping from $\mathcal{X}$ to $\mathbb{R}$.
 
-Sinace the domain of any $h(\cdot) \in \mathcal{H}$ has only finite $m$ elts, we can represent $h(\cdot)$ as an $m$-dimensional vector, $\vec{h} = [h(x_1), \dots, h(x_m)]^T$.
+Since the domain of any $h(\cdot) \in \mathcal{H}$ has only finite $m$ elts, we can represent $h(\cdot)$ as an $m$-dimensional vector, $\vec{h} = [h(x_1), \dots, h(x_m)]^T$.
 
 In order to specify a probability distribution over functions $h(\cdot)$, we must associate some 'probability density' with each function in $\mathcal{H}$. Note that we've represent function $h(\cdot)$ as a vector $\vec{h}$. Then we can give a prob. distribution like gaussian as follows
 
@@ -123,7 +123,7 @@ $$
 
 이번에는 $\mathcal{X}$에서 추출한 collection을 이용해 random variable의 집합 $\\{ h(x) : x \in \mathcal{X}\\}_m$를 정의해보자. $h(\cdot)$가 probabilistic 하게 결정되는 random function이기 떄문에 $h(x)$도 random variable 이다. 😉 이때 domain set $\mathcal{X}$에 대해 별도로 특정하지는 않았다. 이전과 같은 finite domain을 생각해도 좋고, $\mathbb{R}$와 같은 infinite dimension을 생각해도 좋다.
 
-우리는 finite collection of random variable $\\{ h(x) : x \in \mathcal{X}\\}_m$로 multi-variate Gaussian distribution을 정의할 수 있다. 이때, $\mathcal{X}$를 domain으로 갖는 $m(x)$와 $k(x, x')$는 mean function, covariance function으로 아래와 같이 정의할 수 있을 것이다.
+우리는 finite collection of random variable $\\{ h(x) : x \in \mathcal{X}\\}_m$로 multi-variate Gaussian distribution을 정의할 수 있다. 이때, $\mathcal{X}$를 domain으로 갖는 $m(x)$와 $k(x, x')$는 mean function, covariance function을 아래와 같이 정의할 수 있을 것이다.
 
 $$
 \begin{aligned}

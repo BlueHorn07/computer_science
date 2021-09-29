@@ -27,7 +27,7 @@ readtime: 30 Minutes
 
 이번 포스트에서는 앞에서 다룬 \<parameter posterior\>, \<posterior predictive distribution\>을 Regression Problem에 적용한다. 사실 \<**Bayesian Linear Regression**\>은 단순히 \<posterior predictive distribution under the regression problem\>일 뿐이다! 🙌
 
-관측된 데이터 $S = (X, y)$가 존재해 이것으로 \<parameter prior\>를 갱신해보자. Bayes Rule에 따뜨면 아래와 같이 \<parameter posterior\>를 유도할 수 있다.
+관측된 데이터 $S = (X, y)$가 존재해 이것으로 \<parameter prior\>를 갱신해보자. Bayes Rule에 따르면 아래와 같이 \<parameter posterior\>를 유도할 수 있다.
 
 $$
 \begin{aligned}

@@ -179,7 +179,7 @@ $$
 
 ### Insights
 
-이번 문단에서는 GP Regression에 대한 통찰들에 대해 살펴볼 것이다. locally-weighted linear regression처럼 GP Regression은 <span style="color: red"><b>non-parameteric regression model</b></span>이다. 이는 input data의 함수에 선형에 대한 가정이나 다항식에 대한 가정을 할 필요가 없으며 arbitrarry function을 다루는 것이 가능하다는 것을 말한다! 🤩 대학에서 들었던 "통계적 데이터마이닝(IMEN472)" 수업에서 [non-parameteric model](https://bluehorn07.github.io/computer_science/2021/02/24/statistical-data-mining.html#non-parametric-method)에 대해 다루긴 했는데, \<GP Regression\>은 다루지 않았다.
+이번 문단에서는 GP Regression에 대한 통찰들에 대해 살펴볼 것이다. locally-weighted linear regression처럼 GP Regression은 <span style="color: red"><b>non-parameteric regression model</b></span>이다. 이는 input data의 함수에 선형에 대한 가정이나 다항식에 대한 가정을 할 필요가 없으며 arbitrary function을 다루는 것이 가능하다는 것을 말한다! 🤩 대학에서 들었던 "통계적 데이터마이닝(IMEN472)" 수업에서 [non-parameteric model](https://bluehorn07.github.io/computer_science/2021/02/24/statistical-data-mining.html#non-parametric-method)에 대해 다루긴 했는데, \<GP Regression\>은 다루지 않았다.
 
 <br/>
 
@@ -196,8 +196,6 @@ hyper-parameter인 $\tau$는 smoothness를 조정하는 파라미터로 $\tau$ �
   <p markdown="1">ref. ['손쓰'님의 포스트](https://sonsnotation.blogspot.com/2020/11/11-2-gaussian-progress-regression.html)</p>
 </div>
 
-이렇듯 kernel function을 GP Regression의 convariance function으로 쓰기 때문에 GP Regression을 <span style="color: red"><b>kernel-based regression model</b></span>이라고도 한다.
-
 <br/>
 
 다음으로 regression noise인 $\sigma$(그림에서는 $\sigma_y$)가 있다. 이 녀석은 uncertainty의 정도를 결정하는 파라미터로 $\sigma$ 값이 클수록 데이터의 noise가 크다고 판단한다.
@@ -211,7 +209,7 @@ hyper-parameter인 $\tau$는 smoothness를 조정하는 파라미터로 $\tau$ �
 
 ### 맺음말
 
-지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameter model</b></span>이면서 <span style="color: red"><b>kernel-based model</b></span>인 녀석이었다. 게다가 \<Bayesian Linear Regression\>이 supervised learning이라면, \<GP Regression\>은 <span style="color: red"><b>unsupervised learning</b></span>으로 anomaly detection 등의 작업에도 활용할 수 있다 😁 개인적으로 GP Regression은 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
+지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameteric model</b></span>인 녀석이었다. 게다가 \<Bayesian Linear Regression\>이 supervised learning이라면, \<GP Regression\>은 <span style="color: red"><b>unsupervised learning</b></span>으로 anomaly detection 등의 작업에도 활용할 수 있다 😁 개인적으로 GP Regression은 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
 
 👉 [Kriging(GP Regression)](https://en.wikipedia.org/wiki/Kriging)
 

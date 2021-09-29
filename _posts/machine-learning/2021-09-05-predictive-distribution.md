@@ -158,7 +158,7 @@ $$
 
 </div>
 
-후! 식이 훨씬 간단해졌다!🙌 \<prior predictive distribution\>과 비교했을 때 달라진 점은 적분 내부의 함수가 parameter prior $p(\theta)$에서 parameter posterior $p(\theta \mid X)$로 바뀌었다는 점이다! \<posterior predictive distribution\>은 관측된 데이터로 갱신된 \<parameter posterior\>를 사용했기 때문에 실제 모수(parameter)와 근접할 것으로 기대되는 분포를 바탕으로 예측(prediction)했다고 기대하게 된다.
+\<prior predictive distribution\>과 비교했을 때 달라진 점은 적분 내부의 함수가 parameter prior $p(\theta)$에서 parameter posterior $p(\theta \mid X)$로 바뀌었다는 점이다! \<posterior predictive distribution\>은 관측된 데이터로 갱신된 \<parameter posterior\>를 사용했기 때문에 실제 모수(parameter)와 근접할 것으로 기대되는 분포를 바탕으로 예측(prediction)했다고 기대하게 된다.
 
 [이 아티클](https://rooney-song.tistory.com/9?category=935544/#:~:text=문제)의 해당 부분에서 predictive distribution을 유도하는 간단한 예제를 풀어볼 수 있다. 문제가 좋으니 한번쯤 풀어보도록 하자 👀 참고로 첫번째 예제에서 Gamma function $\Gamma$를 써서 적분하는 부분은 [Beta Distribution](https://bluehorn07.github.io/mathematics/2021/04/06/chi-and-beta-and-lognormal-distribution.html#beta-distribution)에 대한 적분이다.
 
