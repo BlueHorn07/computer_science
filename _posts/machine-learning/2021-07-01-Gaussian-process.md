@@ -194,7 +194,7 @@ For example, all $k(x, x') \ge 0$ and $K$ is a non-negative definite matrix.
 
 </div>
 
-위의 조건을 보면 유효한 $k(x, x')$를 찾는 것은 까마득해 보인다 😥 그.러.나. Chuong B. Do의 [아티클](http://cs229.stanford.edu/section/cs229-gaussian_processes.pdf)에 따르면 valid convariance function에 대한 조건이 곧 [\<Mercer's theorem; 머서의 정리\>](https://en.wikipedia.org/wiki/Mercer%27s_theorem)에서 요구하는 kernel의 조건과 동일하다고 말한다! 😲 그래서 \<Mercer's theorem\>이 보장하는 valid kernel function $k(x, x')$를 사용하면 convariance의 성질을 고민하지 않고도 convariance function $k(x, x')$를 정의할 수 있다!! 🤩 이런 점 때문에 GP는 kernel-based probability distribution으로 분류되며, 앞으로는 convariance function 대신 "kernel function"이라는 표현을 사용할 것이다.
+위의 조건을 보면 유효한 $k(x, x')$를 찾는 것은 까마득해 보인다 😥 그.러.나. Chuong B. Do의 [아티클](http://cs229.stanford.edu/section/cs229-gaussian_processes.pdf)에 따르면 valid convariance function에 대한 조건이 곧 [\<Mercer's theorem; 머서의 정리\>](https://en.wikipedia.org/wiki/Mercer%27s_theorem)에서 요구하는 kernel의 조건과 동일하다고 말한다! 😲 그래서 \<Mercer's theorem\>이 보장하는 valid kernel function $k(x, x')$를 사용하면 convariance의 성질을 고민하지 않고도 convariance function $k(x, x')$를 정의할 수 있다!! 🤩 앞으로는 convariance function 대신 "kernel function"이라는 표현을 사용할 것이다.
 
 <hr/>
 

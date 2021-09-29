@@ -209,7 +209,7 @@ hyper-parameter인 $\tau$는 smoothness를 조정하는 파라미터로 $\tau$ �
 
 ### 맺음말
 
-지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameteric model</b></span>인 녀석이었다. 게다가 \<Bayesian Linear Regression\>이 supervised learning이라면, \<GP Regression\>은 <span style="color: red"><b>unsupervised learning</b></span>으로 anomaly detection 등의 작업에도 활용할 수 있다 😁 개인적으로 GP Regression은 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
+지금까지 \<GP Regression\>에 대해 살펴보았다. 이 녀석은 <span style="color: red"><b>bayesian regression model</b></span>이면서 <span style="color: red"><b>non-parameteric model</b></span>인 녀석이었다. 게다가 \<GP Regression\>을 anomaly detection에 사용한다면, anomaly set에 대한 labeling 없이 <span style="color: red"><b>unsupervised learning</b></span>로 anomaly detection에 활용할 수 있다 😁 개인적으로 GP Regression은 실전에서도 굉장한 성능과 그럴듯한 결과를 도출했어서 꽤 만족했다 👍 위키피디아에서는 GP Regression을 "kriging"이라고 부르던데, 문서를 읽어보니 GP Regression에 대한 더 깊고 많은 내용을 다루고 있다. GP Regression이 더 궁금하다면 해당 문서를 읽어보자! 🙌
 
 👉 [Kriging(GP Regression)](https://en.wikipedia.org/wiki/Kriging)
 
