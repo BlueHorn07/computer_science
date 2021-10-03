@@ -102,9 +102,10 @@ hidden: true
 
 - Simplex Method
 
-### Network Flow
+### [Network Flow]({{"/2021/07/16/network-flow.html" | relative_url}})
 
-- Max-Flow Min-Cut Theorem
+- [Max-Flow Min-Cut Theorem]({{"/2021/07/16/network-flow.html#residual-network" | relative_url}})
+- [Ford-Fulkerson Algorithm & Edmons-Karp Algorithm]({{"/2021/10/03/ford-fulkerson-algorithm-and-edmons-karp-algorithm.html" | relative_url}})
 - Bipartite Matching
 - Variations of Network Flow Problem
 - Dinic Algorithm 🎈
