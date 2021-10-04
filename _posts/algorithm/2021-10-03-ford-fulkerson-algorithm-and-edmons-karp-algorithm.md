@@ -240,3 +240,11 @@ long long FordFulkerson(int source, int sink) {
 이것으로 네트워크 플로우 문제의 기본적인 두 알고리즘인 \<Ford-Fulkerson Algorithm\>과 \<Edmonds-Karp Algorithm\>을 살펴보았다. 두 알고리즘의 시간복잡도가 다르기 때문에 상황에 맞게 적절하게 선택해 사용하면 된다.
 
 다음 포스트로는 네트워크 플로우를 이용해 해결할 수 있는 문제들에 대해 다룬다. 대표적인 문제로 \<Bipartite Matching; 이분 매칭\>과 네트워크 플로우에 제약(contraint)를 추가한 버전의 문제들을 살펴볼 예정이다 🙌
+
+👉 [Bipartite Matching]({{"/2021/10/04/bipartite-matching.html" | relative_url}})
+
+<hr/>
+
+### references
+
+- [네트워크 유량(Network Flow)](https://gseok.gitbooks.io/algorithm/content/b124-d2b8-c6cc-d06c-d50c-b85c-c6b0/d3ec-b4dc-d480-cee4-c2a828-ford-fulkerson-c560-b4dc-baac-b4dc-ce74-d50428-edmonds-karp.html)
