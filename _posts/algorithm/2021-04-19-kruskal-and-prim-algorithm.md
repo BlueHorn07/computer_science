@@ -80,11 +80,11 @@ Then, $T'$ is a spanning tree with $\texttt{cost}(T') \le \texttt{cost}(T)$ (왜
 
 <hr/>
 
-\<Kruskal Algorithm\>에서는 \<**set**\>이라는 자료형을 사용해 쉽게 구현할 수 있다! 🤩
+\<Kruskal Algorithm\>은 \<**set**\> 자료형을 사용해 쉽게 구현할 수 있다! 🤩
 
 <div class="math-statement" markdown="1">
 
-algorithm: **Kruskal**($G$, $w$)<br/>
+Algorithm: **Kruskal**($G$, $w$)<br/>
 <small>($G = (V, E)$ is a connected undirected graph with edge weights $w_e$.)</small>
 
 <hr/>
@@ -130,7 +130,7 @@ $\texttt{makeset}$, $\texttt{find}$, $\texttt{union}$ 연산에 대한 시간복
 
 <div class="math-statement" markdown="1">
 
-algorithm: **Prime**($G$, $w$)<br/>
+Algorithm: **Prime**($G$, $w$)<br/>
 <small>($G = (V, E)$ is a connected undirected graph with edge weights $w_e$.)</small>
 
 <hr/>

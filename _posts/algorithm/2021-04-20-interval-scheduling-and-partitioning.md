@@ -68,7 +68,7 @@ $n$개의 수업이 주어졌고, 각 수업 $j$는 $[s_j, f_j]$의 start/finish
 
 <div class="math-statement" markdown="1">
 
-algorithm: **Interval-Partition**($S$)<br/>
+Algorithm: **Interval-Partition**($S$)<br/>
 
 <hr/>
 

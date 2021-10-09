@@ -45,7 +45,7 @@ BFS의 이런 문제를 해결하기 위해 \<alarm clock algorithm\>을 도입�
 
 <div class="math-statement" markdown="1">
 
-algorithm: **dijkstra**($G$, $\ell$, $s$)<br/>
+Algorithm: **dijkstra**($G$, $\ell$, $s$)<br/>
 <small>※ 주의: 그래프 $G$의 모든 edge는 positive edge여야 한다.</small>
 
 <hr/>
@@ -87,7 +87,7 @@ $H = \texttt{makequeue}(V)$
 
 <div class="math-statement" markdown="1">
 
-algorithm: **dijkstra**($G$, $\ell$, $s$)<br/>
+Algorithm: **dijkstra**($G$, $\ell$, $s$)<br/>
 
 <hr/>
 
