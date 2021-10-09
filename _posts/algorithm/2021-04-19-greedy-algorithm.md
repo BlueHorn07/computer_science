@@ -37,6 +37,6 @@ thinking ahead sv. choosing immediate advantage
   - Disjoint Set
     - Path Compression
 - [Intervel Scheduling & Partitioning]({{"/2021/04/20/interval-scheduling-and-partitioning.html" | relative_url}})
-- Huffman Encoding
+- [Huffman Encoding]({{"/2021/10/08/Huffman-encoding.html" | relative_url}})
 - Clustering of Maximum Spacing
 
