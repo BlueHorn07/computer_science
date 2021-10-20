@@ -57,9 +57,8 @@ hidden: true
   - Approximate Matches
 - [Merge Sort]({{"/2021/02/27/merge-sort.html" | relative_url}})
   - [Skyline Problem]({{"/2021/09/25/skyline-problem.html" | relative_url}}) 🎈
-- Matrix Multiplication
-  - Volker Strassen
-- Find Medians and Selection
+- [Matrix Multiplication: Strassen Algorithm]({{"/2021/10/19/matrix-multiplication-strassen-algorithm.html" | relative_url}})
+- [Quick Selection]({{"/2021/10/21/quick-selection.html" | relative_url}})
 - Closest pair of points
 
 ### Graph Algorithm
