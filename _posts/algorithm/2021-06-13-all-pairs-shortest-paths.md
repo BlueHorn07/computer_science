@@ -15,7 +15,7 @@ tags: ["Algorithm"]
 
 만약 이것을 \<Dijkstra Algorihtm\>을 사용해 $V$개의 노드에 대해서 "single-source shortest path"를 찾고자 한다면, 총 $V \times O(VE) = O(V^2 E)$의 시간이 걸린다.
 
-그.러.나. \<DP\>를 사용하면, 좀더 빠른 시간 안에 문제를 해결할 수 있다!! 😁 이 알골리즘을 \<**Floyd-Warshall Aglrorithm**\>라고 한다.
+그.러.나. \<DP\>를 사용하면, 좀더 빠른 시간 안에 문제를 해결할 수 있다!! 😁 이 알고리즘을 \<**Floyd-Warshall Aglrorithm**\>라고 한다.
 
 <hr/>
 

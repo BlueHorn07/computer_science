@@ -59,7 +59,7 @@ hidden: true
   - [Skyline Problem]({{"/2021/09/25/skyline-problem.html" | relative_url}}) 🎈
 - [Matrix Multiplication: Strassen Algorithm]({{"/2021/10/19/matrix-multiplication-strassen-algorithm.html" | relative_url}})
 - [Quick Selection]({{"/2021/10/21/quick-selection.html" | relative_url}})
-- Closest pair of points
+- [Closest pair of points]({{"/2021/10/22/closest-pair-of-points.html" | relative_url}})
 
 ### Graph Algorithm
 
