@@ -51,7 +51,7 @@ hidden: true
 
 ### [Divide and Conquer]({{"2021/02/26/divide-and-conquer.html" | relative_url}})
 
-- [Multiplication Algorithm]({{"2021/02/26/multiplication-algorithm.html" | relative_url}})
+- [Multiplication Algorithm: Karatsuba Algorithm]({{"2021/02/26/multiplication-algorithm.html" | relative_url}})
 - [Binary Search]({{"2021/02/27/binary-search.html" | relative_url}})
   - Off-by-One
   - Approximate Matches
