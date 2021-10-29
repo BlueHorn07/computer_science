@@ -78,7 +78,7 @@ hidden: true
   - [Disjoint Set & Path Compression]({{"/2021/10/26/disjoint-set-and-path-compression.html" | relative_url}})
 - [Intervel Scheduling & Partitioning]({{"/2021/04/20/interval-scheduling-and-partitioning.html" | relative_url}})
 - [Huffman Encoding]({{"/2021/10/08/Huffman-encoding.html" | relative_url}})
-- Clustering of Maximum Spacing
+- [Clustering of Maximum Spacing]({{"/2021/10/29/clustering-of-maximum-spacing.html" | relative_url}})
 
 ### [Dynamic Programming]({{"/2021/04/20/dynamic-programming.html" | relative_url}})
 
