@@ -98,6 +98,7 @@ hidden: true
 
 ### Linear Programming
 
+- [Linear Programming]({{"2021/10/30/linear-programming.html" | relative_url}})
 - Simplex Method
 
 ### [Network Flow]({{"/2021/07/16/network-flow.html" | relative_url}})
