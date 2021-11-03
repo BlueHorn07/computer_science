@@ -48,8 +48,8 @@ $$
 
 $$
 T(n) = \begin{cases} 
-O(n^d) &\mbox{if } c > \log_b {a} \\
-O(n^d \log_b {n}) & \mbox{if } c = \log_b {a} \\
+O(n^c) &\mbox{if } c > \log_b {a} \\
+O(n^d \log {n}) & \mbox{if } c = \log_b {a} \\
 O(n^{\log_b {a}}) & \mbox{if } c < \log_b {a}
 \end{cases}
 $$
@@ -100,8 +100,8 @@ Therefore,
 
 $$
 T(n) = \begin{cases} 
-O(n^d) &\mbox{if } c > \log_b {a} \\
-O(n^d \log_b {n}) & \mbox{if } c = \log_b {a} \\
+O(n^c) &\mbox{if } c > \log_b {a} \\
+O(n^d \log {n}) & \mbox{if } c = \log_b {a} \\
 O(n^{\log_b {a}}) & \mbox{if } c < \log_b {a}
 \end{cases}
 $$
