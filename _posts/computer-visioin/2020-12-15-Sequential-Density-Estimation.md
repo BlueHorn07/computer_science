@@ -28,7 +28,7 @@ $$
 - $P(H \mid E)$: **Posteriori probability**
   - 사건 발생 후, 갱신된 확률
   - 사전 정보를 추가함으로써 수정된 확률이다.
-- $P(E \mid H)$: **Likilihood**
+- $P(E \mid H)$: **likelihood**
   - 관측된 사건 $E$가 발생할 확률
 
 <br>

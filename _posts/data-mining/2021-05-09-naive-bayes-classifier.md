@@ -107,7 +107,7 @@ $$
 
 ### Gaussian Naive Bayes
 
-\<Gaussian NB\> 모델을 Likelihood $p(\mathbf{x} \mid c_k)$가 Guassian 분포를 따른다고 가정한다. 그런데, 이때 $\mathbf{x}$의 각 feature가 모두 독립이므로 우리는 각 feature에 대한 Gaussian Likelihood를 아래와 같이 정의해 사용한다.
+\<Gaussian NB\> 모델을 Likelihood $p(\mathbf{x} \mid c_k)$가 Gaussian 분포를 따른다고 가정한다. 그런데, 이때 $\mathbf{x}$의 각 feature가 모두 독립이므로 우리는 각 feature에 대한 Gaussian Likelihood를 아래와 같이 정의해 사용한다.
 
 $$
 p(a_i \mid c_k) = \frac{1}{\sqrt{2\pi \sigma_{i, c_k}^2}} \cdot \exp \left( - \frac{(a_i - \mu_{c_k})}{2 \sigma_{i, c_k}^2} \right)
