@@ -13,6 +13,7 @@ use_math: true
 
 ### [Algorithms]({{"2021/02/18/algorithm.html" | relative_url}})
 
+### [Problem Solving]({{"/2021/11/01/problem-solving.html" | relative_url}})
 
 ### [Artificial Intelligence]({{"/2021/05/20/artificial-intelligence.html" | relative_url}})
 

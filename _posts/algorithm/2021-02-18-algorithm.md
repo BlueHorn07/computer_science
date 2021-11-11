@@ -10,6 +10,8 @@ hidden: true
 
 🔥 2020-1학기 POSTECH 안희갑 교수님의 『Algorithm(CSED331)』을 수강하면서 공부한 내용을 정리하였습니다. 😁
 
+PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relative_url}})👀에서 확인하실 수 있습니다 😎
+
 #### 참고 교재
 - 『Algorithms』 Dasgupta, international ed.
 - [『알고리즘 문제해결전략』](https://book.algospot.com/) 구종만
