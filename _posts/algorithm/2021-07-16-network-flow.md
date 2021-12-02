@@ -107,7 +107,9 @@ $$
   <img src="{{ "/images/algorithm/network-flow-3.png" | relative_url }}" width="600px">
 </div>
 
-그래프 $G$를 $s$를 포함하는 $L = \\{ s, a, c\\}$, $t$를 포함하는 $R=\\{ b, d, e, t\\}$로 분할해보자. 이런 $(L, R)$분할을 "<span class="half_HL">$(s, t)$-cut</span>"이라고 한다. $s \rightarrow t$ 방향으로 흐르는 모든 유량(flow)은 $L$에서 $R$을 지나야 한다. 그러므로 어떤 유량도 $L$과 $R$ 사이를 잇는 edge의 capacity 보다 큰 값을 가질 수 없다. 이때, $L-R$을 잇는 edge의 집합을 "<span class="half_HL">cut-set</span>"라고 하며, 이 cut-set의 capacity의 총합이 $(s, t)$-cut의 capacity가 된다. 즉, 앞선 논의는 네트워크의 유량(flow)의 총합이 $(s, t)$-cut의 capacity 보다는 항상 작음을 의미한다.
+그래프 $G$를 $s$를 포함하는 $L = \\{ s, a, c\\}$, $t$를 포함하는 $R=\\{ b, d, e, t\\}$로 분할해보자. 이렇게 vertex set을 disjoint set $(L, R)$로 분할하는 것을 <span class="half_HL">$(s, t)$-cut</span> 또는 간단하게 cut이라고 한다. 사실 $s$와 $t$를 disjoint set으로 분할하는 가능한 cut은 정말 많다. 이때, $L-R$을 잇는 edge의 집합을 <span class="half_HL">cut-set</span>라고 하며, 이 cut-set의 capacity의 총합이 $(s, t)$-cut의 capacity가 된다. 이때, **<span class="half_HL">minimum cut</span>** 줄여서 min-cut은 cut capacity가 최소가 되는 cut을 말한다.
+
+$s \rightarrow t$ 방향으로 흐르는 모든 유량(flow)은 $L$에서 $R$을 지나야 한다. 그러므로 어떤 유량도 $L$과 $R$ 사이를 잇는 edge의 capacity 보다 큰 값을 가질 수 없다.  즉, 이것은 네트워크의 유량(flow)의 총합이 $(s, t)$-cut의 capacity를 넘을 수 없음을 의미한다.
 
 <span class="statement-title">Lemma 1.</span><br>
 
@@ -121,7 +123,7 @@ Pick any $(s, t)$-cut $(L, R)$ and any flow $f$, then <span class="half_HL">$\te
 
 <br/>
 
-이번에는 이런 $(L, R)$-cut에 흐르는 flow에 대한 Lemma를 살펴보자.
+이번에는 $(s, t)$-cut에 흐르는 flow에 대한 Lemma를 살펴보자.
 
 <span class="statement-title">Lemma 2.</span><br>
 
@@ -163,7 +165,7 @@ $$
 
 </div>
 
-위의 결과는 곧 어떤 cut을 잡든 상관없이 Network에 흐르는 flow의 최종값은 모두 동일하다는 것이다! 우리는 이것을 value of flow, $\text{val}(f)$라고 부르겠다.
+위의 결과는 곧 어떤 cut을 잡든 상관없이 Network에 흐르는 flow의 최종값은 모두 동일하다고 말한다! 우리는 이것을 value of flow, $\text{val}(f)$라고 부르겠다.
 
 $$
 \text{val}(f) = f(L, R) = f(\{s\}, V \setminus \{s\}) = \sum_{(s, u) \in E} f(s, u)
@@ -177,13 +179,13 @@ $$
 
 <br/>
 
-Simplex Method를 수행하며 Residual Graph $G^f$를 얻었다고 해보자. 그리고 그때의 final flow를 $f$라고 하자. 그렇다면 그래프 $G^f$ 아래에서 source $s$는 더이상 sink $t$로 reachable 하지 않을 것이다.
+~~아직 포스트에서는 안 다뤘지만~~ Ford-Fulkerson을 수행하며 Residual Graph $G^f$를 얻었다고 해보자. 그리고 그때의 final flow를 $f$라고 하자. 그렇다면 그래프 $G^f$ 아래에서 source $s$는 더이상 sink $t$로 reachable 하지 않을 것이다.
 
 $L$을 노드 $s$에서 reachable한 노드의 집합으로 설정하고, $R$은 $R = V - L$로 설정하자. 그러면 final flow $f$에 대해 아래가 성립한다!
 
 <span class="statement-title">Lemma 3.</span><br>
 
-For the residual graph $G^f$ driven by the simple method, the following holds
+For the residual graph $G^f$ driven by Ford-Fulkerson(simplex method), the following holds
 
 $$
 \text{size}(f) = \text{capacity}(L, R)
@@ -195,13 +197,13 @@ $$
   <img src="{{ "/images/algorithm/network-flow-4.png" | relative_url }}" width="500px">
 </div>
 
-Simplex Method로부터 유래되는 $(L, R)$ 분할에 대해 $\text{size}(f) = \text{capacity}(L, R)$가 성립함을 증명해보자.
+Ford-Fulkerson으로 유도되는 $(L, R)$ 분할에 대해 $\text{size}(f) = \text{capacity}(L, R)$가 성립함을 증명해보자.
 
-먼저 $L \rightarrow R$ 방향의 edge들을 살펴보자. 이런 edge에 대해서는 $f_e = c_e$로 full capacity 만큼의 flow가 흐르게 된다. ($f_e \ne c_e$라면 flow를 더 흘려보낼 수 있기 때문에 final flow라는 가정을 위배한다.)
+먼저 $G^f$의 $L \rightarrow R$ 방향의 edge들을 살펴보자. 이런 edge에 대해서는 $f_e = c_e$로 full capacity 만큼의 flow가 흐른다. ($f_e \ne c_e$라면 flow를 더 흘려보낼 수 있기 때문에 final flow라는 가정을 위배한다.)
 
-다음으로 $L \leftarrow R$ 방향의 edge들을 살펴보자. 이런 edge에 대해서는 flow가 전혀 흐르지 않는 $f_{e'} = 0$이 된다. (만약 $f_{e'} \ne 0$라면 $f_{e'}$ 만큼 반대 방향으로 capacity가 생긴다. 이것을 따라 flow를 더 흘려보낼 수 있기 때문에 final flow 가정을 위배한다.)
+다음으로 $G^f$의 $L \leftarrow R$ 방향의 edge들을 살펴보자. 이런 edge에 대해서는 flow가 전혀 흐르지 않는 $f_{e'} = 0$이 된다. (만약 $f_{e'} \ne 0$라면 $f_{e'}$ 만큼 반대 방향으로 capacity가 생긴다. 이것을 따라 flow를 더 흘려보낼 수 있기 때문에 final flow 가정을 위배한다.)
 
-따라서, Simple Method로부터 유래되는 $(L, R)$ 분할 아래에서는 $\text{size}(f)$가 정확히 $L \rightarrow R$ 방향의 capacity 만큼 흐르게 된다! $\blacksquare$
+따라서, Ford-Fulkerson으로 유래되는 $(L, R)$ 분할 아래에서는 $\text{size}(f)$가 정확히 $L \rightarrow R$ 방향의 capacity 만큼 흐른다! $\blacksquare$
 
 </div>
 
@@ -235,7 +237,7 @@ MFMC Theorem이 기술하는 3가지 명제가 서로 Equivalent 함을 증명�
 
 1\. $(1) \implies (2)$
 
-Let $f$ be a max flow, and suupose $G^f$ still has an augmenting path $\mathcal{P}$ (귀류법). Then we can increase $\text{val}(f)$ by augmenting along the path $\mathcal{P}$. This contradicting the maximality of $f$.
+Let $f$ be a max flow, and suppose $G^f$ still has an augmenting path $\mathcal{P}$ (귀류법). Then we can increase $\text{val}(f)$ by augmenting along the path $\mathcal{P}$. This contradicting the maximality of $f$.
 
 $\therefore$ When the $f$ is maximized, $G^f$ should have no augmenting paths.
 
@@ -257,7 +259,7 @@ $\blacksquare$
 
 </div>
 
-이렇게 Residual Graph $G^f$를 구축하며 Maximum Flow를 찾는 알고리즘으로 \<Ford-Fulkerson Algorithm\>과 \<Edmonds-Karp Algorithm\>이 있는데 위의 \<**MFMC Theorem**\>은 $(2) \implies (1)$을 보장하기 때문에 Residual Graph $G^f$ 아래에 augmenting path가 더이상 없는 그때 Maximum Flow를 얻을 수 있게 된다.
+이렇게 Residual Graph $G^f$를 구축하며 Maximum Flow를 찾는 알고리즘으로 \<Ford-Fulkerson Algorithm\>과 \<Edmonds-Karp Algorithm\>이 있는데 위의 \<**MFMC Theorem**\>은 $(2) \implies (1)$을 보장하기 때문에 Residual Graph $G^f$에서 augmenting path가 더이상 없는 그때 Maximum Flow를 얻을 수 있게 된다.
 
 <hr/>
 
