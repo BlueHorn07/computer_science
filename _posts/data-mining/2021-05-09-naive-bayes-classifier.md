@@ -32,13 +32,13 @@ $$
 
 <div class="statement" markdown="1" align="center">
 
-"One assumption taken is the <span style="color:red;">strong independence</span> assumptions btw th features."
+"One assumption taken is the <span style="color:red;">strong independence</span> assumptions btw the features."
 
 </div>
 
 ### Naive Assumption
 
-"In a supervised learning situation, Naive Bayes Classifiers are trained very efficiently. Naive Bayed classifiers need a small training data to estimate the parameters needed for classification. Naive Bayes Classifiers have simple design and implementation and they can applied to many real life situations."
+"In a supervised learning situation, Naive Bayes classifiers are trained very efficiently. Naive Bayes classifiers need a small training data to estimate the parameters needed for classification. Naive Bayes classifiers have simple design and implementation, and they can applied to many real life situations."
 
 \<**Naive Bayes Classifer**\>는 Supervised Learning Model이다. Conditional Probability를 활용해 분류를 진행하며 Maximum Likelihood를 달성할 수 있다!
 
