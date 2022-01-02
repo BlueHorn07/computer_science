@@ -86,13 +86,15 @@ $$
   <img src="{{ "/images/natural-language-process/RNN-3.png" | relative_url }}" width="550px">
 </div>
 
-\<RNN\>과 같은 \<Sequential Model\>은 입력과 출력의 대응에 따라 1-to-1, 1-to-many, many-to-1, many-to-many 등 다양한 형태로 존재한다. \<RNN\> 대한 더 자세한 내용은 `PyTorch` 실습과 함께 별도의 포스트에 정리하겠다.
+또, \<RNN\>과 같은 \<Sequential Model\>은 입력과 출력의 대응에 따라 1-to-1, 1-to-many, many-to-1, many-to-many 등 다양한 형태로 존재한다. 
+
+![RNN structures](https://i.stack.imgur.com/b4sus.jpg)
 
 <hr/>
 
 ### LSTM; Long Short Term Memory model
 
-\<RNN\>의 경우 hidden state를 통해 이전 입력에 대한 정보를 가지고 있지만, 입력 시퀀스가 길어질수록 성능이 떨어진다는 단점이 존재한다. 이를 \<The problem of learning long-term dependencies; 장기 의존성 문제\>라고 한다. 이에 대해선 동일한 값의 $W_h$의 값을 여러번 사용하게 되면서 발생하는 Gradient Exploding 또는 Gradient Vanishing 때문이라고 하나, 여기서는 자세히 설명하진 않겠다.
+\<RNN\>의 경우 hidden state를 통해 이전 입력에 대한 정보를 가지고 있지만, 입력 시퀀스가 길어질수록 성능이 떨어진다는 단점이 존재한다. 이를 \<The problem of learning long-term dependencies; 장기 의존성 문제\>라고 한다. 이에 대해선 동일한 값의 $W_h$의 값을 여러번 사용하게 되면서 발생하는 Gradient Exploding 또는 Gradient Vanishing을 원인으로 꼽는다.
 
 <div class="img-wrapper">
   <img src="{{ "/images/natural-language-process/RNN-4.png" | relative_url }}" width="750px">
