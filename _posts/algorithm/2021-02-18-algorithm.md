@@ -101,7 +101,7 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 ### Linear Programming
 
 - [Linear Programming]({{"2021/10/30/linear-programming.html" | relative_url}})
-- Simplex Method
+- [Simplex Method]({{"/2021/11/16/simplex-method.html" | relative_url}})
 
 ### [Network Flow]({{"/2021/07/16/network-flow.html" | relative_url}})
 
