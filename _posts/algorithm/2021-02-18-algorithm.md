@@ -113,6 +113,10 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 
 ### NP & NP-complete
 
+- [P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})
+- NP-complete and NP-hard
+
+
 - Rudrata-Hamilton Cylcle Problem
 - Balanced Cut
 - 3D Matching
