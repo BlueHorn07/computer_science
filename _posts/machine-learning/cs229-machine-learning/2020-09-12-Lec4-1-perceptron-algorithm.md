@@ -2,7 +2,7 @@
 title: "Perceptron Algorithm, and Newton's Method"
 layout: post
 use_math: true
-tags: [CS229]
+tags: [CS229, Machine Learning]
 ---
 
 ## 서론

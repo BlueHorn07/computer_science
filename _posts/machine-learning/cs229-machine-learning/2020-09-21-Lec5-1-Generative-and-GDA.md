@@ -2,11 +2,13 @@
 title: "Generative Learning Algorithm, and GDA"
 layout: post
 use_math: true
-tags: [CS229]
+tags: [CS229, Machine Learning]
 ---
 
 ## 서론
 본 글은 2018-2학기 Stanford Univ.의 Andrew Ng 교수님의 Machine Learning(CS229) 수업의 내용을 정리한 것입니다. 지적은 언제나 환영입니다 :)
+
+GDA(Gaussian Discriminant Analysis)라는 기법이 등장한다. 이름이 후덜덜 하게 생겼지만, 이론은 별거 없다. 안심하고 다이브🤿하자!
 
 -- [lecture 5](https://youtu.be/nt63k3bfXS0)
 
@@ -24,7 +26,7 @@ Generative Learning은 **Bayes Rule**을 바탕으로 하는 이론이다.
 $$p(y \vert x) = \frac{p(x \vert y) p(y)}{p(x)}$$
 </div>
 
-우리가 목표로 하는 것은 여전히 $p(y \vert x)$이다. Discriminative 모델은 $p(y \vert x)$를 바로 학습하는 반면, Generative 모델은 $p(x \vert y)$를 학습하여 $p(y \vert x)$의 값을 유도한다. 구체적으로는 다음과 같다.
+우리가 목표로 하는 것은 여전히 $p(y \vert x)$이다. Discriminative 모델은 $p(y \vert x)$를 학습하는 반면, Generative 모델은 $p(x \vert y)$와 $p(y)$를 정의하고 학습하여 $p(y \vert x)$의 값을 간접적으로 유도한다. 구체적으로는 다음과 같다.
 
 <div>
 $$
@@ -35,7 +37,7 @@ $$
 $$
 </div>
 
-[^2]
+결국 Discriminative나 Generative나 큰 흐름은 동일하지만, 구하는 과정이 direct이나 indirect이나의 차이일 뿐이다.
 
 ### (사전지식) Bayes Rule
 
@@ -44,17 +46,28 @@ $$p(y \vert x) = \frac{p(x \vert y) p(y)}{p(x)}$$
 </div>
 
 Bayes Rule의 용어를 정리해보자.
-- $p(y \vert x)$: posterior probability
-  - Classification의 기준이 되는 값이다.
-- $p(y)$: prior probability
+- $p(y \vert x)$: **posterior probability**
+  - 데이터 X에 대한 레이블 Y의 확률이다.
+  - Classification의 기준이 된다.
+- $p(y)$: **prior probability**
   - 정답 레이블의 분포를 통해 얻는다.
-- $p(x \vert y)$: likelihood
+  - 레이블 y의 수 / 전체 데이터 수
+- $p(x \vert y)$: **likelihood**
+  - 레이블 Y를 갖는 데이터의 분포를 의미한다.
+  - Generative Model은 이 확률을 모델링하고 또 학습한다.
+- $p(x)$
+  - 보통 값을 구할 수도 없고, 구할 필요도 없다.
+  - 그래서 잘 신경 쓰지 않는다.
+
+<br/>
+
+분류 문제를 기준으로 말하자면, *Logistic Regression*이 Discriminative Model에 속한다. [*Naive Bayes Classifier*](https://poapper.github.io/pytorch-seminar/2021/12/26/seminar-6.html)는 Generative Model에 속한다. 또 아래에 언급되는 GDA(Gaussian Discriminant Analysis)도 Generative Model이다.
 
 <hr>
 
 ### Gaussian Discriminant Analysis<sub>GDA</sub>
 
-GDA에서는 $p(x \vert y)$가 **multivariate normal distribution**을 만족한다고 '가정'한다. GDA에 대해 본격적으로 다루기 전에 multivariate normal distribution을 가볍게 살펴보자.
+GDA는 이름에 'Discriminant'가 들어가지만, Generative Model이다. GDA에서는 $p(x \vert y)$가 **multivariate normal distribution**을 만족한다고 '가정'한다. GDA에 대해 본격적으로 다루기 전에 multivariate normal distribution을 가볍게 살펴보자.
 
 #### (사전지식) Multivaraite normal distribution
 
@@ -84,8 +97,14 @@ $$\mathcal{N}(X; \mu, \Sigma) = \frac{1}{\sqrt{2\pi}{\lvert \Sigma \rvert}^{1/2}
 binary classification 문제를 GDA로 모델링 하기 위해 다음과 같은 가정을 한다.
 
 - $y \sim \textrm{Bernoulli}(\phi)$
+  - 이 부분은 가정이 아니다. 이진 분류 문제라서 $y$는 베르누이 분포일 수 밖에 없다.
+  - $\phi = 0.5$라면 uniform distribution이 될 것이다.
+  - 참고로 $y$에 대한 분포는 어떤 문제를 푸는지에 따라 자동으로 결정되기 때문에 가정을 도입하는 부분이 아니다.
+
 - $x \vert y = 0 \sim \mathcal{N}(\mu_0, \Sigma)$
 - $x \vert y = 1 \sim \mathcal{N}(\mu_1, \Sigma)$
+
+<br/>
 
 분포를 식으로 기술하면 아래와 같다.
 
@@ -101,7 +120,9 @@ binary classification 문제를 GDA로 모델링 하기 위해 다음과 같은 
 
 우리는 위의 $\phi$, $\mu_0$, $\mu_1$, $\Sigma$를 학습시킬 것이다!
 
-이제 위의 공식을 바탕으로 Joint Likelihood $L(\phi, \mu_0, \mu_1, \Sigma)$를 정의해보자.
+<br/>
+
+Joint Likelihood $L(\phi, \mu_0, \mu_1, \Sigma)$를 정의해보자.
 
 <div>
 $$
@@ -118,19 +139,22 @@ $$
 $$L(\theta) = \prod_{i=1}^{m}{p(y^{(i)} \vert x^{(i)}; \theta)}$$
 </div>
 
-parameter의 측면에서 $\theta$와 $\phi$, $\mu_0$, $\mu_1$, $\Sigma$로 차이가 있고, Maximize 대상도 Discriminant Learning의 경우 $p(y \vert x)$를 Maximize하는 반면 Generative Learning은 $p(x \vert y)p(y)$를 Maximize한다!
+parameter의 측면에서 $\theta$와 $\phi$, $\mu_0$, $\mu_1$, $\Sigma$로 차이가 있고, Maximize 대상도 Discriminant Learning의 경우 $p(y \vert x)$를 Maximize하는 반면 Generative Learning은 $p(x \vert y)p(y)$를 Maximize하고 있다.
 
 ### MLE on GDA
 
-앞에서 살펴본 $L(\phi, \mu_0, \mu_1, \Sigma)$를 Maximize 하자. 이때, $L(\phi, \mu_0, \mu_1, \Sigma)$에 $\log$를 취한 $l(\phi, \mu_0, \mu_1, \Sigma)$를 대신 Maximize한다.
+정의한 $L(\phi, \mu_0, \mu_1, \Sigma)$를 Maximize 하자. 이때, $L(\phi, \mu_0, \mu_1, \Sigma)$에 $\log$를 취한 $l(\phi, \mu_0, \mu_1, \Sigma)$를 대신 Maximize한다.
 
 <div>
 $$\max_{\{ \phi, \mu_0, \mu_1, \Sigma \}} {\left[ l(\phi, \mu_0, \mu_1, \Sigma) \right]}$$
 </div>
 
-$l$을 Maximizing 하는 parameter의 값은 다음과 같다. 강의에서도 유도 과정은 생략하였다.
+$l$을 Maximizing 하는 parameter의 값은 다음과 같다. 강의에서도 유도 과정은 생략하였다. (아마 parameter 하나 잡고 미분해서 유도할 듯?)
 
 - $\phi = \frac{\sum_{i=1}^{m} {y^{(i)}}}{m} = \frac{\sum_{i=1}^{m} {1\\{y^{(i)}=1\\}}}{m}$
+
+<br/>
+
 - $\mu_0 = \frac{\sum_{i=1}^{m} { 1\\{y^{(i)}=0\\} x^{(i)} }}{\sum_{i=1}^{m} {1\\{y^{(i)}=0\\}}}$
 - $\mu_1 = \frac{\sum_{i=1}^{m} { 1\\{y^{(i)}=1\\} x^{(i)} }}{\sum_{i=1}^{m} {1\\{y^{(i)}=1\\}}}$
 - $\Sigma = \frac{\sum_{i=1}^{m} {(x^{(i)} - \mu_{y^{(i)}})(x^{(i)} - \mu_{y^{(i)}})^{T}}}{m}$
@@ -141,7 +165,7 @@ $\mu_0$을 잘 살펴보자. $\mu_0$의 결과를 말로 풀어쓰면, "$y=0$인
 이 결과를 그래프로 표현하면 다음과 같다.
 
 <div style="text-align: center;">
-<img src="/assets/img/CS229/GDA1.png"  style="width: 50%;">
+<img src="/images/CS229/GDA1.png"  style="width: 50%;">
 </div>
 
 위 그림에 그려진 직선은 $p(y=1 \vert x)=0.5$가 되는 decision boundary의 역할을 한다!!
@@ -161,7 +185,7 @@ $$\arg{ \max_{y} {p(y \vert x)}} = \arg{ \max_{y} {p(x \vert y)p(y)}}$$
 그러면,
 
 <div style="text-align: center;">
-<img src="/assets/img/CS229/GDA2.png"  style="width: 50%;">
+<img src="/images/CS229/GDA2.png"  style="width: 50%;">
 </div>
 
 즉, $p(y=1 \vert \phi, \mu_0, \mu_1, \Sigma)$는 sigmoid의 shape이 나온다!!
@@ -171,7 +195,7 @@ $$\arg{ \max_{y} {p(y \vert x)}} = \arg{ \max_{y} {p(x \vert y)p(y)}}$$
 위의 사실은 GDA와 Logistic Regression이 본질적으로 동일하다는 것을 말한다. 그렇다면 우리는 언제 GDA를 쓰고, 언제 Logistic Regression을 써야 할까??
 
 <div style="text-align: center;">
-<img src="/assets/img/CS229/GDA3.png"  style="width: 80%;">
+<img src="/images/CS229/GDA3.png"  style="width: 80%;">
 </div>
 
 
@@ -186,5 +210,4 @@ GDA는 더 강력한 가정을 사용하기 때문에 현실의 dataset이 그 �
 <hr>
 
 [^1]: 실제로는 $p(x \vert y)$만 학습하고 $p(y)$는 학습하지 않는다.
-[^2]: 개인적으로 $\arg{ \max_{y} {p(x \vert y)p(y)}}$ 표현이 아주 마음에 든다 :)
-[^3]: mean vector는 $\mu_0$, $\mu_1$으로 두 개인 반면 Covariance matrix $\Sigma$로 하나이다. 이것 역시 GDA를 모델링 하는 과정에서 하는 가정 중 하나이다. 일종의 design choice!
+[^3]: mean vector는 $\mu_0$, $\mu_1$으로 두 개인 반면 Covariance matrix $\Sigma$로 하나이다. 이것 역시 GDA를 모델링 하는 과정에서 도입한 가정 중 하나이다. 일종의 design choice! 원한다면 $\Sigma_1$, $\Sigma_2$로 분리할 수도 있다.
