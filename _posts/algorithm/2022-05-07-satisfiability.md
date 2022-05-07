@@ -2,7 +2,7 @@
 title: "Satisfiability(SAT)"
 layout: post
 use_math: true
-tags: ["Algorithm", "Problem Solving"]
+tags: ["Algorithm"]
 ---
 
 ### 서론
