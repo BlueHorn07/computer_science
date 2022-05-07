@@ -114,15 +114,17 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 ### NP & NP-complete
 
 - [P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})
+
+- [Satisfiability (SAT)]({{"/2022/05/07/satisfiability.html" | relative_url}})
+- [Traveling Salesman Problem (TSP)]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
+- [Hamilton Cycle Problem (HCP)]({{"/2022/03/12/hamilton-cycle-problem.html" | relative_url}})
+- [Balanced Cut]({{"/2022/05/07/balanced-cut.html" | relative_url}})
+- [3D Matching]({{"/2022/05/07/3D-matching.html" | relative_url}})
+- Integer Linear Programming
+- Independent Set, Vertex Cover, Clique
+- Longest Path, Subset Sum
+
 - NP-complete and NP-hard
-
-
-- Rudrata-Hamilton Cylcle Problem
-- Balanced Cut
-- 3D Matching
-- Independent Set & Vertex Cover & Clique
-- Longest Path Problem
-- Subset Sum Problem
 
 ### Appendix
 

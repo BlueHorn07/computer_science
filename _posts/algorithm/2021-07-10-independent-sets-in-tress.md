@@ -21,7 +21,7 @@ Given a graph $G = (V, E)$, a subset $S \subset V$ is an \<**independent set**\>
 
 </div>
 
-\<Independent Set Problem\>은 그래프에서 가능한 독립집합 중 가장 큰 집합을 찾는 문제를 말한다. 일반적으로 \<Independent Set Problem\>를 polynomial time으로 푸는 것은 불가능하다. 이것에 대해서는 \<NP / NP-Hard\>에 대해 다룰 때 다시 언급하도록 하겠다.
+\<Independent Set Problem\>은 그래프에서 가능한 독립집합 중 가장 큰 집합을 찾는 문제를 말한다. 일반적으로 \<Independent Set Problem\>를 polynomial time으로 푸는 것은 불가능하다. 이것에 대해서는 \<NP-complete\>에 대해 다룰 때 다시 언급하도록 하겠다.
 
 그러나 만약 그래프 $G$가 tree라면, \<Independent Set Problem\>를 linear time으로 해결할 수 있다!!
 

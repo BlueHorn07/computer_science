@@ -40,7 +40,7 @@ Given a graph and a budget $b$, find a cut with at most $b$ edges.
 
 <br/>
 
-그러나 이렇게 쉬운 형태라면 NP-hard에 등장할 수 없다. Balanced Cut 문제는 분할하는 두 그래프의 **균형**이 맞아야 한다.
+그러나 이렇게 쉬운 형태라면 NP에 등장할 수 없다. Balanced Cut 문제는 분할하는 두 그래프의 **균형**이 맞아야 한다.
 
 <div class="statement" markdown="1">
 

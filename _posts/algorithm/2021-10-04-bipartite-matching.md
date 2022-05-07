@@ -73,3 +73,7 @@ Let $M$ be the set of edges used in the maximum flow of value $k$. Then $M$ is a
 
 👉 [Ford-Fulkerson & Edmons-Karp Algorithm]({{"/2021/10/03/ford-fulkerson-algorithm-and-edmons-karp-algorithm.html" | relative_url}})
 
+### 함께보기
+
+- [3D Matching]({{"/2022/05/07/3D-matching.html" | relative_url}})
+
