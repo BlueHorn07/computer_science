@@ -2,7 +2,7 @@
 title: "Bitmask Technique"
 layout: post
 use_math: true
-tags: ["Algorithm"]
+tags: ["Algorithm", "Problem Solving"]
 ---
 
 ### 서론

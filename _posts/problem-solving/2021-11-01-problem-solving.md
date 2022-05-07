@@ -2,7 +2,7 @@
 title: "Problem Solving"
 layout: post
 use_math: true
-tags: ["Algorithm", "PS"]
+tags: ["Algorithm", "Problem Solving"]
 ---
 
 <br/>
