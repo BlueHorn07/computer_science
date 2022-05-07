@@ -26,3 +26,9 @@ DP 챕터에서 다룬 [\<**외판원 순회문제; Traveling Salesman Problem**
 ### NP 문제인가?
 
 \<외판원 문제\>와 마찬가지로 \<해밀턴 경로 문제\> 문제도 class NP에 속한다. solution $S$가 주어졌을 때 검산은 poly-time에 가능하지만, solution을 찾는 poly-time 알고리즘이 존재하지 않는다. 그래서 \<해밀턴 경로 문제\>도 NP 문제에 해당한다. P, NP에 해당 내용은 "[P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})" 포스트를 참고하자.
+
+### 함께보기
+
+- [Bitmask Technique]({{"/2022/04/29/bitmask-technique.html" | relative_url}})
+- [Traveling Salesman Problem]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
+- [P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})

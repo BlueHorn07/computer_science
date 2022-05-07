@@ -69,7 +69,7 @@ long long shortestPath(vector<int> &path, vector<bool> &visited, long long curre
 
 <hr/>
 
-### DP
+### Dynamic Programming + Bitmask
 
 \<TSP\>를 \<DP\>로 풀기 위한 알고리즘의 뼈대는 아래와 같다.
 
@@ -86,6 +86,8 @@ $$
 그럼 우리의 목표는 $C(i, \\{ 1, 2, \dots, n \\}) + d_{i1}$ 중 가장 짧은 거리를 구하는 것이다! 이를 구하기 위한 알고리즘을 코드로 기술하면 아래와 같다. 코드는 ['hsp1116'님의 포스트](https://hsp1116.tistory.com/40)를 참조했다.
 
 </div>
+
+TSP의 DP 알고리즘을 구현하기 위해선 [비트마스크(bitmask) 기법]({{"/2022/04/29/bitmask-technique.html" | relative_url}})에 대해 알아야 한다. 해당 포스트를 먼저 살펴보고 오자.
 
 ``` cpp
 // curr: 마지막으로 방문한 노드 (=here)
@@ -115,7 +117,7 @@ long long shortestPath(int curr, int visited) {
 
 사실 처음에 제시했던 완전탐색 코드와 크게 다르지는 않다. 그러나 함수의 인자로 `visited`를 비트마스크로 받는다는 점. 그리고 TSP의 결과를 얻기 위해서 구체적인 방문 순서가 담긴 경로 `path`가 필요없으니 마지막으로 방문한 노드인 `curr`만 받는다는 점이 주목할 만하다! 🤩
 
-여기에 \<DP\>를 얻으면 아래와 같다. 
+여기에 \<DP\>를 얹으면 아래와 같다. 
 
 ``` cpp
 long long dp[MAX][1 << MAX];
@@ -154,12 +156,40 @@ long long shortestPath(int curr, int visited) {
 
 \<TSP\>는 워낙 유명하고 중요한 문제라서 풀어봤는데, 많은 영감을 얻은 것 같다 ㅎㅎ
 
+#### 시간 복잡도
+
+DP 알고리즘은 $O(n^2 2^n)$의 효율을 보인다고 한다. 이건 Brute Force의 $O((n-1)!)$ 보다 약간 좋은 수준이며 DP를 썼음에도 여전히 exponential time algorithm인 상황이다.
+
 <hr/>
+
+### TSP (Search Problem)
+
+TSP 문제에 budget $b$를 도입하여 Search Problem의 형태로 바꾸고자 한다.
+
+<div class="statement" markdown="1" align="center">
+
+"Find a tour that start and ends at $1$, <span style="color:red">visits all cities exactly once</span> with <span style="color:red">total cost $b$ or less</span>. <br/>
+If there's no such tour, then report 'no tour'."
+
+</div>
+
+우리가 맨 처음 살펴봤던 TSP 문제는 최적해를 찾는 optimization problem이었다. 그런데 이번에 정의한 TSP는 search problem이다. TSP(optimization)과 TSP(search)를 서로의 문제로 환원 될 수 있다. 
+
+- TSP(optimization) 알고리즘을 통해 TSP(search) 문제에 답할 수 있다.
+- TSP(search) 알고리즘을 통해 tour가 존재하는 지점까지 budget $b$를 binary search 하면 TSP(optimization) 문제에 답할 수 있다.
+
+그렇담 **왜 굳이 TSP(search)를 정의한 걸까?** 그것은 TSP 문제의 solution $T$을 correctness를 검증하기 위해서다. TSP 문제를 검증하기 위해선 (1) $T$가 tour인가? (2) $T$의 total length가 budget $b$ 이하인가?를 검증해야 하는데, TSP(optimization)은 solution $T$가 주어졌을 때 $T$의 total length가 정말 optimal인지 답하기 어렵기 때문에 budget $b$를 통한 (2)번 질문을 만든 것이다.
 
 ### 추천문제
 
 - [벡준 10971번: 외판원 순회 2](https://www.acmicpc.net/problem/10971)
 - [백준 2098번: 외판원 순회](https://www.acmicpc.net/problem/2098)
+
+### 함께보기
+
+- [Bitmask Technique]({{"/2022/04/29/bitmask-technique.html" | relative_url}})
+- [Hamilton Cycle Problem]({{"/2022/03/12/hamilton-cycle-problem.html" | relative_url}})
+- [P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})
 
 
 <hr/>
