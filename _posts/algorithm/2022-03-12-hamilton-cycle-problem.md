@@ -29,6 +29,6 @@ DP 챕터에서 다룬 [\<**외판원 순회문제; Traveling Salesman Problem**
 
 ### 함께보기
 
-- [Bitmask Technique]({{"/2022/04/29/bitmask-technique.html" | relative_url}})
 - [Traveling Salesman Problem]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
 - [P and NP]({{"/2022/01/14/P-and-NP.html" | relative_url}})
+

@@ -180,7 +180,7 @@ If there's no such tour, then report 'no tour'."
 
 그렇담 **왜 굳이 TSP(search)를 정의한 걸까?** 그것은 TSP 문제의 solution $T$을 correctness를 검증하기 위해서다. TSP 문제를 검증하기 위해선 (1) $T$가 tour인가? (2) $T$의 total length가 budget $b$ 이하인가?를 검증해야 하는데, TSP(optimization)은 solution $T$가 주어졌을 때 $T$의 total length가 정말 optimal인지 답하기 어렵기 때문에 budget $b$를 통한 (2)번 질문을 만든 것이다.
 
-### 추천문제
+### Problem Solving
 
 - [벡준 10971번: 외판원 순회 2](https://www.acmicpc.net/problem/10971)
 - [백준 2098번: 외판원 순회](https://www.acmicpc.net/problem/2098)
