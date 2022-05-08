@@ -94,7 +94,7 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 - [TSP; Traveling Salesman Problem]({{"/2021/06/13/traveling-salesman-problem.html" | relative_url}})
   - 완전탐색
   - DP
-- [Independent Sets in Tree]({{"/2021/07/10/independent-sets-in-tress.html" | relative_url}})
+- [Independent Sets in Tree]({{"/2021/07/10/independent-sets-in-tree.html" | relative_url}})
 - [Weighted Interval Scheduling]({{"/2021/07/12/weighted-interval-scheduling.html" | relative_url}})
 - [Segmented Least Squares]({{"/2021/07/12/segmented-least-squares.html" | relative_url}})
 

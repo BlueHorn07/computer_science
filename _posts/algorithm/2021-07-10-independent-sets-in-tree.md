@@ -1,5 +1,5 @@
 ---
-title: "Independent Sets in Trees"
+title: "Independent Sets in Tree"
 layout: post
 use_math: true
 tags: ["Algorithm"]
