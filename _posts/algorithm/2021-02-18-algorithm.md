@@ -124,8 +124,17 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
   - [Longest Path, Subset Sum]({{"/2022/05/08/longest-path-and-subset-sum.html" | relative_url}})
 
 - [Reductions]({{"/2022/05/08/reduction-1.html" | relative_url}})
-  - Mapping Reduction & Polynomial Reduction 🎈
-  - NP-complete and NP-hard
+  - [Reduction and NP-complete]({{"/2022/05/08/reduction-1.html" | relative_url}})
+    - Mapping Reduction & Polynomial Reduction 🎈
+    - [NP-complete and NP-hard]({{"/2022/05/10/NP-complete-and-NP-hard.html" | relative_url}})
+  - [Reduction (2)]({{"/2022/05/12/reduction-2.html" | relative_url}})
+    - 3-SAT → Independent-Set
+    - Independent-Set → Vertex Cover
+    - Independent-Set → Clique
+    - 3-SAT → Clique
+  - [Reduction (3)]({{"/2022/05/13/reduction-3.html" | relative_url}})
+    - 3-SAT → 3D-Matching
+  - [Reduction (4): Circuit-SAT and Cook-Levin Theorem]({{"/2022/05/14/reduction-4.html" | relative_url}})
 
 ### Appendix
 
