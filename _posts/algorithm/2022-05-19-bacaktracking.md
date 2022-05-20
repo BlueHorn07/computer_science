@@ -54,7 +54,7 @@ $$
 
 SAT 문제에서 가장 작은 clause라 하면 $(z)$와 같은 singleton clause이다. singleton clause의 경우, assn T/F 중 하나는 무조건 non-satisfying이 되기 때문이다.
 
-이런 \<backtracking\> 알고리즘을 정리하면 아래와 같다.
+이런 \<Backtracking\> 알고리즘을 정리하면 아래와 같다.
 
 <div class="statement" markdown="1">
 
@@ -75,4 +75,8 @@ Announce that there is no solution.
 
 <hr/>
 
-\<backtracking\>의 핵심은 가망이 없는 subproblem을 지워버리는 **검색** 방식이다. 이를 통해 Search Space를 줄여 Exponential Time이 걸릴 탐색을 획기적으로 줄일 수 있다! 그러나 문제의 어떤 instance가 나오느냐에 따라, 또는 partial solution을 어떻게 확장할 건지에 따라 계산 속도가 달라지기 때문에 input $N$이 너무 크다면, 사용하기 적절하지 않을 수 있다.
+\<Backtracking\>의 핵심은 가망이 없는 subproblem을 지워버리는 **검색** 방식이다. 이를 통해 Search Space를 줄여 Exponential Time이 걸릴 탐색을 획기적으로 줄일 수 있다! 그러나 문제의 어떤 instance가 나오느냐에 따라, 또는 partial solution을 어떻게 확장할 건지에 따라 계산 속도가 달라지기 때문에 input $N$이 너무 크다면, 사용하기 적절하지 않을 수 있다.
+
+다음 포스트에선 \<Backtracking\> 알고리즘의 파생격인 \<Branch-and-Bound\> 알고리즘을 살펴본다 🙏
+
+👉 [Branch and Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})

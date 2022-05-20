@@ -22,8 +22,8 @@ tags: ["Algorithm"]
 이번 챕터에서는 $\textbf{NP-hard}$ 문제를 다루는 몇 가지 방법을 알아본다. 
 
 1. Exhausitive Search (Exponential Search)
-   1. Backtracking
-   2. Brandh-and-Bound
+   1. [Backtracking]({{"/2022/05/19/bacaktracking.html" | relative_url}})
+   2. [Brandh-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
 2. Approximation Algorithm
 3. Heuristic Algorithm
 
