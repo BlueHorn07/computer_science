@@ -68,7 +68,8 @@ while $S$ is non-empty:<br/>
 &nbsp;&nbsp;for each $P_i$:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;if $\text{test}(P_i)$ succeed: halt and report it as a solution.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;if $\text{test}(P_i)$ succeed: halt and report it as a solution.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;otherwise: add $P_i$ to $S$.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;otherwise: add $P_i$ to $S$.
+
 Announce that there is no solution.
 
 </div>

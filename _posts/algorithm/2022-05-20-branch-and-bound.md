@@ -85,7 +85,8 @@ while $S$ is non-empty:<br/>
 &nbsp;&nbsp;**<u>expand</u>** it into smaller subproblems $P_1, P_2, \dots, P_k$<br/>
 &nbsp;&nbsp;for each $P_i$:<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;if $P_i$ is a complete solution: update $\text{bestsofar}$<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;else: if $\text{lowerbound}(P_i) < \text{bestsofar}$, then add $P_i$ to $S$.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;else: if $\text{lowerbound}(P_i) < \text{bestsofar}$, then add $P_i$ to $S$.
+
 return $\text{bestsofar}$
 
 </div>

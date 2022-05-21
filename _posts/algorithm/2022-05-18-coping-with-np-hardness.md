@@ -26,6 +26,8 @@ tags: ["Algorithm"]
    2. [Brandh-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
 2. Approximation Algorithm
 3. Heuristic Algorithm
+   1. [Local Search]({{"/2022/05/20/local-search.html" | relative_url}})
+      1. Simulated Annealing
 
 책에서는 3가지 방식이 제시되었는데, 정규 수업에서는 첫번째 Exhausitive Search와 세번째 Heuristic Algorithm만 다뤘다 🙏
 

@@ -20,15 +20,16 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 
 [목차]
 
-- Computational Complexity
-- Divide and Conquery
-- Graph Algorithm
-- Greedy Algorithm
-- Dynamic Programming
-- Network Flow
-- Linear Programming
-- NP & NP-complete
-- Appendix
+- [Computational Complexity](#computational-complexity)
+- [Divide and Conquery](#divide-and-conquer)
+- [Graph Algorithm](#graph-algorithm)
+- [Greedy Algorithm](#greedy-algorithm)
+- [Dynamic Programming](#dynamic-programming)
+- [Network Flow](#network-flow)
+- [Linear Programming](#linear-programming)
+- [NP & NP-complete](#np--np-complete)
+- [Coping with NP-hardness](#coping-with-np-hardness)
+- [Appendix](#appendix)
 
 </div>
 
@@ -135,6 +136,14 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
   - [Reduction (3)]({{"/2022/05/13/reduction-3.html" | relative_url}})
     - 3-SAT → 3D-Matching
   - [Reduction (4): Circuit-SAT and Cook-Levin Theorem]({{"/2022/05/14/reduction-4.html" | relative_url}})
+
+### [Coping with NP-hardness]({{"/2022/05/18/coping-with-np-hardness.html" | relative_url}})
+
+- Exhaustive Search
+  - [Backtracking]({{"/2022/05/19/bacaktracking.html" | relative_url}})
+  - [Brandh-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
+- Heuristic Algorithm
+  - [Local Search]({{"/2022/05/20/local-search.html" | relative_url}})
 
 ### Appendix
 
