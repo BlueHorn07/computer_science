@@ -12,6 +12,8 @@ hidden: true
 
 PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relative_url}})👀에서 확인하실 수 있습니다 😎
 
+알고리즘 정리를 마무리한 후기는 [요기]({{"/2022/05/21/end-of-algorithm-lecture.html" | relative_url}})에서 확인하실 수 있습니다.
+
 #### 참고 교재
 - 『Algorithms』 Dasgupta, international ed.
 - [『알고리즘 문제해결전략』](https://book.algospot.com/) 구종만
