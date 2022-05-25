@@ -44,6 +44,10 @@ $$
 
 이때 $\epsilon_i$는 i.i.d noise로 $\epsilon_i \sim N(0, \sigma^2)$이다. 
 
+[\<Bayesian Regression\>]({{"/2021/09/06/bayesian-regression.html" | relative_url}})에선 $y_i = \theta^T x_i + \epsilon_i$ 모델링한 것과 차이점이 있다.
+
+<br/>
+
 이제 $h(\cdot)$에 대해 **prior distribution over function**에 대한 가정을 도입한다.[^1] 'prior'가 붙은 것을 눈치챘다면 이것을 
 'posterior'로 갱신하리라는 것도 알아챌 것이다 🙌 먼저 $h(\cdot)$가 zero-mean GP라고 가정한다.
 

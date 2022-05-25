@@ -7,7 +7,6 @@ tags: ["Algorithm"]
 
 <br/>
 
-
 <div class="img-wrapper" style="margin-bottom: 20px">
   <img src="{{ "/images/algorithm/problem-and-solutions.jpg" | relative_url }}" width="300px">
 </div>

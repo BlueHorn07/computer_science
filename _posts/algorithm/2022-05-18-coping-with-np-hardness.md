@@ -23,7 +23,7 @@ tags: ["Algorithm"]
 
 1. Exhausitive Search (Exponential Search)
    1. [Backtracking]({{"/2022/05/19/bacaktracking.html" | relative_url}})
-   2. [Brandh-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
+   2. [Branch-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
 2. Approximation Algorithm
 3. Heuristic Algorithm
    1. [Local Search]({{"/2022/05/20/local-search.html" | relative_url}})

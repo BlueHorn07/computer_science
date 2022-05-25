@@ -27,15 +27,15 @@ readtime: 30 Minutes
 
 이번 포스트부터 본격적으로 Bayesian Approach에 대해 탐구한다. 먼저 Bayesian의 관점에서는 확률(probability)을 <span class="half_HL">"가설에 대한 믿음의 정도"</span>로서 이해한다. 그래서 사전 믿음을 가지고 가설을 살펴보고, 이후에 데이터를 관측했다면 그 데이터를 가지고 새롭게 믿음을 갱신해 사후 믿음을 얻는다. 이런 수집-갱신의 과정을 데이터가 발생할 때마다 계속 반복한다.
 
-기억할 점은 Bayesian Approach는 항상 '불확실성(uncertainty)'에 대해 얘기한다는 것이다. 고전적인 확률론이 **Point Estimation**으로 unbiased estimator 또는 the most efficient estimator of $\theta$ (= unbiased estimaor with the smallest variance)를 구하거나 또는 **Interval Estimation**으로 confidence level을 구하는 등의 추정을 수행하지만, Bayesian Approach는 parameter $\theta$에 대한 <b><span style="color: red">'확률 분포'</span></b>를 찾는 것을 목표로 한다. 그래서 Point Estimation에서 처럼 parameter의 값을 $\theta = \theta_0$로 특정하는 것이 아니라 "$\mu = 4$, $\sigma^2 = 1$인 정규분포로 parameter가 분포되어 있다"라고 말한다.
+기억할 점은 Bayesian Approach는 항상 '불확실성(uncertainty)'에 대해 얘기한다는 것이다. 고전적인 확률론이 **Point Estimation**으로 unbiased estimator 또는 the most efficient estimator of $\theta$[^1]를 구하거나 또는 **Interval Estimation**으로 confidence level을 구하는 등의 추정을 수행하지만, Bayesian Approach는 parameter $\theta$에 대한 <b><span style="color: red">'확률 분포'</span></b>를 찾는 것을 목표로 한다. 그래서 Point Estimation에서 처럼 parameter의 값을 $\theta = \theta_0$로 특정하는 것이 아니라 "$\mu = 4$, $\sigma^2 = 1$인 정규분포로 parameter가 분포되어 있다"라고 말한다.
 
-<span class="half_HL">Bayesian Approach에서는 관측 데이터가 추가됨에 따라 parameter의 distribution을 계속 갱신한다.</span> 이는 parameter의 prior distribution을 새롭게 관측된 데이터로 갱신해 posterior distribution을 얻는 셈이다. [이 아티클](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/)에서는 이것을 데이터가 확률 분포를 잡아당기는 자석과 같다고 표현하는데, 그 표현이 그럴싸 하다 😲 자세한 내용은 해당 아티클의 [요 부분](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/#:~:text=%EC%A0%80%EB%8A%94%20%EC%9D%B4%EA%B2%83%EC%9D%84%20%EB%8B%A4%EC%9D%8C%EA%B3%BC%20%EA%B0%99%EC%9D%B4%20%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B8%20%EC%A2%8B%EC%95%84%ED%95%A9%EB%8B%88%EB%8B%A4.)을 잠깐 읽어보고 오는 걸 추천한다. 글을 통해 데이터가 posterior distribution을 어떻게 갱신하는지 그리고 prior distribution을 잘 잡는게 중요한 이유를 깨달을 수 있다 👍
+<span class="half_HL">Bayesian Approach에서는 관측 데이터가 추가됨에 따라 parameter의 distribution을 계속 갱신한다.</span> 이는 parameter의 prior distribution을 새롭게 관측된 데이터로 갱신해 posterior distribution을 얻는 셈이다. [이 아티클](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/)에서는 이것을 "데이터가 확률 분포를 잡아당기는 자석과 같다"고 표현하는데, 표현이 그럴싸 하다 😲 자세한 내용은 해당 아티클의 [요 부분](https://coffeewhale.com/bayesian/linear/regression/2019/10/19/bayesian-lr/#:~:text=%EC%A0%80%EB%8A%94%20%EC%9D%B4%EA%B2%83%EC%9D%84%20%EB%8B%A4%EC%9D%8C%EA%B3%BC%20%EA%B0%99%EC%9D%B4%20%ED%91%9C%ED%98%84%ED%95%98%EA%B8%B8%20%EC%A2%8B%EC%95%84%ED%95%A9%EB%8B%88%EB%8B%A4.)을 잠깐 읽어보고 오는 걸 추천한다. 글을 통해 데이터가 posterior distribution을 어떻게 갱신하는지 그리고 prior distribution을 잘 잡는게 중요한 이유를 깨달을 수 있다 👍
 
 <div class="img-wrapper">
   <img src="{{ "/images/machine-learning/bayesian-approach-1.png" | relative_url }}" width="100%">
 </div>
 
-기존의 고전적인 방법은 Point Estiamtor나 confidence interval를 유도했다. 그러나 Bayesian Approach에서는 그런 것들이 전혀 없으며👋 단지 paramter에 대한 **posterior distribution**을 이용해 새로운 데이터 $x^{*}$에 대해 예측할 뿐이다. 그리고 이 과정에서 등장하는 것이 바로 \<**Predictive Distribution**; 예측 분포\>이다!
+기존의 고전적인 방법은 Point Estimator나 confidence interval를 유도했다. 그러나 Bayesian Approach에서는 그런 것들이 전혀 없으며👋 단지 parameter에 대한 **posterior distribution**을 이용해 새로운 데이터 $x^{*}$를 예측할 뿐이다. 그리고 이 과정에서 등장하는 것이 바로 \<**Predictive Distribution**; 예측 분포\>이다!
 
 <hr/>
 
@@ -57,7 +57,7 @@ p(\theta \mid X)
 \end{aligned}
 $$
 
-이때, likelihood의 $p(x^{(i)} \mid \theta)$는 $\theta$로 parametized된 확률 변수 $X$에 대한 확률 분포로 이항 분포, 정규 분포, 포아송 분포 등등이 가능하다. likelihood는 데이터가 parameter $\theta$에 의해 어떻게 parameterized 되어 있을 것이라고 가정하는 것이기 때문에 데이터가 추가되어도 갱신하는 대상이 아니다! 🙌 
+이때, likelihood의 $p(x^{(i)} \mid \theta)$는 $\theta$로 parametized된 확률 변수 $X$에 대한 확률 분포로 이항 분포, 정규 분포, 포아송 분포 등등이 가능하다. likelihood는 데이터가 parameter $\theta$에 의해 어떻게 parameterized 되어 있을 것이라고 **가정**하는 것이기 때문에 갱신하는 대상이 아니다! 🙌 
 
 **<u>이항분포</u>**
 
@@ -176,3 +176,7 @@ $$
 - [Prior & Posterior Predictive Distributions](https://donghwa-kim.github.io/Pred_-baye.html)
 - [사전예측분포와 사후예측분포(Prior and posterior predictive distribution)](https://rooney-song.tistory.com/9?category=935544)
 - [[Bayesian DL] 1. Properties of Gaussian Distribution and Prior(Posterior) Predictive Distribution](https://medium.com/jun-devpblog/bayesian-dl-1-properties-of-gaussian-distribution-and-prior-posterior-predictive-distribution-b02529b894a8)
+
+<hr/>
+
+[^1]: unbiased estimaor with the smallest variance

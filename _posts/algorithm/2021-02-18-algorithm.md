@@ -143,7 +143,7 @@ PS에 대한 아티클은 [요기]({{"/2021/11/01/problem-solving.html" | relati
 
 - Exhaustive Search
   - [Backtracking]({{"/2022/05/19/bacaktracking.html" | relative_url}})
-  - [Brandh-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
+  - [Branch-and-Bound]({{"/2022/05/20/branch-and-bound.html" | relative_url}})
 - Heuristic Algorithm
   - [Local Search]({{"/2022/05/20/local-search.html" | relative_url}})
 
