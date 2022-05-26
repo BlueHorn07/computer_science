@@ -16,6 +16,8 @@ minima:
 
   # generate social links in footer
   social_links:
+      github: bluehorn07
+      instagram: hsy_bluehorn07
     # facebook: jekyll
     # linkedin: jekyll
 
