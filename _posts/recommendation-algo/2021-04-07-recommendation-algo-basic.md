@@ -5,7 +5,7 @@ use_math: true
 tags: ["Recommendation Algorithm"]
 ---
 
-### 서론
+
 2021-1학기, 대학에서 '과제연구' 수업에서 진행하는 개인 프로젝트를 위해 개인적으로 정리한 포스트입니다. 지적과 교류는 언제나 환영입니다 :)
 
 <br><span class="statement-title">TOC.</span><br>

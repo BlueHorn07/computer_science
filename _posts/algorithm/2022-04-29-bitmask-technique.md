@@ -5,7 +5,7 @@ use_math: true
 tags: ["Algorithm", "Problem Solving"]
 ---
 
-### 서론
+
 
 이번 포스트는 PS 테크닉 중 하나인 비트마스크(Bitmask) 기법을 다룹니다. Bitmask 기법은 이진수(bit)와 이진수 연산(bitwise operation)을 활용해 연산에서 큰 이득을 제공하기 때문에 고급 PS를 위해서는 꼭 익혀야 하는 기법입니다.
 

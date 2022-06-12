@@ -5,7 +5,7 @@ use_math: true
 tags: ["Computer Vision"]
 ---
 
-## 서론
+
 본 글은 2020-2학기 "컴퓨터 비전" 수업의 내용을 개인적으로 정리한 것입니다. 지적은 언제나 환영입니다 :)
 
 **<u>keywords</u>**<br>

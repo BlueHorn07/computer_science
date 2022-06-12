@@ -7,7 +7,7 @@ modified_date: 2021.09.20
 readtime: 1 Hour
 ---
 
-### 서론
+
 
 이 포스트는 위키피디아의 [Heap(data structure)](https://en.wikipedia.org/wiki/Heap_(data_structure))에 소개된 Heap의 구현들을 다룹니다. 지적과 조언은 언제나 환영입니다 ㅎㅎ
 

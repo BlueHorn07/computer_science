@@ -5,7 +5,7 @@ use_math: true
 tags: ["Algorithm"]
 ---
 
-### 서론
+
 
 이 포스트는 백준 [15484번: 최소편집2](https://www.acmicpc.net/problem/15484)와 [2326번: 최소 편집 문제2](https://www.acmicpc.net/problem/2326)에서 쓰는 알고리즘인 \<Damerau–Levenshtein distance\>에 대해 소개하는 포스트입니다. 지적은 언제나 환영입니다 :)
 

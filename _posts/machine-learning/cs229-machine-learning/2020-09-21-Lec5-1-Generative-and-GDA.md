@@ -5,7 +5,7 @@ use_math: true
 tags: [CS229, Machine Learning]
 ---
 
-## 서론
+
 본 글은 2018-2학기 Stanford Univ.의 Andrew Ng 교수님의 Machine Learning(CS229) 수업의 내용을 정리한 것입니다. 지적은 언제나 환영입니다 :)
 
 GDA(Gaussian Discriminant Analysis)라는 기법이 등장한다. 이름이 후덜덜 하게 생겼지만, 이론은 별거 없다. 안심하고 다이브🤿하자!
