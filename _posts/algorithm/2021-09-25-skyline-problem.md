@@ -14,7 +14,8 @@ tags: ["Algorithm"]
 <br><span class="statement-title">TOC.</span><br>
 
 - [Brute Force](#brute-force)
-- [Divide and Conquer (Merge Sort)](#divide-and-conquer-feat-merge-sort)
+- [Divide and Conquer (feat. Merge Sort)](#divide-and-conquer-feat-merge-sort)
+- [reference](#reference)
 
 <hr/>
 
@@ -78,7 +79,7 @@ A **skyline** is a collection of rectangular strips. A rectangular strip is repr
 
 모든 key point를 다 돌았다면, `vector<point> ret`에서 y 값이 중복되는 점들을 제거하면 된다.
 
-이때, 위의 과정에서 overlap 되는 tallest building을 찾기 위해 `vector<> building` 배열을 순회하게 된다. 그래서 각 key point를 처리하는데 $O(n)$ 만큼의 연산이 필요하므로, Brute Force 방식은 $O(n^2)$의 시간복잡도를 갖는다.
+각 key point의 overlap 되는 tallest building을 찾기 위해 `building` 배열을 순회한다: $O(n)$. 따라서 $n$개 key point를 처리하는데 $O(n)$ 만큼의 연산이 필요하므로, Brute Force 방식은 $O(n^2)$의 시간복잡도를 갖는다.
 
 <details class="math-statement" markdown="1">
 
@@ -192,15 +193,15 @@ vector<Coord> skyline(vector<Building> buildings) {
   <img src="{{ "/images/algorithm/skyline-problem-6.png" | relative_url }}" width="300px">
 </div>
 
-1\. Compare key points of skylines starting from leftmost end.
+1\. Let's compare key points of skylines starting from the leftmost end.
 
-2\. Between two key points of two skylines, *choose* the one skyline having lesser of `x` value.
+2\. For two key points of two skylines, *choose* the one skyline having key point with lesser `x` value.
 
-3\. If `y` value of chosen key point is less than *last seen height of other skyline*. then **update** key point's `y` to the last seen height of other skyilne.
+3\. If `y` value of chosen key point is less than *the last seen height of other skyline*. then **update** key point's `y` to the last seen height of other skyilne.
 
 4\. Proceed to next key point of the *chosen skyline*.
 
-5\. Repeat [1-4] steps until both the skylines are completed.
+5\. Repeat [2-4] steps until both the skylines are completed.
 
 6\. Remove the redundant key points.
 
@@ -318,7 +319,7 @@ If `x` values of both key points are same, then choose the one with higher `y` v
 
 <hr/>
 
-이것으로 \<Skyline Problem\>에 대해 살펴보았다. 사실 한 가지 풀이법이 더 있는데, \<우선순위 큐\>를 이용하는 방식이다. 이 녀석은 나중에 시간이 나면 정리하도록 하겠다 😉
+이것으로 \<Skyline Problem\>에 대해 살펴보았다. 한 가지 풀이법이 더 있다고 하는데, \<우선순위 큐\>를 이용하는 방식이다. 이 녀석은 나중에 시간이 나면 정리하도록 하겠다 😉
 
 <hr/>
 

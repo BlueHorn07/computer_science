@@ -5,26 +5,35 @@ permalink: /topic/
 use_math: true
 ---
 
-<div class="statement">
+## [Algorithms]({{"2021/02/18/algorithm.html" | relative_url}})
 
-&nbsp; "Fire at once represents Hephaistos, the Greek god of fire and blacksmiths, as well as Zeus’s power, and the spark of human intellect and knowledge given to humankind by Prometheus in the form of reason."
-
-</div>
-
-### [Algorithms]({{"2021/02/18/algorithm.html" | relative_url}})
+2020-1학기 POSTECH 안희갑 교수님의 『Algorithm(CSED331)』 수업 내용을 전부 정리하였습니다. 대학 수준 알고리즘을 스스로 공부하며 나아가는데 필수적인 지식을 담고 있습니다. 🍹
 
 ### [Problem Solving]({{"/2021/11/01/problem-solving.html" | relative_url}})
 
-### [Artificial Intelligence]({{"/2021/05/20/artificial-intelligence.html" | relative_url}})
+알고리즘 실전편으로 백준 문제를 풀고, 종만북을 읽으면서 보았던 좋은 문제들을 담았습니다. 머릿속으로 이해한 굳은 지식 보다는 문제를 직접 해결하면서 실력이 성장함을 느낍니다. 🎣
 
+<hr/>
 
-### [Computer Vision](({{"/2020/12/01/Computer-Vision.html" | relative_url}}))
+## [Statistical Data Mining]({{"2021/02/24/statistical-data-mining.html" | relative_url}})
 
+2021-1학기 POSTECH 채민우 교수님의 “통계적 데이터 마이닝(IMEN472)” 수업 내용을 일부 정리 했습니다. 학부에서 들은 수업 중 제일 어려운 난이도 였지만 수업을 통해 제일 많이 성장했습니다. 학부 수준의 ML 모델과 접근을 배울 수 있었습니다. 현재 데이터 사이언티스트로 업무를 수행하는데 가장 큰 도움이 된 수업입니다. 👍
 
+<hr/>
 
-### [Data Mining]({{"2021/02/24/data-mining.html" | relative_url}})
+## [Artificial Intelligence]({{"/2021/05/20/artificial-intelligence.html" | relative_url}})
 
+2020-1학기 POSTECH 유환조 교수님의 “인공지능(CSED442)” 수업 내용을 정리"할" 예정입니다. 올해 안에는 정리할 수 있겠죠? 🤔
 
+<hr/>
 
-### [Statistical Data Mining]({{"2021/02/24/statistical-data-mining.html" | relative_url}})
+## [Computer Vision]({{"/2020/12/01/Computer-Vision.html" | relative_url}})
+
+2020-2학기 POSTECH 곽수하 교수님의 "컴퓨터비전(CSED539)" 수업 내용을 아주 조금 정리 했습니다. 요즘엔 컴퓨터 비전보다는 Tabular 데이터 처리에 더 관심을 갖고 있습니다. 😅
+
+<hr/>
+
+## [Data Mining]({{"2021/02/24/data-mining.html" | relative_url}})
+
+2021-1학기 POSTECH 김원화 교수님의 “데이터 마이닝(CSED526)” 수업 내용을 아주 조금 정리 했습니다. 후반 내용이 재밌고 어려운데 언젠가 정리를 하겠죠? 🌝
 
